@@ -1,12 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+// SCSS
+import './scss/global.scss';
+
+// VIEWS
+import MainView from './views/MainView';
+import NotFoundView from './views/NotFoundView';
+
+// ROUTER
+import { Router, Route, Switch } from 'react-router-dom';
+
+// REDUX
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import Thunk from 'redux-thunk';
+import rootReducer from './modules';
+
+// Google Analytics
+import ReactGA from 'react-ga';
+import { createBrowserHistory } from 'history';
+
+// Google Analytics initialize
+const history = createBrowserHistory();
+history.listen(({ location }) => {
+  ReactGA.set({ page: location.pathname }); // Update the user's current page
+  ReactGA.pageview(location.pathname); // Record a pageview for the given page
+});
+
+// Redux store initialize
+const store = createStore(rootReducer, applyMiddleware(Thunk));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/" component={MainView}></Route>
+          <Route path="*" component={NotFoundView} />
+        </Switch>
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
