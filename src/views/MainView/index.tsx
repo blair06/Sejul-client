@@ -3,7 +3,9 @@ import React from 'react'
 const MainView = () => {
     return (
         <div>
-            <p>Hello!</p>
+            <p>
+                Hello
+        </p>
         </div>
     )
 }
