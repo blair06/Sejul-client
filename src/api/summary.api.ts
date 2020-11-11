@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ISummary, IAPIResponse } from './interfaces';
+import { IAPIResponse, ISummary } from './interfaces';
 import { getUrl } from './tools/host';
 
 /**
@@ -8,10 +8,10 @@ import { getUrl } from './tools/host';
  * @param page 조회할 페이지
  * @param cnt 한번에 보여줄 갯수
  */
-export const fetchAll = async (keyword: string = '', page: Number, cnt: Number = 10): Promise<ISummary[]> => {
+export const fetchAll = async (keyword: string = '', page: Number = 1, cnt: Number = 10): Promise<ISummary[]> => {
 	const response = await axios({
 		method: 'get',
-		url: getUrl('/api/summary'),
+		url: getUrl('api/summary'),
 		params: {
 			search: keyword,
 			page: page,
@@ -29,7 +29,7 @@ export const fetchAll = async (keyword: string = '', page: Number, cnt: Number =
 export const fetch = async (summary_id: Number): Promise<ISummary> => {
 	const response = await axios({
 		method: 'get',
-		url: getUrl('/api/summary/' + summary_id),
+		url: getUrl('api/summary/' + summary_id),
 	});
 
 	return response.data;
@@ -59,7 +59,7 @@ interface ISummaryForm {
 export const create = async (data: ISummaryForm): Promise<IAPIResponse> => {
 	const response = await axios({
 		method: 'post',
-		url: getUrl('/api/summary/'),
+		url: getUrl('api/summary/'),
 		data: data,
 	});
 
@@ -74,7 +74,7 @@ export const create = async (data: ISummaryForm): Promise<IAPIResponse> => {
 export const update = async (summary_id: Number, content: string): Promise<IAPIResponse> => {
 	const response = await axios({
 		method: 'put',
-		url: getUrl('/api/summary' + summary_id),
+		url: getUrl('api/summary' + summary_id),
 		data: {
 			content: content,
 		},
@@ -89,7 +89,7 @@ export const update = async (summary_id: Number, content: string): Promise<IAPIR
 export const remove = async (summary_id: Number): Promise<IAPIResponse> => {
 	const response = await axios({
 		method: 'DELETE',
-		url: getUrl('/api/summary/' + summary_id),
+		url: getUrl('api/summary/' + summary_id),
 	});
 
 	return response.data;
