@@ -1,3 +1,13 @@
+
+// 그림자 관련 
+@mixin common-box-shadow {
+    box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+}
+@mixin common-text-shadow{
+    text-shadow: 0px 3px 6px rgba(0,0,0,.16);
+}
+
+
 //
 // 미디어 쿼리 MIXIN
 // --------------------------------------------------

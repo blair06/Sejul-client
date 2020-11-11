@@ -1,0 +1,62 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.__navbar-container{
+    width: 100%;
+    height : $navbar-height;
+    min-height : $navbar-height;
+    max-height : $navbar-height;
+    background-color: rgba(255,255,255,.8);
+    z-index: $z-index-navbar;
+    border-bottom: 1px solid $color-black;
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    .__navbar-content-container{
+        // 여기서 너비 결정되어야
+        width: $desktop-width;
+        min-width: $desktop-width;
+        max-width: $desktop-width;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        .__navbar-content-wrapper{
+            margin : 0 $spacing-wide;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .__navbar-logo-container{
+                text-decoration: none;
+                .__navbar-logo{
+                    color : $color-primary-blue;
+                    font-size : 25px;
+                }
+            }
+
+            .__navbar-links{
+                margin-left: $spacing-wide;
+                display: flex;
+                flex-direction: row;
+                .__navbar-link-item{
+                    &:not(:last-child){
+                        margin-right: $spacing-wide;
+                    }
+                    a{
+                        font-size: $font-regular;
+                        color : $color-black;
+                        text-decoration: none;
+                        &:active { color:$color-black; }
+                        &:visited { color:$color-black; }
+                    }
+                }
+            }
+
+            .__navbar-user-info{
+                margin-left: auto;
+            }   
+        }
+    }
+}

@@ -1,0 +1,28 @@
+// 컬러 관련 
+$color-primary-blue : #5068FD;  
+$color-highlight-green : #51FEDA;
+$color-white : #fff;
+$color-black : #363636;
+$color-black-sub : #707070;
+$color-background : #fafafa;
+
+// 공간 관련 
+$spacing-narrow : 25px;
+$spacing-wide : $spacing-narrow * 2;
+
+// Navbar 관련 
+$navbar-height : 60px;
+
+// 화면 관련
+$desktop-width : 1280px;
+
+// z-index 관련 
+$z-index-content : 10;
+$z-index-navbar : 100;
+
+// 폰트 사이즈 관련
+$font-smallest : 10px;
+$font-smaller : 13px;
+$font-regular : 15px;
+$font-large : 18px;
+$font-header : 20px;

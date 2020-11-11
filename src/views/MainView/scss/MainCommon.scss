@@ -1,0 +1,7 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.main-view-container{
+    margin-top: $navbar-height;
+    width: 100%;
+}

@@ -2,8 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
+// CSS 
+// 브라우저 공통 사항 초기화용 
+import './scss/reset.css';
 // SCSS
 import './scss/global.scss';
+
+// COMPONENTS
+import { Navbar } from './components';
 
 // VIEWS
 import MainView from './views/MainView';
@@ -36,9 +42,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router history={history}>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={MainView}></Route>
-          <Route path="*" component={NotFoundView} />
+          <Route component={NotFoundView} />
         </Switch>
       </Router>
     </Provider>

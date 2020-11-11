@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import * as API from '../../api';
-
+import { Logo } from '../../components';
+import './scss/MainCommon.scss';
 
 const MainView = () => {
     const test = async () => {
@@ -11,10 +12,8 @@ const MainView = () => {
         test();
     }, [])
     return (
-        <div>
-            <p>
-                Hello
-        </p>
+        <div className="main-view-container">
+            <Logo />
         </div>
     )
 }
