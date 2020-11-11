@@ -1,7 +1,8 @@
 import React from 'react'
+import * as API from '../../api';
 
 const MainView = () => {
-
+    // API.Summary.fetchAll();
     return (
         <div>
             <p>
