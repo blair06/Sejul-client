@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
+import './Card.scss';
 
-const Card = () => {
+interface ICardProps {
+    children?: ReactNode;
+    className?: string;
+    onClick?: Function;
+}
+const Card = (props: ICardProps) => {
+    const { children, className, onClick } = props;
     return (
-        <div>
-
+        <div className={`__card-container ${className || ''}`} onClick={
+            () => {
+                if (onClick) {
+                    onClick();
+                }
+            }
+        }>
+            {
+                children
+            }
         </div>
     )
 }
