@@ -1,2 +1,3 @@
 import * as Summary from './summary.api';
-export { Summary };
+import * as Auth from './auth.api';
+export { Summary, Auth };
