@@ -54,7 +54,7 @@ const Navbar = () => {
                             user !== null ?
                                 <p>{user.username}</p> : <></>
                         }
-                        <CircularImage />
+                        <CircularImage url={user?.profile} />
                     </Link>
                 </div>
             </div>
