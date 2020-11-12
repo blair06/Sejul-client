@@ -19,7 +19,7 @@ import NotFoundView from './views/NotFoundView';
 import { Router, Route, Switch } from 'react-router-dom';
 
 // REDUX
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import Thunk from 'redux-thunk';
 import rootReducer from './modules';
@@ -36,7 +36,19 @@ history.listen(({ location }) => {
 });
 
 // Redux store initialize
-const store = createStore(rootReducer, applyMiddleware(Thunk));
+/* eslint-disable no-underscore-dangle */
+
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(Thunk)),
+);
+/* eslint-enable */
 
 ReactDOM.render(
   <React.StrictMode>
