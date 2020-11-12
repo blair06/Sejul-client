@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './scss/SignIn.v2.scss';
 import * as API from '../../api';
 import { CustomButton } from '../../components';
 
 const SignInView = () => {
-    const fn = async () => {
-        const response = await API.Summary.fetchAll();
-
-    }
     useEffect(() => {
         fn();
     }, []);
