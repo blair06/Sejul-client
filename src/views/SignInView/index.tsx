@@ -1,9 +1,17 @@
-import React from 'react'
-// import './scss/SignIn.scss';
+import React, { useEffect } from 'react'
 import './scss/SignIn.v2.scss';
+import * as API from '../../api';
 import { CustomButton } from '../../components';
 
 const SignInView = () => {
+    const fn = async () => {
+        const response = await API.Summary.fetchAll();
+
+    }
+    useEffect(() => {
+        fn();
+    }, []);
+
     return (
         <div id="container" className="signin-view-container">
             <div className="wrap_form">
