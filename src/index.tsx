@@ -14,6 +14,7 @@ import { Navbar } from './components';
 // VIEWS
 import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
+import SearchView from './views/SearchView';
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
