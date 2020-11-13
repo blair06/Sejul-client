@@ -15,12 +15,13 @@ import { Navbar } from './components';
 import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
 import SearchView from './views/SearchView';
+import SignInView from './views/SignInView';
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
 
 // REDUX
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import Thunk from 'redux-thunk';
 import rootReducer from './modules';
@@ -37,7 +38,19 @@ history.listen(({ location }) => {
 });
 
 // Redux store initialize
-const store = createStore(rootReducer, applyMiddleware(Thunk));
+/* eslint-disable no-underscore-dangle */
+
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(Thunk)),
+);
+/* eslint-enable */
 
 ReactDOM.render(
   <React.StrictMode>
@@ -46,6 +59,7 @@ ReactDOM.render(
         <Navbar />
         <Switch>
           <Route exact path="/" component={MainView}></Route>
+          <Route path="/signin" component={SignInView} />
           <Route component={NotFoundView} />
         </Switch>
       </Router>
