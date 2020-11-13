@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import './Card.scss'
 
-const Card = () => {
+interface CardProps {
+    children: any;
+    className?: string;
+    onClick?: string;
+    //온클릭시 url
+}
+const Card = (prop: CardProps) => {
+    const {children, className, onClick} = prop;
     return (
-        <div>
-
+        <div className={`__Card-main-container ${className || ''}`} >
+            {children}
         </div>
     )
 }
