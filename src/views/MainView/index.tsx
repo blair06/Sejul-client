@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import * as API from '../../api';
-import { Logo } from '../../components';
+import { Logo, Card } from '../../components';
 import './scss/MainCommon.scss';
 
 const MainView = () => {
@@ -14,6 +14,13 @@ const MainView = () => {
     return (
         <div className="main-view-container">
             <Logo />
+            <Card>
+                <p style={
+                    {
+                        margin: '15px'
+                    }
+                }>Hello</p>
+            </Card>
         </div>
     )
 }

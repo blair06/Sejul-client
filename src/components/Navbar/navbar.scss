@@ -44,7 +44,8 @@
                     &:not(:last-child){
                         margin-right: $spacing-wide;
                     }
-                    a{
+                    a , span{
+                        cursor : pointer;
                         font-size: $font-regular;
                         color : $color-black;
                         text-decoration: none;
@@ -56,6 +57,18 @@
 
             .__navbar-user-info{
                 margin-left: auto;
+
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                color: $color-black;
+                text-decoration: none;
+                font-size: .8rem;
+                &:active { color:$color-black; }
+                &:visited { color:$color-black; }
+                p{
+                    margin-right : 10px;
+                }
             }   
         }
     }

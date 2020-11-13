@@ -1,0 +1,10 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.__card-container{
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include common-box-shadow;
+}

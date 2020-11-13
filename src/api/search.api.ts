@@ -11,7 +11,7 @@ import { getUrl } from './tools/host';
 export const exec = async (search: string, page: Number = 1, cnt: Number = 10): Promise<ISummary[]> => {
 	const response = await axios({
 		method: 'get',
-		url: getUrl('/api/summary'),
+		url: getUrl('api/summary'),
 		params: {
 			search: search,
 			page: page,
