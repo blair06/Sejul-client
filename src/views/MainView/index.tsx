@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import * as API from '../../api';
-import { Logo } from '../../components';
+import { Logo, Card } from '../../components';
 import './scss/MainCommon.scss';
 
 const MainView = () => {
