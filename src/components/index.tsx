@@ -3,7 +3,6 @@ import Logo from './Logo';
 import CircularImage from './CircularImage';
 import Card from './Card';
 import CustomButton from './CustomButton';
-
 export {
     Navbar,
     Logo,
