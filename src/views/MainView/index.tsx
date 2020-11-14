@@ -16,10 +16,8 @@ const MainView = () => {
         <div className="main-view-container">
             <Logo />
             {/*  */}
-            <Card className="add">
-                <div className="test">이것은 테스트</div>
-                <div>이것도 테스트이다</div>
-                <div>이것은 테스트333</div>
+            <Card>
+                
             </Card>
         </div>
     )
