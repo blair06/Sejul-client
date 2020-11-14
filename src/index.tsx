@@ -14,11 +14,8 @@ import { Navbar } from './components';
 // VIEWS
 import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
-<<<<<<< HEAD
-import SearchView from './views/SearchView';
-=======
 import SignInView from './views/SignInView';
->>>>>>> 18c293dfee82c2c5d22d96702dcfea80f3e9726b
+import SearchView from './views/SearchView';
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
@@ -64,6 +61,7 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
           <Route component={NotFoundView} />
+          <Route path="/search" component={SearchView} />
         </Switch>
       </Router>
     </Provider>

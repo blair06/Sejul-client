@@ -1,0 +1,36 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+
+.search-bar{
+    width: 100%;
+    background-color: $color-white;
+    .search-img{
+        width: $spacing-narrow;
+        height: $spacing-wide;
+    }
+    .search-bar-input{
+        font-size: $font-header;
+        box-sizing: border-box; 
+    }
+}
+.search_container{
+    width: 100%;
+    background-color: $color-white;
+}
+.wrap-search-button-bar{
+    width: 100%;
+    height: $navbar-height;
+    background-color: $color-white;
+    .search-but-news{
+        color: $color-primary-blue;
+    }
+    .search-but-post{
+        color: $color-primary-blue;
+    }
+}
+.search-container{
+    width:100%;
+    background-color: #FAFAFA;
+}
+
