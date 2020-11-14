@@ -18,34 +18,37 @@ const SearchView = () => {
 
     return (
         <>
+        <div className="__container__">
             <div className = "search-bar">
                 <input 
                     type="input" 
                     placeholder="검색어를 입력 하세요." 
-                    className="search-bar-input"> </input>
+                    className="search-bar-input"/> 
                     <img className="search-img" src='../../public/logo192.png'></img>
             </div>  
             <div className = "wrap-search-button-bar">
-                <CustomButton className = "search-but-news" text="기사검색" onClick={() => console.log('clicked')}/>
-                <CustomButton className = "search-but-post" text="글검색" onClick={() => console.log('clicked')}/>
+                <button type="button" className = "search-but-news"  onClick={() => console.log('clicked')}>기사검색</button>
+                <button type="button" className = "search-but-post"  onClick={() => console.log('clicked')}>글검색</button>
             </div>
             <div className = "search-container">
-                
+                <div className = "search-card">
             {
                 items.map((item,idx)=> {
                     return(
-                        <p key={idx}>
-                            {item.article.title}
-                            {item.content}
-                            {item.createdAt}
-                        </p>
+                        <div key={idx}>
+                            <p className="news-title">{item.article.title}</p>
+                            <p className="news-content">{item.content}</p>
+                            <p className="news-time">{item.createdAt}</p>
+
+                        </div>
                     )
                 })
             }
-                
+                </div>
+            </div>
             </div>
         </>  
     );
 }
-
+//onclick={()=>{history.push{`${item.search}`}}} 이전 검색키워드 표시
 export default SearchView

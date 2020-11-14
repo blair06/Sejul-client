@@ -60,8 +60,8 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
-          <Route component={NotFoundView} />
           <Route path="/search" component={SearchView} />
+          <Route component={NotFoundView} />
         </Switch>
       </Router>
     </Provider>
