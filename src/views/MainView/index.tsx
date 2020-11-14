@@ -14,6 +14,10 @@ const MainView = () => {
     return (
         <div className="main-view-container">
             <Logo />
+            {/*  */}
+            <Card>
+                
+            </Card>
         </div>
     )
 }
