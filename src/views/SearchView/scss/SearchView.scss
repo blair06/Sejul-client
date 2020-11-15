@@ -2,10 +2,11 @@
 @import '../../../scss/variables';
 
 .__container__{
-    width: $desktop-width;
+    width: 100%;
     height: 100%;
-    margin-top : 60px;
+    margin-top : 80px;
     box-sizing: border-box;
+    padding: 0;
     &:after{
         display:block;
         content:"";
@@ -17,27 +18,42 @@
     width: 100%;
     height: $navbar-height;
     background-color: $color-white;
-    margin: 0 130px;
-    display: flex;
-    .search-button-img{
-        background-image: '../../../public/logo192.png';
-        width: $spacing-narrow;
-        height: $spacing-wide;
+    margin: 0 250px;
+    display: flex;  
+    align-content: center;
+    .search-button-img-wrap{
+        border: none;
+        padding: 0;
+        width: $spacing-narrow*2;   
+        height: $spacing-wide; 
         outline: 0; 
+        margin-left : -45px;
+        background-color: #fafafa00;
+        display: inline;
+        .search-button-img{
+            background: "./img/search-img";
+            display: block;
+            border-radius: 55px;
+            width: 100%;
+            height: 100%;
+            border: none;
+            cursor:pointer;
+            background-color: black
+        }
     }
     .search-bar-input{
         font-size: $font-header;
         border-top: none;
         border-right: none; 
         border-left: none; 
-        width: 70%;
+        width: 60%;
         outline: 0; 
     }
 }
 
 .wrap-search-button-bar{
     display: flex;
-    margin: 0 130px;
+    margin: 0 250px;
     height: $navbar-height;
     background-color: $color-white;
     display: flex;
@@ -47,44 +63,62 @@
         border:none;
         font-size:$font-regular;
         margin-right: 50px;
+        cursor:pointer; 
         font-weight: bold;
         outline: 0; 
         &:hover{
             color: $color-primary-blue;
             outline: 0; 
             font-weight: bold;
+            cursor:pointer; 
         }
     }
     .search-but-post{
         background-color: $color-white;
         border: none;
         font-size:$font-regular;
+        cursor:pointer; 
         font-weight: bold;
         outline: 0; 
         &:hover{
             color: $color-primary-blue;
             outline: 0;  
             font-weight: bold;
+            cursor:pointer; 
         }
     }
 }
 .search-container{
     width: $desktop-width;
-    margin: 0 130px;
     background-color: #FAFAFA;
     width: 100%;
+    height: 100%;
+    padding-top: 30px;
+    margin:0 auto;
+    padding-left: 75px;
+
 .search-card{
+
     width: 80%;
+    height: 100px;
     margin: 0 auto;
+    margin-bottom: 20px;
     background-color: $color-white;
+
     .news-title{
+        margin-left: 30px;
+        margin-top : 5px;
         font-size: $font-header;
     }
     .news-content{
+        margin-left: 30px;
+        margin-top : 5px;
         font-size: $font-regular;
 
     }
     .news-time{
+        margin-left: 30px;
+        margin-top : 5px;
         font-size: $font-smallest;
     }
 }
