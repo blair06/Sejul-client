@@ -2,6 +2,33 @@
 @import '../../../scss/variables';
 
 .main-view-container{
-    margin-top: $navbar-height;
+    // margin-top: $navbar-height;
     width: 100%;
+}
+.main-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.main-contents-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 250px;
+    .main-contents-header{
+        color: #5169FE;
+        margin-top: 40px;
+        margin-bottom: 45px;
+    }
+    .main-hashtag{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        .__Rounded-Card-main-container.add{
+            @include common-box-shadow;
+        }
+    }
+    
 }
