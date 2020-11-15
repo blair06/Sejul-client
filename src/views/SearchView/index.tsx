@@ -24,7 +24,7 @@ const SearchView = () => {
                     type="input" 
                     placeholder="검색어를 입력 하세요." 
                     className="search-bar-input"/> 
-                    <img className="search-img" src='../../public/logo192.png'></img>
+                    <button className="search-button-img" />
             </div>  
             <div className = "wrap-search-button-bar">
                 <button type="button" className = "search-but-news"  onClick={() => console.log('clicked')}>기사검색</button>
