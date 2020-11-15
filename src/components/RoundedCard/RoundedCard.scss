@@ -1,0 +1,13 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.__Rounded-Card-main-container{
+    background-color: #5169FE;
+    width: 90px;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+}

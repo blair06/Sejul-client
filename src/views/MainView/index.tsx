@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import * as API from '../../api';
-import { Logo, Card } from '../../components';
+import { Logo, Card ,RoundedCard } from '../../components';
 import './scss/MainCommon.scss';
 
 const MainView = () => {
@@ -17,6 +17,9 @@ const MainView = () => {
             {/*  */}
             <Card>
             </Card>
+            <RoundedCard className = "add" cancelable = {true}>
+                #해시태그
+            </RoundedCard>
         </div>
     )
 }
