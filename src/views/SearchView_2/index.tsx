@@ -2,21 +2,35 @@ import React,{ useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import { isConstructorDeclaration } from 'typescript';
 import * as API from '../../api'
-import { CustomButton } from '../../components'
-import './scss/SearchView.scss'
+import './scss/SearchView_2.scss'
 import { useHistory } from 'react-router'
 
-
-const SearchView = () => {
+const SearchView_2 = () => {
     const [items,setItems] = useState<any[]>([]);
-    const history = useHistory;
+    const [users,setUsers] = useState<any[]>([]);
     const fn = async () => {
         const response = await API.Summary.fetchAll('api/summary'); //글검색
         setItems(response);
     }
+    const user = async() => {
+        const response = await API.Auth.signin();
+        setUsers(response);
+    }
+    // 이중 map 사용법 물어보기
+    const usermap = users.map((item,idx)=>{
+        return(
+            <div key={idx}>
+                <p className="user-name">{item.username}</p>
+            </div>
+        )
+    })
+
     useEffect(()=> {
         fn();
+        user();
     }, []);
+
+
 
     return (
         <>
@@ -37,6 +51,11 @@ const SearchView = () => {
                 items.map((item,idx)=> {
                     return(
                         <div className = "search-card">
+                            <div className = "user-information-wrap">
+                                <div className = "user-img"> <img src="./img/user"/></div>
+                                <div className = "user-name"> {usermap} </div>
+                            </div>       
+                               
                         <div key={idx}>
                             <p className="news-title">{item.article.title}</p>
                             <p className="news-content">{item.content}</p>
@@ -54,4 +73,4 @@ const SearchView = () => {
     );
 }
 //onclick={()=>{history.push{`${item.search}`}}} 이전 검색키워드 표시
-export default SearchView
+export default SearchView_2
