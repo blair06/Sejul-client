@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { IUser, ISummary, IAPIResponse } from './interfaces';
+import { IUser, ISummary, IAPIResponse, IHashtag } from './interfaces';
 import { getUrl } from './tools/host';
 import * as LIB from '../lib';
 
 /**
  * @description 가장 관련 글이 많은 해시태그
  */
-export const fetchHottestHashtag = async () => {
+export const fetchHottestHashtag = async (): Promise<IHashtag[]> => {
 	const response = await axios({
 		method: 'GET',
 		url: getUrl('api/analytics/hashtag/hottest'),
@@ -17,7 +17,7 @@ export const fetchHottestHashtag = async () => {
 /**
  * @description 최근 작성된 요약 글
  */
-export const fetchRecentSummary = async () => {
+export const fetchRecentSummary = async (): Promise<ISummary[]> => {
 	const response = await axios({
 		method: 'GET',
 		url: getUrl('api/analytics/summary/recent'),
@@ -28,7 +28,7 @@ export const fetchRecentSummary = async () => {
 /**
  * @description 글 작성이 많은 사용자
  */
-export const fetchFeaturedUser = async () => {
+export const fetchFeaturedUser = async (): Promise<IUser[]> => {
 	const response = await axios({
 		method: 'GET',
 		url: getUrl('api/analytics/user/featured'),
