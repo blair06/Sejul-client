@@ -1,15 +1,16 @@
-import React,{ useEffect, useState } from 'react'
+import React,{ useEffect, useState, Component } from 'react'
 import { useParams } from 'react-router';
 import { isConstructorDeclaration } from 'typescript';
 import * as API from '../../api'
 import { CustomButton } from '../../components'
 import './scss/SearchView.scss'
-import { useHistory } from 'react-router'
+import { SearchHeader } from './comfonents'
+import { Nav_2 } from '../../components'
+
 
 
 const SearchView = () => {
     const [items,setItems] = useState<any[]>([]);
-    const history = useHistory;
     const fn = async () => {
         const response = await API.Summary.fetchAll('api/summary'); //글검색
         setItems(response);
@@ -20,19 +21,11 @@ const SearchView = () => {
 
     return (
         <>
-        <div className="__container__">
-            <div className = "search-bar">
-                <input 
-                    type="input" 
-                    placeholder="검색어를 입력 하세요." 
-                    className="search-bar-input"/>
-                    <button className="search-button-img-wrap" ><img className="search-button-img" /></button>
-            </div>  
-            <div className = "wrap-search-button-bar">
-                <button type="button" className = "search-but-news"  onClick={() => console.log('clicked')}>기사검색</button>
-                <button type="button" className = "search-but-post"  onClick={() => {history.push("/SearchView_2")}}> 글검색</button> 
-            </div>
-            <div className = "search-container">
+        <div className = "__container__" >
+        <SearchHeader onClick={() => console.log('clicked')}/> 
+    <div className = "search-container">
+        <div className = "search-card-wrap">
+           
             {
                 items.map((item,idx)=> {
                     return(
@@ -47,11 +40,14 @@ const SearchView = () => {
                     )
                 })
             }
-                
+                </div>
             </div>
-            </div>
+            
+        </div>
+            
         </>  
     );
 }
+
 //onclick={()=>{history.push{`${item.search}`}}} 이전 검색키워드 표시
 export default SearchView
