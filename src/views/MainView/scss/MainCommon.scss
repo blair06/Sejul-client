@@ -24,13 +24,13 @@
     }
     .main-contents-header{
         color: $color-primary-blue;
-        margin-top: 40px;
-        margin-bottom: 45px;
+        margin-top: 50px;
+        margin-bottom: 30px;
     }
     .main-hashtag{
         display: flex;
         justify-content: space-evenly;
-        width: 100%;
+        width: 61.4vw;
         margin-top: 5vh;
         margin-left: 250px;
          margin-right: 250px;
@@ -43,11 +43,11 @@
 }
 // 최근 작성된 글 슬라이더
 .main-slider-recent{
-    width: 1180px;
+    width: 61.4vw;
   
     .main-slider{
         height: 50vh;
-        width: 1180px;
+        width: 61.4vw;
         .main-slider-item{
             
             height: 43vh;
@@ -84,11 +84,11 @@
 }
 // 활발한 활동유저 슬라이더
 .main-slider-user{
-    width: 1180px;
+    width: 61.4vw;
   
     .user-slider{
-        height: 50vh;
-        width: 1180px;
+        height: 40vh;
+        width: 61.4vw;
         .user-slider-item{
             
             height: 25vh;
