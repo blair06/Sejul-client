@@ -7,6 +7,6 @@ export {
     Navbar,
     Logo,
     CircularImage,
-    Card
+    Card,
     CustomButton
 };
