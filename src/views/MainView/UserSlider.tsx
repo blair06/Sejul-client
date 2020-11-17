@@ -3,14 +3,14 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Logo, Card, CircularImage } from '../../components';
 import './scss/MainCommon.scss';
-import { ISummary } from '../../api/interfaces/ISummary';
-interface MainSliderProps {
+import { IUser } from '../../api/interfaces';
+interface UserSliderProps {
 	children?: ReactNode;
 	className?: string;
 	onClick?: Function;
-	data: ISummary[];
+	data: IUser[];
 }
-const MainSlider = (props: MainSliderProps) => {
+const UserSlider = (props: UserSliderProps) => {
 	const { data, className, onClick } = props;
 	const responsive = {
 		desktop: {
@@ -37,13 +37,13 @@ const MainSlider = (props: MainSliderProps) => {
 				arrows
 				autoPlaySpeed={3000}
 				centerMode={false}
-				className="main-slider"
+				className="user-slider"
 				containerClass="container-with-dots"
 				dotListClass=""
 				draggable
 				focusOnSelect={false}
 				infinite
-				itemClass="main-slider-item"
+				itemClass="user-slider-item"
 				keyBoardControl
 				minimumTouchDrag={80}
 				renderButtonGroupOutside={false}
@@ -54,7 +54,7 @@ const MainSlider = (props: MainSliderProps) => {
 							max: 3000,
 							min: 1024,
 						},
-						items: 3,
+						items: 6,
 						partialVisibilityGutter: 40,
 					},
 					mobile: {
@@ -79,30 +79,17 @@ const MainSlider = (props: MainSliderProps) => {
 				slidesToSlide={1}
 				swipeable
 			>
-				{data.length >= 0 ? (
-					data.map((item: ISummary) => (
+				{data.length > 0 ? (
+					data.map((item: IUser) => (
 						<Card>
-							{item.user === undefined || item.user === null ? (
-								<div className="main-slider-author">
-									<CircularImage className="main-slider-author-profile" />
-									아무개
-								</div>
-							) : (
-								<div className="main-slider-author">
-									<CircularImage className="main-slider-author-profile" url={item.user.profile} />
-									{item.user.username}
-								</div>
-							)}
-              <div className="main-slider-article-title">{item.article.title}</div>
-              {/* 해시태그 */}
-              <div className="main-slider-hashtags">
-                {item.hashtags.map((hashtag)=>(
-                  <p className="main-slider-hashtags-text">#{hashtag.text}</p>
-                ))}
-              </div>
-              {/* 소요시간 */}
-              
-              {/* 작성시간 */}
+							<div className="user-slider-profile">
+								<CircularImage url={item.profile} />
+							</div>
+							<p className="user-slider-name">{item.username}</p>
+							<div className="user-slider-small">
+								<p className="user-slider-follow">팔로우 {item.following.length}</p>
+								<p className="user-slider-post">작성글 {item.articles.length}</p>
+							</div>
 						</Card>
 					))
 				) : (
@@ -113,4 +100,4 @@ const MainSlider = (props: MainSliderProps) => {
 	);
 };
 
-export default MainSlider;
+export default UserSlider;

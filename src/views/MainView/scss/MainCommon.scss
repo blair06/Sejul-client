@@ -33,52 +33,90 @@
         width: 100%;
         margin-top: 5vh;
         margin-left: 250px;
-    margin-right: 250px;
+         margin-right: 250px;
         .__Rounded-Card-main-container.add{
             @include common-box-shadow;
+            width: 6.6vw;
         }
     }
     
 }
 .main-slider-recent{
-    width: 100%;
+    width: 1180px;
   
     .main-slider{
         height: 50vh;
-        width: 100%;
-
-        .react-multi-carousel-track{
- 
+        width: 1180px;
+        .main-slider-item{
+            
+            height: 43vh;
+            color:#363636;
         }
         .__Card-main-container{
-            width: 16.4vw;
-            height: 16.4vw;
-            &:first-child{
-                margin-left: 4vw;
+            box-sizing: border-box;
+            margin: 0 20px;
+            padding: 30px 30px;
+            height: 43vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            .main-slider-author{
+                display: flex;
+                align-items: center;
+                .main-slider-author-profile{
+                    margin-right: 10px;
+                }
             }
+            .main-slider-hashtags{
+                display:flex;
+                .main-slider-hashtags-text{
+                    padding-right: 5px;
+                    color:#5169FE;
+                }
+            }
+            
+
         }
         
     }
 }
 .main-slider-user{
-    width: 100%;
+    width: 1180px;
   
-    .main-slider{
+    .user-slider{
         height: 50vh;
-        width: 100%;
-
-        .react-multi-carousel-item{
-            width: 10vw !important;
-        }  
-        .__Card-main-container{
-            width: 8vw;
+        width: 1180px;
+        .user-slider-item{
+            
             height: 25vh;
-            &:first-child{
-                //margin-left: 4vw;
+            color:#363636;
+        }
+        .__Card-main-container{
+            box-sizing: border-box;
+            margin: 0 20px;
+            padding: 30px 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .user-slider-small{
+                font-size: 0.8em;
             }
         }
         
     }
+}
+.main-footer{
+    margin-top: 55px;
+    color: white;
+    font-size: 4.5em;
+    display: flex;
+    align-items: center;
+    padding-right: 320px;
+    justify-content: flex-end;
+    background-color: #5068FD;
+    height: 25vh;
 }
 //slider button
 .react-multi-carousel-dot button{
@@ -86,6 +124,12 @@
 }
 .react-multi-carousel-dot--active button {
     background: #4F66F8 !important;
+}
+.react-multiple-carousel__arrow--right{
+    right:0!important;
+}
+.react-multiple-carousel__arrow--left{
+    left:0!important;
 }
 .react-multiple-carousel__arrow{
     background-color: $color-white !important;

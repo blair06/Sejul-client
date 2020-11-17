@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react'
 import './RoundedCard.scss';
 
 interface RoundedCardProps {
-    children: ReactNode;
+    children?: ReactNode;
     className?: string;
     onClick?: Function;
     cancelable?: boolean;
@@ -16,7 +16,7 @@ const RoundedCard = (props: RoundedCardProps) => {
                 onClick();
                 }}
             }>
-                {cancelable?<div className="__Rounded-Card-cancle" >{children} X</div>:{children}}
+                {cancelable?<div className="__Rounded-Card-cancle" >#{children} X</div>:<p>#{children}</p>}
             
         </div>
     )
