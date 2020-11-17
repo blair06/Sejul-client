@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import * as API from '../../api';
-import { Logo, Card, RoundedCard, CircularImage } from '../../components';
+import { RoundedCard} from '../../components';
 import './scss/MainCommon.scss';
 import { ISummary, IHashtag, IUser } from '../../api/interfaces';
 import mainBanner from '../../assets/img/main-banner.png';
 import MainSlider from './MainSlider';
 import UserSlider from './UserSlider';
 
-import { default as Slider } from 'react-slick';
-
+// TODO
+// 링크연결하기
 const MainView = () => {
 	const [posts, setPosts] = useState<ISummary[]>([]);
 	const [users, setUsers] = useState<IUser[]>([]);
@@ -16,7 +16,7 @@ const MainView = () => {
 	const getPosts = async () => {
 		try {
 			const result = await API.Analytics.fetchRecentSummary();
-		
+			console.log(result);
 			setPosts(result);
 		} catch (e) {
 			console.log(e);
@@ -41,7 +41,7 @@ const MainView = () => {
 		}
 	};
 	useEffect(() => {
-        getPosts();
+		getPosts();
 		getHashTags();
 		getUsers();
 	}, []);
@@ -59,10 +59,10 @@ const MainView = () => {
 				<p className="main-contents-header">해시 태그</p>
 				<div className="bar"></div>
 				<div className="main-hashtag">
-					{hashTags.length >7 ? (
+					{hashTags.length > 7 ? (
 						hashTags.map((hashTag, index) => (
 							<RoundedCard key={index} className="add" cancelable={false}>
-                                {hashTag.text}
+								{hashTag.text}
 							</RoundedCard>
 						))
 					) : (
@@ -72,12 +72,10 @@ const MainView = () => {
 				<p className="main-contents-header">활동이 많은 사용자들</p>
 				<div className="bar"></div>
 				<div className="main-slider-user">
-				    <UserSlider  data={users}/>
+					<UserSlider data={users} />
 				</div>
 			</div>
-			<div className="main-footer">
-				Sejul
-			</div>
+			<div className="main-footer">Sejul</div>
 		</div>
 	);
 };

@@ -23,7 +23,7 @@
         height: 3px;
     }
     .main-contents-header{
-        color: #5169FE;
+        color: $color-primary-blue;
         margin-top: 40px;
         margin-bottom: 45px;
     }
@@ -41,6 +41,7 @@
     }
     
 }
+// 최근 작성된 글 슬라이더
 .main-slider-recent{
     width: 1180px;
   
@@ -50,7 +51,7 @@
         .main-slider-item{
             
             height: 43vh;
-            color:#363636;
+            color:$color-black;
         }
         .__Card-main-container{
             box-sizing: border-box;
@@ -72,7 +73,7 @@
                 display:flex;
                 .main-slider-hashtags-text{
                     padding-right: 5px;
-                    color:#5169FE;
+                    color:$color-primary-blue;
                 }
             }
             
@@ -81,6 +82,7 @@
         
     }
 }
+// 활발한 활동유저 슬라이더
 .main-slider-user{
     width: 1180px;
   
@@ -90,7 +92,7 @@
         .user-slider-item{
             
             height: 25vh;
-            color:#363636;
+            color:$color-black;
         }
         .__Card-main-container{
             box-sizing: border-box;
@@ -107,15 +109,16 @@
         
     }
 }
+//footer
 .main-footer{
     margin-top: 55px;
-    color: white;
+    color: $color-white;
     font-size: 4.5em;
     display: flex;
     align-items: center;
     padding-right: 320px;
     justify-content: flex-end;
-    background-color: #5068FD;
+    background-color: $color-primary-blue;
     height: 25vh;
 }
 //slider button

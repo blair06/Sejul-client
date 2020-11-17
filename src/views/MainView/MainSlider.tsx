@@ -4,14 +4,18 @@ import 'react-multi-carousel/lib/styles.css';
 import { Logo, Card, CircularImage } from '../../components';
 import './scss/MainCommon.scss';
 import { ISummary } from '../../api/interfaces/ISummary';
+// TODO
+// 소요시간
 interface MainSliderProps {
 	children?: ReactNode;
 	className?: string;
 	onClick?: Function;
 	data: ISummary[];
 }
+
 const MainSlider = (props: MainSliderProps) => {
 	const { data, className, onClick } = props;
+
 	const responsive = {
 		desktop: {
 			breakpoint: { max: 3000, min: 1024 },
@@ -81,7 +85,7 @@ const MainSlider = (props: MainSliderProps) => {
 			>
 				{data.length >= 0 ? (
 					data.map((item: ISummary) => (
-						<Card>
+						<Card onClick={() => {}}>
 							{item.user === undefined || item.user === null ? (
 								<div className="main-slider-author">
 									<CircularImage className="main-slider-author-profile" />
@@ -93,16 +97,16 @@ const MainSlider = (props: MainSliderProps) => {
 									{item.user.username}
 								</div>
 							)}
-              <div className="main-slider-article-title">{item.article.title}</div>
-              {/* 해시태그 */}
-              <div className="main-slider-hashtags">
-                {item.hashtags.map((hashtag)=>(
-                  <p className="main-slider-hashtags-text">#{hashtag.text}</p>
-                ))}
-              </div>
-              {/* 소요시간 */}
-              
-              {/* 작성시간 */}
+							<div className="main-slider-article-title">{item.article.title}</div>
+							{/* 해시태그 */}
+							<div className="main-slider-hashtags">
+								{item.hashtags.map((hashtag) => (
+									<p className="main-slider-hashtags-text">#{hashtag.text}</p>
+								))}
+							</div>
+							{/* 소요시간 */}
+
+							{/* 작성시간 */}
 						</Card>
 					))
 				) : (
