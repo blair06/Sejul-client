@@ -5,7 +5,7 @@ import { CustomButton } from '../../components';
 
 const SignInView = () => {
     useEffect(() => {
-        fn();
+        // fn();
     }, []);
 
     return (

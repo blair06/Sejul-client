@@ -17,6 +17,11 @@
     justify-content: center;
     align-items: center;
     margin: 0 250px;
+    .bar{
+        background-color: #80808063;
+        width: 2.6vw;
+        height: 3px;
+    }
     .main-contents-header{
         color: #5169FE;
         margin-top: 40px;
@@ -24,11 +29,70 @@
     }
     .main-hashtag{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         width: 100%;
+        margin-top: 5vh;
+        margin-left: 250px;
+    margin-right: 250px;
         .__Rounded-Card-main-container.add{
             @include common-box-shadow;
         }
     }
     
 }
+.main-slider-recent{
+    width: 100%;
+  
+    .main-slider{
+        height: 50vh;
+        width: 100%;
+
+        .react-multi-carousel-track{
+ 
+        }
+        .__Card-main-container{
+            width: 16.4vw;
+            height: 16.4vw;
+            &:first-child{
+                margin-left: 4vw;
+            }
+        }
+        
+    }
+}
+.main-slider-user{
+    width: 100%;
+  
+    .main-slider{
+        height: 50vh;
+        width: 100%;
+
+        .react-multi-carousel-item{
+            width: 10vw !important;
+        }  
+        .__Card-main-container{
+            width: 8vw;
+            height: 25vh;
+            &:first-child{
+                //margin-left: 4vw;
+            }
+        }
+        
+    }
+}
+//slider button
+.react-multi-carousel-dot button{
+    border-color: #80808026 !important;
+}
+.react-multi-carousel-dot--active button {
+    background: #4F66F8 !important;
+}
+.react-multiple-carousel__arrow{
+    background-color: $color-white !important;
+    @include common-box-shadow;
+}
+.react-multiple-carousel__arrow::before{
+    color:#7A7A7A !important;
+    font-weight: bold;
+}
+
