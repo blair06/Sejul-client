@@ -15,6 +15,7 @@ import { Navbar } from './components';
 import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
 import SignInView from './views/SignInView';
+import SignUpView from './views/SignUpView';
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
@@ -59,6 +60,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
+          <Route path="/signup" component={SignUpView} />
           <Route component={NotFoundView} />
         </Switch>
       </Router>
