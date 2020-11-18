@@ -30,6 +30,7 @@ import rootReducer from './modules';
 // Google Analytics
 import ReactGA from 'react-ga';
 import { createBrowserHistory } from 'history';
+import UserInfoView from './views/UserInfoView';
 
 // Google Analytics initialize
 const history = createBrowserHistory();
@@ -62,6 +63,7 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
           <Route path="/signup" component={SignUpView} />
+          <Route path="/user/:user_name/summary" component={UserInfoView}/>
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
           <Route component={NotFoundView} />
         </Switch>
