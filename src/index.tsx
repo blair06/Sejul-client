@@ -9,7 +9,7 @@ import './scss/reset.css';
 import './scss/global.scss';
 
 // COMPONENTS
-import { Navbar } from './components';
+import { Navbar, SubNavbar } from './components';
 
 // VIEWS
 import MainView from './views/MainView';
@@ -63,13 +63,23 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
-<<<<<<< HEAD
-        <Route path="/search" component={SearchView} />
-=======
+          <Route path="/search" >
+            <div className="__container__" >
+              <SubNavbar className="__search-navbar" links={
+                [
+                  { to: '/search/topic/', text: '기사 검색' },
+                  { to: '/search/summary/', text: '글 검색' }
+                ]
+              } />
+              <Switch>
+                <Route path="/search/topic" component={SearchView} />
+                <Route path="/search/summary" component={SearchView_2} />
+              </Switch>
+            </div>
+          </Route>
           <Route path="/signup" component={SignUpView} />
-        <Route path="/summary/:summaryId" component={SummaryDetailView} />
->>>>>>> beeae02c81774fd87338ccdb193f6058b481128a
-        <Route component={NotFoundView} />
+          <Route path="/summary/:summaryId" component={SummaryDetailView} />
+          <Route component={NotFoundView} />
         </Switch>
       </Router>
     </Provider>
