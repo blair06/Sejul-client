@@ -2,6 +2,14 @@ import axios from 'axios';
 import { IAPIResponse, IHashtag, ISummary, IUser } from './interfaces';
 import { getUrl } from './tools/host';
 
+export const fetch = async (username: string): Promise<IUser> => {
+	const result = await axios({
+		method: 'GET',
+		url: getUrl(`api/user/${username}`),
+	});
+	return result.data;
+};
+
 export const fetchFollowingUser = async (username: string): Promise<IUser[]> => {
 	const result = await axios({
 		method: 'GET',

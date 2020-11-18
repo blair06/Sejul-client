@@ -9,7 +9,7 @@ import './scss/reset.css';
 import './scss/global.scss';
 
 // COMPONENTS
-import { Navbar } from './components';
+import { Navbar, UserInfoHeader } from './components';
 
 // VIEWS
 import MainView from './views/MainView';
@@ -63,7 +63,20 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
           <Route path="/signup" component={SignUpView} />
-          <Route path="/user/:user_name/summary" component={UserInfoView}/>
+          {/* <Route path="/user/:user_name/summary" component={UserInfoView} /> */}
+          <Route path="/user/:username">
+            <div className="__user-info-container">
+              <UserInfoHeader />
+              <Switch>
+                {/* /user/:username/summary */}
+                <Route exact path="/user/:username" component={UserInfoView} />
+                <Route path="/user/:username/summary" component={UserInfoView} />
+                <Route path="/user/:username/following" component={UserInfoView} />
+                <Route path="/user/:username/hashtag" component={UserInfoView} />
+                <Route path="/user/:username/archive" component={UserInfoView} />
+              </Switch>
+            </div>
+          </Route>
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
           {/* <Route component={NotFoundView} /> */}
         </Switch>

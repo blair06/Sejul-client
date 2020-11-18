@@ -1,6 +1,12 @@
 @import '../../../scss/mixins';
 @import '../../../scss/variables';
-.UserInfo-main-container{
-    width:100%;
-    margin: $navbar-height 250px 0 250px;
+.__user-info-container{
+    width: $desktop-width;
+    margin-top : $navbar-height;
+    margin-left : auto;
+    margin-right : auto;
+    .UserInfo-main-container{
+        width:100%;
+        margin: $navbar-height 250px 0 250px;
+    }
 }
