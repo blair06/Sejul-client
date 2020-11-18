@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import './scss/search-header.scss'
 
 interface IClickProps{
@@ -20,10 +20,10 @@ const SearchHeader = ( props: IClickProps) => {
             <div className = "__navbar-wrap">
                 <ul className="__navbar-links" >
                         <li className="__navbar-link-item" >
-                            <div className="__btn" onClick={props.onClick}><Link to="/newsearch">기사검색</Link></div>
+                            <div className="__btn" onClick={props.onClick}><NavLink to="/search/newsearch">기사검색</Link></div>
                         </li>
                         <li className="__navbar-link-item">
-                        <div className="__btn" onClick={props.onClick}><Link to="/postsearch">글검색</Link></div>
+                        <div className="__btn" onClick={props.onClick}><NavLink to="/search/postsearch">글검색</Link></div>
                         </li>
                 </ul>
             </div>

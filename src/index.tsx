@@ -17,6 +17,9 @@ import NotFoundView from './views/NotFoundView';
 import SignInView from './views/SignInView';
 import SearchView from './views/SearchView';
 import SearchView_2 from './views/SearchView';
+import test1 from './views/test_1';
+import test_2 from './views/test_2';
+
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
@@ -62,7 +65,6 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
           <Route path="/search" component={SearchView} />
-          <Route path="/postsearch" component={SearchView_2} />
           <Route component={NotFoundView} />
         </Switch>
       </Router>
