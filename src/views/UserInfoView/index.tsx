@@ -9,7 +9,7 @@ const UserInfoView = () => {
     return (
         <div className="UserInfo-main-container">
             
-            <InfoHeader user={user}/>
+            {/* <InfoHeader user={user}/> */}
         </div>
     )
 }
