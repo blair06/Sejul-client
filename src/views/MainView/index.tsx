@@ -14,12 +14,8 @@ const MainView = () => {
     return (
         <div className="main-view-container">
             <Logo />
+            {/*  */}
             <Card>
-                <p style={
-                    {
-                        margin: '15px'
-                    }
-                }>Hello</p>
             </Card>
         </div>
     )

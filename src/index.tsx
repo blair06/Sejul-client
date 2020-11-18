@@ -17,8 +17,8 @@ import NotFoundView from './views/NotFoundView';
 import SignInView from './views/SignInView';
 import SearchView from './views/SearchView';
 import SearchView_2 from './views/SearchView';
-
-
+import SignUpView from './views/SignUpView';
+import SummaryDetailView from './views/SummaryDetailView';
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
@@ -63,12 +63,17 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
-          <Route path="/search" component={SearchView} />
-          <Route component={NotFoundView} />
+<<<<<<< HEAD
+        <Route path="/search" component={SearchView} />
+=======
+          <Route path="/signup" component={SignUpView} />
+        <Route path="/summary/:summaryId" component={SummaryDetailView} />
+>>>>>>> beeae02c81774fd87338ccdb193f6058b481128a
+        <Route component={NotFoundView} />
         </Switch>
       </Router>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode >,
   document.getElementById('root')
 );
 
