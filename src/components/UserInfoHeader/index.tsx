@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import * as API from '../../api';
 import { useHistory, useParams } from 'react-router-dom';
 import { IUser } from '../../api/interfaces';
+import CircularImage from '../CircularImage';
+import './UserInfoHeader.scss';
 
 interface IUserInfoHeaderParams {
     username: string;
+    user?: IUser | undefined | null;
 }
 
 const UserInfoHeader = () => {
@@ -37,9 +40,19 @@ const UserInfoHeader = () => {
         fetch();
     }, []);
     return (
-        <div>
-            <p>UserInfoHeader</p>
-        </div>
+        <div className="info-header-container">
+			<div className="info-header-content">
+				<CircularImage className="info-header-profile" url={user?.profile}/>
+
+				<div className="info-header-text">
+					<div className="info-header-name">{user?.username}</div>
+					<div className="info-header-small">
+						<p>팔로우 {user?.following.length} </p>
+						<p>작성글 {user?.articles.length} </p>
+					</div>
+				</div>
+			</div>
+		</div>
     )
 }
 

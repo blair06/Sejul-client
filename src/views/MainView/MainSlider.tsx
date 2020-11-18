@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Logo, Card, CircularImage } from '../../components';
+import { Card, CircularImage } from '../../components';
 import './scss/MainCommon.scss';
 import { ISummary } from '../../api/interfaces/ISummary';
+import moment from 'moment';
 // TODO
 // 소요시간
 interface MainSliderProps {
@@ -34,6 +35,15 @@ const MainSlider = (props: MainSliderProps) => {
 		},
 	};
 
+	const calculate = (s_date: Date | undefined, f_date: Date | undefined) => {
+		if (s_date !== undefined && f_date !== undefined) {
+			const Start = moment(s_date);
+			const Finish = moment(f_date);
+			return moment(Finish.diff(Start)).format('HH:mm:ss');
+		} else {
+			return 'unvalid';
+		}
+	};
 	return (
 		<>
 			<Carousel
@@ -86,27 +96,36 @@ const MainSlider = (props: MainSliderProps) => {
 				{data.length >= 0 ? (
 					data.map((item: ISummary) => (
 						<Card onClick={() => {}}>
-							{item.user === undefined || item.user === null ? (
-								<div className="main-slider-author">
-									<CircularImage className="main-slider-author-profile" />
-									아무개
-								</div>
-							) : (
-								<div className="main-slider-author">
-									<CircularImage className="main-slider-author-profile" url={item.user.profile} />
-									{item.user.username}
-								</div>
-							)}
-							<div className="main-slider-article-title">{item.article.title}</div>
-							{/* 해시태그 */}
-							<div className="main-slider-hashtags">
-								{item.hashtags.map((hashtag) => (
-									<p className="main-slider-hashtags-text">#{hashtag.text}</p>
-								))}
+							<div className="main-slider-group">
+								{item.user === undefined || item.user === null ? (
+									<div className="main-slider-author">
+										<CircularImage className="main-slider-author-profile" />
+										아무개
+									</div>
+								) : (
+									<div className="main-slider-author">
+										<CircularImage className="main-slider-author-profile" url={item.user.profile} />
+										{item.user.username}
+									</div>
+								)}
+								<div className="main-slider-article-title">{item.article.title}</div>
 							</div>
-							{/* 소요시간 */}
 
-							{/* 작성시간 */}
+							{/* 해시태그 */}
+							<div className="main-slider-group">
+								<div className="main-slider-hashtags">
+									{item.hashtags.map((hashtag) => (
+										<p className="main-slider-hashtags-text">#{hashtag.text}</p>
+									))}
+								</div>
+
+								<div className="main-slider-date">
+									<p className="main-slider-date-required">
+										{calculate(item.timestamp.start, item.timestamp.finish)} 소요
+									</p>
+									<p className="main-slider-date-update">{moment(item.createdAt).fromNow()}</p>
+								</div>
+							</div>
 						</Card>
 					))
 				) : (

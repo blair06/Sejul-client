@@ -48,7 +48,12 @@ const MainView = () => {
 	return (
 		<div className="main-view-container">
 			<div className="main-banner">
-				<img src={mainBanner}></img>
+				<div className="layer">
+					<p>Sejul</p>
+					<p>시사 상식을 접하는 <span>습관</span>을 길러주는 방법</p>
+					<p>매일새로운 기사를 <span>요약</span>하고</p>
+					<p>시사 상식을 길러보세요</p>
+				</div>
 			</div>
 			<div className="main-contents-container">
 				<p className="main-contents-header">최근에 작성된 글</p>

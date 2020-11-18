@@ -83,7 +83,7 @@ const UserSlider = (props: UserSliderProps) => {
 					data.map((item: IUser) => (
 						<Card>
 							<div className="user-slider-profile">
-								<CircularImage url={item.profile} />
+								<CircularImage className="user-slider-profile-img" url={item.profile} />
 							</div>
 							<p className="user-slider-name">{item.username}</p>
 							<div className="user-slider-small">
