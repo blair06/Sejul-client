@@ -1,0 +1,95 @@
+@import '../../../../../scss/mixins';
+@import '../../../../../scss/variables';
+
+.search-bar{
+    height: $navbar-height;
+    background-color: $color-white;
+    margin: 0 250px;
+    display: flex;  
+    align-content: center;
+    .search-button-img-wrap{
+        border: none;
+        padding: 0;
+        width: $spacing-narrow*2;   
+        height: $spacing-wide; 
+        outline: 0; 
+        margin-left : -45px;
+        background-color: #fafafa00;
+        display: inline;
+        .search-button-img{
+            background: "./img/search-img";
+            display: block;
+            border-radius: 55px;
+            width: 100%;
+            height: 100%;
+            border: none;
+            cursor:pointer;
+            background-color: black
+        }
+    }
+    .search-bar-input{
+        font-size: $font-header;
+        border-top: none;
+        border-right: none; 
+        border-left: none; 
+        width: 80%;
+        outline: 0; 
+    }
+}
+
+.__navbar-wrap{
+    width: 100%;
+    height : $navbar-height;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+ 
+  
+
+    .__navbar-links {
+        margin-left: 250px;
+        display: flex;
+        flex-direction: row;
+
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            }
+
+        .__navbar-link-item{
+            &:not(:last-child){
+                margin-right: $spacing-wide;
+            }
+            a , span{
+                cursor : pointer;
+                font-size: $font-regular;
+                color : $color-black;
+                text-decoration: none;
+                &:hover { 
+                    color:$color-primary-blue; 
+                }
+                .__dtn{
+                &::after{
+                    content: "";
+                    position: absolute;
+                    z-index: 10;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #28ae60;
+                }
+            }
+            }
+        }
+    
+}
+}
+
