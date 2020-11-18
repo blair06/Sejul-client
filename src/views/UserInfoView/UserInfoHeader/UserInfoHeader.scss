@@ -1,0 +1,27 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+.info-header-container{
+    width: 100%;
+    padding: 1.5vw;
+    .info-header-content{
+        display: flex;
+        align-items: center;
+        .info-header-profile{
+            width: 6vw;
+            height: 6vw;
+        }
+        .info-header-text{
+            padding: $spacing-narrow;
+            .info-header-name {
+                font-size: 1.7em;
+                margin-bottom: 3vh;
+            }
+            .info-header-small {
+                display: flex;
+                justify-content: center;
+                font-size: 0.8em;
+                color:$color-black-sub;
+            }
+        }
+    }
+}

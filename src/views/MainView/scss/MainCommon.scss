@@ -2,6 +2,144 @@
 @import '../../../scss/variables';
 
 .main-view-container{
-    margin-top: $navbar-height;
+    // margin-top: $navbar-height;
     width: 100%;
 }
+.main-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.main-contents-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 250px;
+    .bar{
+        background-color: #80808063;
+        width: 2.6vw;
+        height: 3px;
+    }
+    .main-contents-header{
+        color: $color-primary-blue;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    .main-hashtag{
+        display: flex;
+        justify-content: space-evenly;
+        width: 61.4vw;
+        margin-top: 5vh;
+        margin-left: 250px;
+         margin-right: 250px;
+        .__Rounded-Card-main-container.add{
+            @include common-box-shadow;
+            width: 6.6vw;
+        }
+    }
+    
+}
+// 최근 작성된 글 슬라이더
+.main-slider-recent{
+    width: 61.4vw;
+  
+    .main-slider{
+        height: 50vh;
+        width: 61.4vw;
+        .main-slider-item{
+            
+            height: 43vh;
+            color:$color-black;
+        }
+        .__Card-main-container{
+            box-sizing: border-box;
+            margin: 0 20px;
+            padding: 30px 30px;
+            height: 43vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            .main-slider-author{
+                display: flex;
+                align-items: center;
+                .main-slider-author-profile{
+                    margin-right: 10px;
+                }
+            }
+            .main-slider-hashtags{
+                display:flex;
+                .main-slider-hashtags-text{
+                    padding-right: 5px;
+                    color:$color-primary-blue;
+                }
+            }
+            
+
+        }
+        
+    }
+}
+// 활발한 활동유저 슬라이더
+.main-slider-user{
+    width: 61.4vw;
+  
+    .user-slider{
+        height: 40vh;
+        width: 61.4vw;
+        .user-slider-item{
+            
+            height: 25vh;
+            color:$color-black;
+        }
+        .__Card-main-container{
+            box-sizing: border-box;
+            margin: 0 20px;
+            padding: 30px 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .user-slider-small{
+                font-size: 0.8em;
+            }
+        }
+        
+    }
+}
+//footer
+.main-footer{
+    margin-top: 55px;
+    color: $color-white;
+    font-size: 4.5em;
+    display: flex;
+    align-items: center;
+    padding-right: 320px;
+    justify-content: flex-end;
+    background-color: $color-primary-blue;
+    height: 25vh;
+}
+//slider button
+.react-multi-carousel-dot button{
+    border-color: #80808026 !important;
+}
+.react-multi-carousel-dot--active button {
+    background: #4F66F8 !important;
+}
+.react-multiple-carousel__arrow--right{
+    right:0!important;
+}
+.react-multiple-carousel__arrow--left{
+    left:0!important;
+}
+.react-multiple-carousel__arrow{
+    background-color: $color-white !important;
+    @include common-box-shadow;
+}
+.react-multiple-carousel__arrow::before{
+    color:#7A7A7A !important;
+    font-weight: bold;
+}
+

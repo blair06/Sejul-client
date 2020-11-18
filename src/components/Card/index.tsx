@@ -2,7 +2,8 @@ import React, {ReactChild, ReactNode, useEffect, useState} from 'react'
 import './Card.scss'
 
 interface CardProps {
-    children: ReactNode;
+    item?: any;
+    children?: ReactNode;
     className?: string;
     onClick?: Function;
     
