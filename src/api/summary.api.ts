@@ -26,7 +26,7 @@ export const fetchAll = async (keyword: string = '', page: Number = 1, cnt: Numb
  * @description 하나의 요약 글을 조회합니다
  * @param summary_id 요약 글 번호
  */
-export const fetch = async (summary_id: Number): Promise<ISummary> => {
+export const fetch = async (summary_id: string): Promise<ISummary> => {
 	const response = await axios({
 		method: 'get',
 		url: getUrl('api/summary/' + summary_id),
