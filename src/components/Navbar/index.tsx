@@ -38,9 +38,17 @@ const Navbar = () => {
                         <li className="__navbar-link-item">
                             <Link to="/summary">요약</Link>
                         </li>
-                        <li className="__navbar-link-item">
-                            <Link to="/signin">로그인</Link>
-                        </li>
+                        {
+                            user === null || user === undefined ?
+                                <>
+                                    <li className="__navbar-link-item">
+                                        <Link to="/signin">로그인</Link>
+                                    </li>
+                                    <li className="__navbar-link-item">
+                                        <Link to="/signup">회원 가입</Link>
+                                    </li>
+                                </> : <></>
+                        }
                         {
                             user !== null ?
                                 <li className="__navbar-link-item" onClick={ui.signout}>

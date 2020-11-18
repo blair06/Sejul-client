@@ -63,7 +63,7 @@ ReactDOM.render(
           <Route path="/signin" component={SignInView} />
           <Route path="/signup" component={SignUpView} />
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
-          <Route component={NotFoundView} />
+          {/* <Route component={NotFoundView} /> */}
         </Switch>
       </Router>
     </Provider>
