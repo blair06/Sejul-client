@@ -1,0 +1,133 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.__summary-detail-view-container{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    .__summary-detail-view-wrapper{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+        margin-top: $navbar-height;
+        margin-left:  auto;
+        margin-right:  auto;
+        max-width: $desktop-width;
+        .__summary-detail-info-card{
+            margin : $spacing-narrow $spacing-narrow 0 $spacing-narrow;
+            .__summary-detail-info-wrapper{
+                margin : $spacing-narrow / 2;
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+
+                .__summary-detail-article-info{
+                    p{ color : $color-primary-blue; margin-bottom : $spacing-narrow / 2;}
+                    h1{
+                        color : $color-black;
+                        font-size: 1.5em;
+                        .__summary-article-link{
+                            text-decoration: none;
+                            margin-left: .5rem;
+                            font-size: .8rem;
+                            font-weight: 600;
+                            color: $color-primary-blue;
+                        }
+                    }
+                    margin-bottom: $spacing-narrow;
+                }
+                .__summary-details-container{
+                    display: flex;
+                    flex-direction: row;
+                    .__summary-author-info{
+                        cursor: pointer;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        width: min-content;
+                        p{ 
+                            margin-left : $spacing-narrow / 2; 
+                            color : $color-black;
+                            font-size : .8rem;
+                        }
+                    }
+                    .__summary-likes-info{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        width: max-content;
+                        margin-left : $spacing-narrow;
+                        p{ 
+                            color : $color-black;
+                            font-size : .8rem;
+                        }
+                    }
+                    .__summary-created-at-info{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        width: max-content;
+                        margin-left : $spacing-narrow;
+                        p{ 
+                            
+                            color : $color-black;
+                            font-size : .8rem;
+                        }
+                    }
+                    .__summary-timestamp-info{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        width: max-content;
+                        margin-left : $spacing-narrow;
+                        p{ 
+                            
+                            color : $color-black;
+                            font-size : .8rem;
+                        }
+                    }
+                    .__summary-hashtags-info{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        width: max-content;
+                        margin-left : auto;
+                        ._summary-hashtag{
+                            &:not(:last-child){
+                                margin-right: .3rem;
+                            }
+                            text-decoration: none;
+                            color : $color-primary-blue;
+                            font-size : .8rem;
+                        }
+                    }
+                }
+
+            }
+        }
+        .__summary-content-card{
+            height: 100%;
+            overflow-y : auto;
+            margin : $spacing-narrow;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            .__summary-content-wrapper{
+                margin : $spacing-narrow / 2;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                .__summary-contnet{
+                    height: 100%;
+                    font-size: 1rem;
+                    color : $color-black;
+                    max-width: 100%;
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+}

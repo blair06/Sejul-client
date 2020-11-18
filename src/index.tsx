@@ -16,6 +16,7 @@ import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
 import SignInView from './views/SignInView';
 import SignUpView from './views/SignUpView';
+import SummaryDetailView from './views/SummaryDetailView';
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
@@ -61,6 +62,7 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
           <Route path="/signup" component={SignUpView} />
+          <Route path="/summary/:summaryId" component={SummaryDetailView} />
           <Route component={NotFoundView} />
         </Switch>
       </Router>
