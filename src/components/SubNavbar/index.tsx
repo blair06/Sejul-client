@@ -24,6 +24,6 @@ const SubNavbar = (props: ISubNavbarProps) => {
             </div>
         </div>
     )
-}
+} 
 
 export default SubNavbar;
