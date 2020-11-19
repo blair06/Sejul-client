@@ -16,7 +16,7 @@ import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
 import SignInView from './views/SignInView';
 import SearchView from './views/SearchView';
-import SearchView_2 from './views/SearchView';
+import SearchView_2 from './views/SearchSummaryView';
 import SignUpView from './views/SignUpView';
 import SummaryDetailView from './views/SummaryDetailView';
 

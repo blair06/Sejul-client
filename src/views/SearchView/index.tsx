@@ -4,7 +4,6 @@ import { isConstructorDeclaration } from 'typescript';
 import * as API from '../../api'
 import { CustomButton } from '../../components'
 import './scss/SearchView.scss'
-import { SearchHeader } from './comfonents'
 
 const SearchView = () => {
     const [items, setItems] = useState<any[]>([]);
@@ -20,7 +19,13 @@ const SearchView = () => {
         <>
 
             {/* <SearchHeader onClick={() => console.log('clicked')} /> */}
-
+            <div className="search-bar">
+                <input
+                    type="input"
+                    placeholder="검색어를 입력 하세요."
+                    className="search-bar-input" />
+                <button className="search-button-img-wrap" ><img className="search-button-img" /></button>
+            </div>
             <div className="search-container">
                 <div className="search-card-wrap">
 

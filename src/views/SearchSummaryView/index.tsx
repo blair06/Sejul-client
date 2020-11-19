@@ -3,7 +3,6 @@ import { useParams } from 'react-router';
 import { isConstructorDeclaration } from 'typescript';
 import * as API from '../../api'
 import './scss/SearchView_2.scss'
-import { SearchHeader } from './comfonents'
 
 
 const SearchView_2 = () => {
@@ -21,8 +20,15 @@ const SearchView_2 = () => {
 
     return (
         <>
-        <div className="__container__">
-        <SearchHeader onClick={() => console.log('clicked')}/>
+        <div className = "search-bar-wrap">
+            <div className="search-bar">
+                <input
+                    type="input"
+                    placeholder="검색어를 입력 하세요."
+                    className="search-bar-input" />
+                <button className="search-button-img-wrap" ><img className="search-button-img" /></button>
+                </div>
+            </div>
             <div className = "search-container">
                 <div className = "search-card-wrap">
             {
@@ -48,7 +54,6 @@ const SearchView_2 = () => {
                 }) 
                 
             }
-            </div>
             </div>
             </div>
         </>
