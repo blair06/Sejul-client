@@ -46,18 +46,19 @@
 }
 
 .search-container{
-    overflow: auto;
-    width: $desktop-width;
-    height: 500px;
+    width: 100%;
     background-color: #FAFAFA;
-    margin:0 auto;
+    margin: 0;
+    padding: 0;
 
-.search-card-wrap{
-    width : $desktop-width;
+    .search-card-wrap{
+    overflow: auto;
+    width : 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
+
 .search-card{
 
     width: 350px;
