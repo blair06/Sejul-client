@@ -4,6 +4,9 @@
 .__container__{
     width: 100%;
     margin-top: 60px;
+    .__subnavbar-container{
+        position: fixed;
+    }
     .search-bar-wrap{
         height: $navbar-height;
         margin-top: 30px;
@@ -41,21 +44,26 @@
     width: 100%;
     margin-top: 5000px;
 
-    .search-card-wrap{
+    .search-card{
     width: 1095px;
     overflow: auto;
     margin:0 250px;
+    .__Card-main-container{
+        width: 100%;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+    }
 
 .search-card{
-    width: 334px;
-    height: 315px;  
+    width: 70%;
+    height: 150px;  
     margin-bottom: 20px;
     background-color: $color-white;
     display: inline-block;
 
-    &:not(:last-child){
-        margin-right : 31px;
-    }
 
     .news-title{
         margin-left: 30px;

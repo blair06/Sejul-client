@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { isConstructorDeclaration } from 'typescript';
 import { Card} from '../../components';
 import * as API from '../../api'
-import './scss/index.scss'
+import './scss/SearchSummaryView.scss'
 import {Pagination} from '../../components'
 
 interface inputProps{
@@ -52,18 +52,20 @@ const SearchView_2 = (props:inputProps) => {
                     return(
                         
                         <div className = "search-card">
-                           <Card className="__summary-search-card">  
+                           <Card>  
                            <div className = "user-information-wrap">
-                                <div className = "user-img"> <img src="./img/user"/></div>
+                                <div className = "user-img-wrap"> <img className="use-img" src="https://www.travie.com/news/photo/201807/20428_715_5954.jpg"/></div>
                                 <p className = "user-name">{item.user} </p>
                             </div>       
                                
                             <div key={idx}>
                                 <p className="news-title">{item.article.title}</p>
-                                <p className="news-time">{item.createdAt}</p>
+                                
                             </div>
                             <div className="search-Hashtag">
                             </div> 
+                            
+                            <p className="news-time">{item.createdAt}</p>
                             </Card>
                         </div>
                         
