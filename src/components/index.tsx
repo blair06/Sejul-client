@@ -5,7 +5,7 @@ import Card from './Card';
 import CustomButton from './CustomButton';
 import RoundedCard from './RoundedCard';
 import UserInfoHeader from './UserInfoHeader';
-
+import HashTag from './HashTag';
 export {
     Navbar,
     Logo,
@@ -14,4 +14,5 @@ export {
     CustomButton,
     RoundedCard,
     UserInfoHeader,
+    HashTag
 };

@@ -115,7 +115,7 @@ const MainSlider = (props: MainSliderProps) => {
 							<div className="main-slider-group">
 								<div className="main-slider-hashtags">
 									{item.hashtags.map((hashtag) => (
-										<p className="main-slider-hashtags-text">#{hashtag.text}</p>
+										<p className="main-slider-hashtags-text">#{hashtag.text} </p>
 									))}
 								</div>
 

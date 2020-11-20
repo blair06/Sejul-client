@@ -8,7 +8,6 @@ const UserInfoView = () => {
     const { user } = useSelector((state: RootState) => state.auth);
     return (
         <div className="UserInfo-main-container">
-            <p>Hello</p>
             {/* <InfoHeader user={user}/> */}
         </div>
     )
