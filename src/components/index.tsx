@@ -6,6 +6,8 @@ import CustomButton from './CustomButton';
 import RoundedCard from './RoundedCard';
 import UserInfoHeader from './UserInfoHeader';
 import HashTag from './HashTag';
+import SubNavbar from './SubNavbar';
+
 export {
     Navbar,
     Logo,
@@ -14,5 +16,6 @@ export {
     CustomButton,
     RoundedCard,
     UserInfoHeader,
-    HashTag
+    HashTag,
+    SubNavbar,
 };
