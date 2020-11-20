@@ -4,6 +4,7 @@ import CircularImage from './CircularImage';
 import Card from './Card';
 import CustomButton from './CustomButton';
 import SubNavbar from './SubNavbar';
+import Pagination from './Pagination'
 
 export {
     Navbar,
@@ -12,4 +13,5 @@ export {
     Card,
     CustomButton,
     SubNavbar,
+    Pagination,
 };

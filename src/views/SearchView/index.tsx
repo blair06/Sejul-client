@@ -1,8 +1,5 @@
 import React, { useEffect, useState, Component } from 'react'
-import { useParams } from 'react-router';
-import { isConstructorDeclaration } from 'typescript';
 import * as API from '../../api'
-import { CustomButton } from '../../components'
 import './scss/SearchView.scss'
 
 const SearchView = () => {
@@ -17,14 +14,16 @@ const SearchView = () => {
 
     return (
         <>
-
+ 
             {/* <SearchHeader onClick={() => console.log('clicked')} /> */}
+            <div className="search-bar-wrap">
             <div className="search-bar">
                 <input
                     type="input"
                     placeholder="검색어를 입력 하세요."
                     className="search-bar-input" />
-                <button className="search-button-img-wrap" ><img className="search-button-img" /></button>
+                <button className="search-button-img-wrap" ><img className="button-img" src="https://mblogthumb-phinf.pstatic.net/MjAxOTEyMTJfMjYw/MDAxNTc2MTQwMDE0MjIy.F1V39cfeZPhX87yFFlqkZQqfGmycVOxXbO3vg0dFrvEg.12ulcNAMUNyNzlE7rz5Hk2NVlJfkakVTOspDnzyRkUMg.PNG.vet6390/%EA%B8%B8%EA%B3%A0%EC%96%91%EC%9D%B4_%EC%9E%85%EC%96%91.PNG?type=w800" /></button>
+            </div>
             </div>
             <div className="search-container">
                 <div className="search-card-wrap">

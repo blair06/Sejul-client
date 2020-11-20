@@ -3,75 +3,59 @@
 
 .__container__{
     width: 100%;
-    height: 100%;
-    margin-top : 80px;
-    box-sizing: border-box;
-    padding: 0;
-    &:after{
-        display:block;
-        content:"";
-        clear:both
-    }
-    
-}
-.search-bar{
-    height: $navbar-height;
-    background-color: $color-white;
-    margin: 0 250px;
-    display: flex;  
-    align-content: center;
-    .search-button-img-wrap{
-        border: none;
-        padding: 0;
-        width: $spacing-narrow*2;   
-        height: $spacing-wide; 
-        outline: 0; 
-        margin-left : -45px;
-        background-color: #fafafa00;
-        display: inline;
-        .search-button-img{
-            background: "./img/search-img";
-            display: block;
-            border-radius: 55px;
-            width: 100%;
-            height: 100%;
-            border: none;
+    margin-top: 60px;
+    .search-bar-wrap{
+        height: $navbar-height;
+        margin-top: 30px;
+    .search-bar{
+        background-color: $color-white;
+        margin: 0 250px;
+        .search-button-img-wrap{
+            border-radius: 50%;
+            border:0;
+            padding: 0;
+            width: $spacing-narrow*2;   
+            height: $spacing-wide; 
+            outline: 0; 
+            overflow: hidden;
             cursor:pointer;
-            background-color: black
+            margin-left: -45px;
+            .button-img{
+                width: 100%;
+                height: 100%
+            }
         }
-    }
-    .search-bar-input{
-        font-size: $font-header;
-        border-top: none;
-        border-right: none; 
-        border-left: none; 
-        width: 80%;
-        outline: 0; 
+        .search-bar-input{
+            font-size: $font-header;
+            border-top: none;
+            border-right: none; 
+            border-left: none; 
+            width: 1080px;
+            outline: 0; 
+        }
     }
 }
 
 .search-container{
-    width: $desktop-width;
     background-color: #FAFAFA;
     width: 100%;
-    height: 100%;
-    margin:0 auto;
-    margin-top: 70px;
-    padding-top: 50px;
+    margin-top: 5000px;
 
-.search-card-wrap{
-    width : 100%;
-    height: 100%;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0 auto;
+    .search-card-wrap{
+    width: 1095px;
+    overflow: auto;
+    margin:0 250px;
+
 .search-card{
-
-    width: 70%;
-    height: 100px;
-    margin: 0 auto;
+    width: 334px;
+    height: 315px;  
     margin-bottom: 20px;
     background-color: $color-white;
+    display: inline-block;
+
+    &:not(:last-child){
+        margin-right : 31px;
+    }
 
     .news-title{
         margin-left: 30px;
@@ -95,3 +79,4 @@
 
 }
 
+}

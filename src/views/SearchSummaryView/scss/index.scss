@@ -2,37 +2,29 @@
 @import '../../../scss/variables';
 
 .__container__{
-    width: 1280px;
+    width: 100%;
     margin-top: 60px;
-    box-sizing: border-box;
-    
+    background-size: cover;
+.search-bar-wrap{
+    height: $navbar-height;
+    margin-top: 30px;
 
 .search-bar{
-    height: $navbar-height;
-    width: $desktop-width;
     background-color: $color-white;
     margin: 0 250px;
-    margin-top: 30px;
-    display: flex;  
-    align-content: center;
     .search-button-img-wrap{
-        border: none;
+        border-radius: 50%;
+        border:0;
         padding: 0;
         width: $spacing-narrow*2;   
         height: $spacing-wide; 
         outline: 0; 
-        margin-left : -45px;
-        background-color: #fafafa00;
-        display: inline;
-        .search-button-img{
-            background: "./img/search-img";
-            display: block;
-            border-radius: 55px;
+        overflow: hidden;
+        cursor:pointer;
+        margin-left: -45px;
+        .button-img{
             width: 100%;
-            height: 100%;
-            border: none;
-            cursor:pointer;
-            background-color: black
+            height: 100%
         }
     }
     .search-bar-input{
@@ -40,31 +32,37 @@
         border-top: none;
         border-right: none; 
         border-left: none; 
-        width: 80%;
+        width: 1080px;
         outline: 0; 
     }
 }
+}
 
 .search-container{
-    width: 100%;
     background-color: #FAFAFA;
-    margin: 0;
-    padding: 0;
-
+    width: 100%;
+    margin-top: 90px;
     .search-card-wrap{
+    width: 1095px;
     overflow: auto;
-    width : 100%;
+    margin:0 250px;
+.__summary-search-card{
+    width: 100%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    margin: 0 auto;
+    align-items: stretch;
+    justify-content: stretch;
 
 .search-card{
-
-    width: 350px;
-    height: 350px;  
+    width: 334px;
+    height: 315px;  
     margin-bottom: 20px;
     background-color: $color-white;
+    display: inline-block;
+
+    &:not(:last-child){
+        margin-right : 31px;
+    }
 
     .news-title{
         margin-left: 30px;
@@ -88,4 +86,5 @@
 
 }
 
+}
 }
