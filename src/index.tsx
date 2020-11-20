@@ -9,12 +9,14 @@ import './scss/reset.css';
 import './scss/global.scss';
 
 // COMPONENTS
-import { Navbar, UserInfoHeader } from './components';
+import { Navbar, UserInfoHeader, SubNavbar } from './components';
 
 // VIEWS
 import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
 import SignInView from './views/SignInView';
+import SearchView from './views/SearchView';
+import SearchView_2 from './views/SearchSummaryView';
 import SignUpView from './views/SignUpView';
 import SummaryDetailView from './views/SummaryDetailView';
 
@@ -62,6 +64,20 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
+          <Route path="/search" >
+            <div className="__container__" >
+              <SubNavbar className="__search-navbar" links={
+                [
+                  { to: '/search/topic/', text: '기사 검색' },
+                  { to: '/search/summary/', text: '글 검색' }
+                ]
+              } />
+              <Switch>
+                <Route path="/search/topic" component={SearchView} />
+                <Route path="/search/summary" component={SearchView_2} />
+              </Switch>
+            </div>
+          </Route>
           <Route path="/signup" component={SignUpView} />
           {/* <Route path="/user/:user_name/summary" component={UserInfoView} /> */}
           <Route path="/user/:username">
@@ -82,7 +98,7 @@ ReactDOM.render(
         </Switch>
       </Router>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode >,
   document.getElementById('root')
 );
 

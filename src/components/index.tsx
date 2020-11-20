@@ -5,6 +5,7 @@ import Card from './Card';
 import CustomButton from './CustomButton';
 import RoundedCard from './RoundedCard';
 import UserInfoHeader from './UserInfoHeader';
+import SubNavbar from './SubNavbar';
 
 export {
     Navbar,
@@ -14,4 +15,5 @@ export {
     CustomButton,
     RoundedCard,
     UserInfoHeader,
+    SubNavbar,
 };
