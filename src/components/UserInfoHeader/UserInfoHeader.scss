@@ -2,7 +2,7 @@
 @import '../../scss/variables';
 .info-header-container{
     width: 100%;
-    padding: 1.5vw;
+    padding: 1.5vw 1.5vw 0 1.5vw;
     .info-header-content{
         display: flex;
         align-items: center;
@@ -18,10 +18,14 @@
             }
             .info-header-small {
                 display: flex;
-                justify-content: center;
+                justify-content: space-evenly;
                 font-size: 0.8em;
                 color:$color-black-sub;
             }
         }
     }
+}
+.__user-navbar{
+    margin-bottom: 4vh;
+    
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as API from '../../api';
 import { useHistory, useParams } from 'react-router-dom';
 import { IUser } from '../../api/interfaces';
-import CircularImage from '../CircularImage';
+import {CircularImage, SubNavbar} from '../../components';
 import './UserInfoHeader.scss';
 
 interface IUserInfoHeaderParams {
@@ -21,7 +21,6 @@ const UserInfoHeader = () => {
             const currentParams = params as IUserInfoHeaderParams;
             const result = await API.User.fetch(currentParams.username);
             setUser(result);
-            console.log(result);
         }
         catch (e) {
             if (e.response !== undefined && e.response.status === 404) {
@@ -41,6 +40,7 @@ const UserInfoHeader = () => {
         fetch();
     }, []);
     return (
+        <>
         <div className="info-header-container">
 			<div className="info-header-content">
 				<CircularImage className="info-header-profile" url={user?.profile}/>
@@ -54,6 +54,16 @@ const UserInfoHeader = () => {
 				</div>
 			</div>
 		</div>
+        <SubNavbar className="__user-navbar" links={
+            [ 
+              { to: `/user/${user?.username}/summary`, text: '작성한 글' },
+              { to: `/user/${user?.username}/following`, text: '팔로잉' },
+              { to: `/user/${user?.username}/hashtag`, text: '해시태그' },
+              { to: `/user/${user?.username}/like`, text: '좋아요한 글' },
+              { to: `/user/${user?.username}/scrap`, text: '담은 기사' }
+            ]
+          } />
+          </>
     )
 }
 

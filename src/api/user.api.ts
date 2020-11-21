@@ -13,7 +13,7 @@ export const fetch = async (username: string): Promise<IUser> => {
 export const fetchFollowingUser = async (username: string): Promise<IUser[]> => {
 	const result = await axios({
 		method: 'GET',
-		url: getUrl(`api/${username}/following`),
+		url: getUrl(`api/user/${username}/following`),
 	});
 	return result.data;
 };

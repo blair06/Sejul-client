@@ -19,7 +19,8 @@ import SearchView from './views/SearchView';
 import SearchView_2 from './views/SearchSummaryView';
 import SignUpView from './views/SignUpView';
 import SummaryDetailView from './views/SummaryDetailView';
-
+//userinfoview
+import UserFollowing from './views/UserInfoView/UserFollowing';
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
 
@@ -82,14 +83,14 @@ ReactDOM.render(
           {/* <Route path="/user/:user_name/summary" component={UserInfoView} /> */}
           <Route path="/user/:username">
             <div className="__user-info-container">
-              <UserInfoHeader />
+            <UserInfoHeader />
               <Switch>
-                {/* /user/:username/summary */}
-                <Route exact path="/user/:username" component={UserInfoView} />
+                {/* <Route exact path="/user/:username" component={UserFollowing} /> */}
                 <Route path="/user/:username/summary" component={UserInfoView} />
-                <Route path="/user/:username/following" component={UserInfoView} />
+                <Route path="/user/:username/following" component={UserFollowing} />
                 <Route path="/user/:username/hashtag" component={UserInfoView} />
-                <Route path="/user/:username/archive" component={UserInfoView} />
+                <Route path="/user/:username/like" component={UserInfoView} />
+                <Route path="/user/:username/scrap" component={UserInfoView} />
               </Switch>
             </div>
           </Route>
