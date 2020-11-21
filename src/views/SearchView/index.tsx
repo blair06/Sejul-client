@@ -18,13 +18,14 @@ const SearchView = () => {
         console.log(event.target.value);
     };
 
-    const findSearch = () => {
+    const findSearch = async() => {
         setText("");
 
         fetch(
             `http://localhost:3000/search/topic/keyword=${text}=&resultType=json`
         )
     }
+
     return (
         <>
  

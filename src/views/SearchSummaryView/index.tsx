@@ -24,7 +24,7 @@ const SearchView_2 = (props:inputProps) => {
 
     useEffect(()=> {
         fn();
-    }, []);
+    }, [currentPage]);
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -80,7 +80,6 @@ const SearchView_2 = (props:inputProps) => {
             <Pagination 
             perpage = {postsPerPage}
             total = {postsPerPage}
-            paginate = {postsPerPage}
             />
             </div>
         </>
