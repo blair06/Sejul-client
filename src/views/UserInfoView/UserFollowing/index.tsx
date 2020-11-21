@@ -45,10 +45,23 @@ const UserFollowing = () => {
 			<div className="userInfo-user-following">
 				<p className="userInfo-user-following header">내가 팔로우 중인 사용자</p>
 				<div className="user-following-container">
-					{users !== null || users !== undefined ? (
+					{users?.users !== null || users?.users !== undefined ? (
 						users?.users.map((user: IUser, index: number) => (
 							<Card key={index} className="user-following-card">
-								혜원
+								<CircularImage className="user-following-profile" url={user.profile} />
+								<div className="user-following-text">
+									<div className="user-following-name">{user?.username}</div>
+									<div className="user-following-small">
+										{user?.summaries !== undefined && user.following !== undefined ? (
+											<>
+												<p>팔로우 {user.following.length} </p>
+												<p>작성글 {user.summaries.length} </p>
+											</>
+										) : (
+											<></>
+										)}
+									</div>
+								</div>
 							</Card>
 						))
 					) : (
@@ -56,7 +69,7 @@ const UserFollowing = () => {
 					)}
 				</div>
 			</div>
-			<div className="userInfo-user-following-posts">
+			{/* <div className="userInfo-user-following-posts">
 				<p className="userInfo-user-following header">팔로잉한 사용자가 작성한 글</p>
 				<div className="user-following-posts-container">
 					{users !== null || users !== undefined ? (
@@ -69,7 +82,7 @@ const UserFollowing = () => {
 						<></>
 					)}
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
