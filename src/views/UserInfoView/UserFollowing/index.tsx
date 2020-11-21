@@ -3,20 +3,21 @@ import React, { useState, useEffect } from 'react';
 import { useRouteMatch, useHistory, useParams } from 'react-router-dom';
 import { CircularImage, UserInfoHeader, Card } from '../../../components';
 import { ISummary, IUser } from '../../../api/interfaces';
+import { IFetchFollowingUserResponse } from '../../../api/user.api';
 import * as API from '../../../api';
 import './UserFollowing.scss';
+import { isTemplateExpression } from 'typescript';
 interface IUserInfoHeaderParams {
 	username: string;
-	// user?: IUser | undefined | null;
+	user?: IUser | undefined | null;
 }
 // TODO
 // pagination
 // slider
 const UserFollowing = () => {
 	const history = useHistory();
-	const params = useParams();
 	const matches = useRouteMatch();
-	const [users, setUsers] = useState<Object>([]);
+	const [users, setUsers] = useState<IFetchFollowingUserResponse | undefined>();
 
 	const fetch = {
 		user: async (username: string | undefined) => {
@@ -44,17 +45,29 @@ const UserFollowing = () => {
 			<div className="userInfo-user-following">
 				<p className="userInfo-user-following header">내가 팔로우 중인 사용자</p>
 				<div className="user-following-container">
-					{users.users?.map((user: IUser, index:number) => {
-						user !== null || user !== undefined ? <Card key={index} className="user-following-card">{user.users}</Card> : <></>;
-					})}
+					{users !== null || users !== undefined ? (
+						users?.users.map((user: IUser, index: number) => (
+							<Card key={index} className="user-following-card">
+								혜원
+							</Card>
+						))
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 			<div className="userInfo-user-following-posts">
 				<p className="userInfo-user-following header">팔로잉한 사용자가 작성한 글</p>
 				<div className="user-following-posts-container">
-					{/* {users?.map((user, index) =>
-						user !== null || user !== undefined ? <Card className="user-following-card">{user}</Card> : <></>
-					)} */}
+					{users !== null || users !== undefined ? (
+						users?.summary.data.map((item: ISummary, index: number) => (
+							<Card key={index} className="user-following-posts-card">
+								{item.article.title}
+							</Card>
+						))
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 		</div>
