@@ -87,14 +87,14 @@ const UserSlider = (props: UserSliderProps) => {
 							</div>
 							<p className="user-slider-name">{item.username}</p>
 							<div className="user-slider-small">
-								<p className="user-slider-follow">팔로우 {item.following.length}</p>
-								<p className="user-slider-post">작성글 {item.articles.length}</p>
+								<p className="user-slider-follow">팔로우 {item.following?.length}</p>
+								<p className="user-slider-post">작성글 {item.articles?.length}</p>
 							</div>
 						</Card>
 					))
 				) : (
-					<p className="main-slider-placeholder">등록된 질문이 없습니다</p>
-				)}
+						<p className="main-slider-placeholder">등록된 질문이 없습니다</p>
+					)}
 			</Carousel>
 		</>
 	);

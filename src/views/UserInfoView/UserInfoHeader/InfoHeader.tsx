@@ -10,13 +10,13 @@ const InfoHeader = (props: InfoHeaderProps) => {
 	return (
 		<div className="info-header-container">
 			<div className="info-header-content">
-				<CircularImage className="info-header-profile" url={user?.profile}/>
+				<CircularImage className="info-header-profile" url={user?.profile} />
 
 				<div className="info-header-text">
 					<div className="info-header-name">{user?.username}</div>
 					<div className="info-header-small">
-						<p>팔로우 {user?.following.length} </p>
-						<p>작성글 {user?.articles.length} </p>
+						<p>팔로우 {user?.following?.length} </p>
+						<p>작성글 {user?.articles?.length} </p>
 					</div>
 				</div>
 			</div>
