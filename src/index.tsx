@@ -21,6 +21,8 @@ import SignUpView from './views/SignUpView';
 import SummaryDetailView from './views/SummaryDetailView';
 //userinfoview
 import UserFollowing from './views/UserInfoView/UserFollowing';
+import UserInfoView from './views/UserInfoView';
+import UserHashTag from './views/UserInfoView/UserHashTag/UserHashTag';
 import SummaryView from './views/SummaryView';
 
 // ROUTER
@@ -35,7 +37,7 @@ import rootReducer from './modules';
 // Google Analytics
 import ReactGA from 'react-ga';
 import { createBrowserHistory } from 'history';
-import UserInfoView from './views/UserInfoView';
+
 
 // Google Analytics initialize
 const history = createBrowserHistory();
@@ -90,7 +92,7 @@ ReactDOM.render(
                 {/* <Route exact path="/user/:username" component={UserFollowing} /> */}
                 <Route path="/user/:username/summary" component={UserInfoView} />
                 <Route path="/user/:username/following" component={UserFollowing} />
-                <Route path="/user/:username/hashtag" component={UserInfoView} />
+                <Route path="/user/:username/hashtag" component={UserHashTag} />
                 <Route path="/user/:username/like" component={UserInfoView} />
                 <Route path="/user/:username/scrap" component={UserInfoView} />
               </Switch>

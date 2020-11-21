@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { IUser } from '../../api/interfaces';
 import { CircularImage, SubNavbar } from '../../components';
 import './UserInfoHeader.scss';
-
+import {IUserFetchResponse} from '../../api/user.api'
 interface IUserInfoHeaderParams {
 	username: string;
 	user?: IUser | undefined | null;
@@ -20,15 +20,16 @@ const UserInfoHeader = () => {
 		try {
 			const currentParams = params as IUserInfoHeaderParams;
 			const result = await API.User.fetch(currentParams.username);
-			setUser(result);
+			console.log(result);
+			setUser(result.user);
 		} catch (e) {
 			if (e.response !== undefined && e.response.status === 404) {
 				// 404 (NOT FOUND)면 뭐해라
-				alert('사용자 정보가 없다');
+				alert('사용자 정보가 없습니다');
 				history.push('/');
 			} else {
 				// 그냥 서버에러
-				alert('일시적인 오류가 발생했다.\n잠시 후 실행해달라 ');
+				alert('일시적인 오류가 발생했습니다.\n잠시 후 실행해주십시오');
 				history.push('/');
 			}
 		}

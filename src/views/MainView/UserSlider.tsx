@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import {Link} from 'react-router-dom';
 import { Logo, Card, CircularImage } from '../../components';
 import './scss/MainCommon.scss';
 import { IUser } from '../../api/interfaces';
@@ -80,8 +81,9 @@ const UserSlider = (props: UserSliderProps) => {
 				swipeable
 			>
 				{data.length > 0 ? (
-					data.map((item: IUser) => (
-						<Card>
+					data.map((item: IUser,index:number) => (
+						<Link className="__user-link" key={index} to={`/user/${item.username}/following`}>
+						<Card key={index}>
 							<div className="user-slider-profile">
 								<CircularImage className="user-slider-profile-img" url={item.profile} />
 							</div>
@@ -91,6 +93,7 @@ const UserSlider = (props: UserSliderProps) => {
 								<p className="user-slider-post">작성글 {item.articles?.length}</p>
 							</div>
 						</Card>
+						</Link>
 					))
 				) : (
 						<p className="main-slider-placeholder">등록된 질문이 없습니다</p>

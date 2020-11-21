@@ -15,7 +15,7 @@ const HashTag = (props:HashTagProps) => {
 				{hashTags.length > 7 ? (
 					hashTags.map((hashTag:IHashtag, index:number) => (
 						<RoundedCard key={index} className="tag" cancelable={false}>
-							{hashTag.text}
+							#{hashTag.text}
 						</RoundedCard>
 					))
 				) : (
