@@ -8,7 +8,7 @@ import { getUrl } from './tools/host';
  * @param page 조회할 페이지
  * @param cnt 한번에 보여줄 갯수
  */
-export const fetchAll = async (keyword: string = '', page: Number = 1, cnt: Number = 10): Promise<ISummary[]> => {
+export const fetchAll = async (keyword: string = '', page: Number = 1, cnt: Number = 6): Promise<ISummary[]> => {
 	const response = await axios({
 		method: 'get',
 		url: getUrl('api/summary'),

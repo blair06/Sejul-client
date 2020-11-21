@@ -7,6 +7,7 @@ import RoundedCard from './RoundedCard';
 import UserInfoHeader from './UserInfoHeader';
 import HashTag from './HashTag';
 import SubNavbar from './SubNavbar';
+import Pagination from './Pagination'
 
 export {
     Navbar,
@@ -18,4 +19,5 @@ export {
     UserInfoHeader,
     HashTag,
     SubNavbar,
+    Pagination,
 };
