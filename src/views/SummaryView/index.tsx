@@ -1,9 +1,10 @@
 import React from 'react';
-import { CustomButton, Card } from '../../components';
-import SummaryCardTitle from './components/SummaryCardTitle';
+import { CustomButton } from '../../components';
+import SummaryContent from './components/SummaryContent';
 import ArticleCard from './components/ArticleCard';
 import TimerCard from './components/TimerCard';
 import HashtagCard from './components/HashtagCard';
+
 
 import './scss/summary.scss';
 
@@ -11,10 +12,7 @@ const SummaryView = () => {
     return (
         <div className="__summary-view-container">
             <div className="__summary-view-wrapper">
-                <div className="__summary-content-container">
-                    <textarea className="__summary-content" placeholder="내용을 입력하세요" >
-                    </textarea>
-                </div>
+                <SummaryContent />
                 <div className="__summary-components-container">
                     <div className="__summary-components-wrapper">
                         {/* 기사 정보 카드  */}
