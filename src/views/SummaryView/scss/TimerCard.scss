@@ -1,0 +1,90 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.__article-timer-card{
+    .__article-timer-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: stretch;
+        margin: $spacing-narrow;
+        width: 100%;
+    }
+}
+
+// 타이머 
+.__article-timer{
+    .__timer-container{
+        .__timer-text{
+            margin-top: 15px;
+            font-size: 3.5rem;
+            text-align: center;
+        }
+        .__timer-buttons-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-top : 15px;
+            
+            .__timer-btn{
+                width: 80px;
+                height : 30px;
+                font-size: 1rem;
+                padding : 0 15px;
+                border: 0;
+                outline : none;
+                @include common-box-shadow;
+                &.start{ background-color: $color-primary-blue; color : $color-white; }
+                &.pause{ background-color : $color-warning; }
+                &.finish{ background-color : $color-danger; color : $color-white; }
+                &.cancel{ background-color : $color-black-sub; color : $color-white; }
+            }
+        }
+    }
+
+    .__timer-timestamp-list-container{
+        margin-top : 15px;
+        .__timer-timestamp-list-wrapper{
+            display: flex;
+            flex-direction: column;
+            max-height: 130px;
+            overflow-y: auto;
+            padding : 5px 0;
+            margin-top: 10px;
+
+            .__timer-timestamp-item-container{
+                padding : 5px 0;
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                &:not(:last-child){
+                    border-bottom: 1px solid $color-black-sub;
+                }
+                .__timestamp-text{ 
+                    color : $color-black;
+                    font-size: 1.1rem;
+                }
+                .__timestamp-created-at{
+                    margin-left: auto;
+                    margin-right: $spacing-narrow;
+                    color : $color-black-sub;
+                    font-size: .8rem;
+                }
+                .__timestamp-btn{
+                    height: 25px;
+                    background-color: $color-primary-blue;
+                    color: $color-white;
+                    font-size: .8rem;
+                    width: auto;
+                    padding : 0 15px ;
+                    border: 0;
+                    @include common-box-shadow;
+                    &.delete {
+                        background-color: $color-danger;
+                    }
+                }
+            }
+        }
+    }
+}

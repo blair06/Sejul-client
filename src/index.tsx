@@ -9,7 +9,7 @@ import './scss/reset.css';
 import './scss/global.scss';
 
 // COMPONENTS
-import { Navbar, SubNavbar } from './components';
+import { Navbar, UserInfoHeader, SubNavbar } from './components';
 
 // VIEWS
 import MainView from './views/MainView';
@@ -19,6 +19,7 @@ import SearchView from './views/SearchView';
 import SearchView_2 from './views/SearchSummaryView';
 import SignUpView from './views/SignUpView';
 import SummaryDetailView from './views/SummaryDetailView';
+import SummaryView from './views/SummaryView';
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
@@ -32,6 +33,7 @@ import rootReducer from './modules';
 // Google Analytics
 import ReactGA from 'react-ga';
 import { createBrowserHistory } from 'history';
+import UserInfoView from './views/UserInfoView';
 
 // Google Analytics initialize
 const history = createBrowserHistory();
@@ -78,8 +80,23 @@ ReactDOM.render(
             </div>
           </Route>
           <Route path="/signup" component={SignUpView} />
+          {/* <Route path="/user/:user_name/summary" component={UserInfoView} /> */}
+          <Route path="/user/:username">
+            <div className="__user-info-container">
+              <UserInfoHeader />
+              <Switch>
+                {/* /user/:username/summary */}
+                <Route exact path="/user/:username" component={UserInfoView} />
+                <Route path="/user/:username/summary" component={UserInfoView} />
+                <Route path="/user/:username/following" component={UserInfoView} />
+                <Route path="/user/:username/hashtag" component={UserInfoView} />
+                <Route path="/user/:username/archive" component={UserInfoView} />
+              </Switch>
+            </div>
+          </Route>
+          <Route path="/summary" component={SummaryView} />
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
-          <Route component={NotFoundView} />
+          {/* <Route component={NotFoundView} /> */}
         </Switch>
       </Router>
     </Provider>

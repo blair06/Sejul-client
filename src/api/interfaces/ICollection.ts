@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document } from 'mongoose';
 
 /**
  * Author       : 유경수
@@ -9,7 +9,7 @@ import { Document } from "mongoose";
  * 2020-11-09 유경수    : 생성 일자 추가
  */
 export interface ICollection extends Document {
-    isDeleted: Boolean; // 삭제 여부 bit
-    lastUpdatedDate: Date; // 마지막 수정 일자
-    createdAt: Date;
+	isDeleted?: Boolean; // 삭제 여부 bit
+	lastUpdatedDate?: Date; // 마지막 수정 일자
+	createdAt?: Date;
 }
