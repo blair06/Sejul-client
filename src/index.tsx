@@ -19,6 +19,7 @@ import SearchView from './views/SearchView';
 import SearchView_2 from './views/SearchSummaryView';
 import SignUpView from './views/SignUpView';
 import SummaryDetailView from './views/SummaryDetailView';
+import SummaryView from './views/SummaryView';
 
 // ROUTER
 import { Router, Route, Switch } from 'react-router-dom';
@@ -93,6 +94,7 @@ ReactDOM.render(
               </Switch>
             </div>
           </Route>
+          <Route path="/summary" component={SummaryView} />
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
           {/* <Route component={NotFoundView} /> */}
         </Switch>

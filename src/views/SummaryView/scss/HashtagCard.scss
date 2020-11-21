@@ -1,0 +1,17 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.__article-hashtags-card{
+    .__article-hashtags-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: stretch;
+        margin: $spacing-narrow;
+        width: 100%;
+    }
+}
+
+.__article-hashtags-items-container{
+    border-bottom:  1px solid $color-black;
+}
