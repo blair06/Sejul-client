@@ -1,0 +1,39 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+// 기사 관련
+
+.__article-info-card{
+    justify-content: stretch;
+    align-items: stretch;
+    .__article-info-card-wrapper{
+        width: 100%;
+        margin: $spacing-narrow;
+        
+        // 제목 관련 
+        .__article-title-container{
+            display: flex;
+            flex-direction: column;
+            .article-input{
+                margin-top: 15px;
+                resize : none;
+                border : 0;
+                border-bottom: 1px solid $color-black;
+                outline: none;
+            }
+        }
+
+        // 링크 관련 
+        .__article-link-container{
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+            .article-link-input{
+                margin-top: 15px;
+                resize : none;
+                border : 0;
+                border-bottom: 1px solid $color-black;
+                outline: none;
+            }
+        }
+    }
+}
