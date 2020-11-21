@@ -8,37 +8,37 @@
     .__subnavbar-container{
         position: fixed;
     }
-.search-bar-wrap{
-    height: $navbar-height;
-    margin-top: 30px;
+    .search-bar-wrap{
+        height: $navbar-height;
+        margin-top: 30px;
 
-.search-bar{
-    background-color: $color-white;
-    margin: 0 250px;
-    .search-button-img-wrap{
-        border-radius: 50%;
-        border:0;
-        padding: 0;
-        width: $spacing-narrow*2;   
-        height: $spacing-wide; 
-        outline: 0; 
-        overflow: hidden;
-        cursor:pointer;
-        margin-left: -45px;
-        .button-img{
-            width: 100%;
-            height: 100%
+    .search-bar{
+        background-color: $color-white;
+        margin: 0 250px;
+        .search-button-img-wrap{
+            border-radius: 50%;
+            border:0;
+            padding: 0;
+            width: $spacing-narrow*2;   
+            height: $spacing-wide; 
+            outline: 0; 
+            overflow: hidden;
+            cursor:pointer;
+            margin-left: -45px;
+            .button-img{
+                width: 100%;
+                height: 100%
+            }
+        }
+        .search-bar-input{
+            font-size: $font-header;
+            border-top: none;
+            border-right: none; 
+            border-left: none; 
+            width: 1080px;
+            outline: 0; 
         }
     }
-    .search-bar-input{
-        font-size: $font-header;
-        border-top: none;
-        border-right: none; 
-        border-left: none; 
-        width: 1080px;
-        outline: 0; 
-    }
-}
 }
 
 .search-container{
