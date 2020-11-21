@@ -5,6 +5,7 @@ import Card from './Card';
 import CustomButton from './CustomButton';
 import SubNavbar from './SubNavbar';
 import Pagination from './Pagination'
+import StopWatch from './StopWatch';
 
 export {
     Navbar,
@@ -14,4 +15,5 @@ export {
     CustomButton,
     SubNavbar,
     Pagination,
+    StopWatch,
 };
