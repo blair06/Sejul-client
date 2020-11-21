@@ -6,6 +6,8 @@ import CustomButton from './CustomButton';
 import RoundedCard from './RoundedCard';
 import UserInfoHeader from './UserInfoHeader';
 import SubNavbar from './SubNavbar';
+import Pagination from './Pagination'
+import StopWatch from './StopWatch';
 
 export {
     Navbar,
@@ -16,4 +18,6 @@ export {
     RoundedCard,
     UserInfoHeader,
     SubNavbar,
+    Pagination,
+    StopWatch,
 };

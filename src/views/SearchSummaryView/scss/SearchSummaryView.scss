@@ -1,0 +1,126 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.__container__{
+    width: 100%;
+    margin-top: 60px;
+    background-size: cover;
+    .__subnavbar-container{
+        position: fixed;
+    }
+.search-bar-wrap{
+    height: $navbar-height;
+    margin-top: 30px;
+
+.search-bar{
+    background-color: $color-white;
+    margin: 0 250px;
+    .search-button-img-wrap{
+        border-radius: 50%;
+        border:0;
+        padding: 0;
+        width: $spacing-narrow*2;   
+        height: $spacing-wide; 
+        outline: 0; 
+        overflow: hidden;
+        cursor:pointer;
+        margin-left: -45px;
+        .button-img{
+            width: 100%;
+            height: 100%
+        }
+    }
+    .search-bar-input{
+        font-size: $font-header;
+        border-top: none;
+        border-right: none; 
+        border-left: none; 
+        width: 1080px;
+        outline: 0; 
+    }
+}
+}
+
+.search-container{
+    background-color: #FAFAFA;
+    width: 100%;
+    margin-top: 90px;
+    padding-top: 30px;
+    .search-card-wrap{
+    width: 1095px;
+    overflow: auto;
+    margin:0 250px;
+    .__Card-main-container{
+        width: 334px;
+        height: 315px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+    .user-information-wrap{
+        margin-left: 30px;
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        .user-img-wrap{
+            overflow:hidden;
+            border-radius: 50%;
+            width: 25px;   
+            height: 25px; 
+            display: inline-block;
+            .use-img{
+                width:100%;
+                height: 100%;
+            }
+        }
+        .user-name{
+            width: 200px;
+            margin-left: 10px;
+        }
+        
+    }
+
+.search-card{
+    width: 334px;
+    height: 315px;  
+    margin-bottom: 20px;
+    background-color: $color-white;
+    display: inline-block;
+
+    &:not(:last-child){
+        margin-right : 31px;
+    }
+
+    .news-title{
+        margin-left: 30px;
+        margin-right: 20px;
+        margin-top : 20px;
+        font-size: $font-header;
+    }
+    .news-content{
+        margin-left: 30px;
+        margin-top : 10px;
+        font-size: $font-regular;
+
+    }
+    .news-time{
+        margin-left: 30px;
+        margin-top : 18px;
+        font-size: $font-smallest;
+    }
+    .search-Hashtag{
+        margin-left: 30px;
+        margin-right: 20px;
+        margin-top: 100px;
+        width: 284px;
+        height: 50px;
+        background-color: black;
+    }
+}
+
+}
+
+}
+
+}
