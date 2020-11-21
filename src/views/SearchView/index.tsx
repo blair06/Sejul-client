@@ -2,7 +2,7 @@ import React, { useEffect, useState, Component } from 'react'
 import * as API from '../../api'
 import './scss/SearchView.scss'
 import {Card} from '../../components'
-
+import {StopWatch} from '../../components'
 const SearchView = () => {
     const [items, setItems] = useState<any[]>([]);
     const [text,setText] = useState("");
@@ -60,6 +60,7 @@ const SearchView = () => {
                         })
                     }
                 </div>
+                <StopWatch/>            
             </div>
 
 

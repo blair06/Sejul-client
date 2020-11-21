@@ -8,6 +8,7 @@ import UserInfoHeader from './UserInfoHeader';
 import HashTag from './HashTag';
 import SubNavbar from './SubNavbar';
 import Pagination from './Pagination'
+import StopWatch from './StopWatch';
 
 export {
     Navbar,
@@ -20,4 +21,5 @@ export {
     HashTag,
     SubNavbar,
     Pagination,
+    StopWatch,
 };

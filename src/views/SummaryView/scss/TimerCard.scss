@@ -37,6 +37,7 @@
                 &.start{ background-color: $color-primary-blue; color : $color-white; }
                 &.pause{ background-color : $color-warning; }
                 &.finish{ background-color : $color-danger; color : $color-white; }
+                &.cancel{ background-color : $color-black-sub; color : $color-white; }
             }
         }
     }

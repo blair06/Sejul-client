@@ -28,11 +28,16 @@
             flex-direction: column;
             margin-top: 15px;
             .article-link-input{
-                margin-top: 15px;
+                margin-top: 5px;
                 resize : none;
                 border : 0;
                 border-bottom: 1px solid $color-black;
                 outline: none;
+            }
+            .__article-link-warnning-desc{
+                font-size: .7rem;
+                margin-top: 5px;
+                color : $color-danger;
             }
         }
     }
