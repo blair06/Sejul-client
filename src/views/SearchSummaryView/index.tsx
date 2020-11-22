@@ -1,7 +1,9 @@
 import React,{ useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import { isConstructorDeclaration } from 'typescript';
+import { ISummary, IHashtag, IUser,IView } from '../../api/interfaces';
 import { Card} from '../../components';
+import { RoundedCard} from '../../components';
 import * as API from '../../api'
 import './scss/SearchSummaryView.scss'
 import {Pagination} from '../../components'
@@ -15,15 +17,28 @@ const SearchView_2 = (props:inputProps) => {
     const [items,setItems] = useState<any[]>([]);
     const [currentPage,setCurrentPage] = useState(1);
     const [postsPerPage] = useState(3);
+    const [hashTags, setHashTags] = useState<IHashtag[]>([]);
 
     const fn = async () => {
+        try{
         const response = await API.Summary.fetchAll('api/summary'); //글검색
         setItems(response);
-    }
-
+        } catch(e){
+            console.log(e);
+        }
+    };
+	const getHashTags = async () => {
+		try {
+			const result = await API.Analytics.fetchHottestHashtag();
+			setHashTags(result);
+		} catch (e) {
+			console.log(e);
+		}
+    };
 
     useEffect(()=> {
         fn();
+        getHashTags();
     }, [currentPage]);
 
     const indexOfLastPost = currentPage * postsPerPage;
@@ -55,7 +70,7 @@ const SearchView_2 = (props:inputProps) => {
                            <Card>  
                            <div className = "user-information-wrap">
                                 <div className = "user-img-wrap"> <img className="use-img" src="https://www.travie.com/news/photo/201807/20428_715_5954.jpg"/></div>
-                                <p className = "user-name">{item.user} </p>
+                                <p className = "user-name">{item.article.username} </p>
                             </div>       
                                
                             <div key={idx}>
@@ -63,6 +78,10 @@ const SearchView_2 = (props:inputProps) => {
                                 
                             </div>
                             <div className="search-Hashtag">
+                            {hashTags.map((hashtag) => (
+									<p className="main-slider-hashtags-text">#{hashtag.text}</p>
+								))}
+
                             </div> 
                             
                             <p className="news-time">{item.createdAt}</p>
@@ -73,14 +92,15 @@ const SearchView_2 = (props:inputProps) => {
                     )
                    
                 }) 
-                
             }
+
             </div>
             
 
             </div>
+            <Pagination total={10} perpage={10} />
         </>
-    );
-}
+    );}
+
 //onclick={()=>{history.push{`${item.search}`}}} 이전 검색키워드 표시
 export default SearchView_2

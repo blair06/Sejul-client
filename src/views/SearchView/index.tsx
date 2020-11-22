@@ -2,7 +2,7 @@ import React, { useEffect, useState, Component } from 'react'
 import * as API from '../../api'
 import './scss/SearchView.scss'
 import {Card} from '../../components'
-
+import {Pagination} from '../../components'
 
 const SearchView = () => {
     const [items, setItems] = useState<any[]>([]);
@@ -18,6 +18,7 @@ const SearchView = () => {
     const handleChange = (event: any) => {
         console.log(event.target.value);
     };
+
 
     const findSearch = async() => {
         setText("");
@@ -62,6 +63,7 @@ const SearchView = () => {
                     }
                 </div>          
             </div>
+            <Pagination total={10} perpage={10} />
             </div>
         </>
     );
