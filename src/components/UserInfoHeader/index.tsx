@@ -20,7 +20,6 @@ const UserInfoHeader = () => {
 		try {
 			const currentParams = params as IUserInfoHeaderParams;
 			const result = await API.User.fetch(currentParams.username);
-			console.log(result);
 			setUser(result.user);
 		} catch (e) {
 			if (e.response !== undefined && e.response.status === 404) {

@@ -17,7 +17,6 @@ const MainView = () => {
 	const getPosts = async () => {
 		try {
 			const result = await API.Analytics.fetchRecentSummary();
-			console.log(result);
 			setPosts(result);
 		} catch (e) {
 			console.log(e);
@@ -35,7 +34,6 @@ const MainView = () => {
 	const getUsers = async () => {
 		try {
 			const result = await API.Analytics.fetchFeaturedUser();
-			console.log(result);
 			setUsers(result);
 		} catch (e) {
 			console.log(e);

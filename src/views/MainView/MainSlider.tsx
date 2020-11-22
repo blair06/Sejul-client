@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import {Link} from 'react-router-dom';
 import { Card, CircularImage } from '../../components';
 import './scss/MainCommon.scss';
 import { ISummary } from '../../api/interfaces/ISummary';
 import moment from 'moment';
-// TODO
-// 소요시간
+
 interface MainSliderProps {
 	children?: ReactNode;
 	className?: string;
@@ -35,15 +35,6 @@ const MainSlider = (props: MainSliderProps) => {
 		},
 	};
 
-	const calculate = (s_date: Date | undefined, f_date: Date | undefined) => {
-		if (s_date !== undefined && f_date !== undefined) {
-			const Start = moment(s_date);
-			const Finish = moment(f_date);
-			return moment(Finish.diff(Start)).format('HH:mm:ss');
-		} else {
-			return 'unvalid';
-		}
-	};
 	return (
 		<>
 			<Carousel
@@ -95,7 +86,8 @@ const MainSlider = (props: MainSliderProps) => {
 			>
 				{data.length >= 0 ? (
 					data.map((item: ISummary) => (
-						<Card onClick={() => {}}>
+						<Link className ="__user-link" to={`/summary/${item._id}`}>
+						<Card>
 							<div className="main-slider-group">
 								{item.user === undefined || item.user === null ? (
 									<div className="main-slider-author">
@@ -121,12 +113,13 @@ const MainSlider = (props: MainSliderProps) => {
 
 								<div className="main-slider-date">
 									<p className="main-slider-date-required">
-										{calculate(item.timestamp.start, item.timestamp.finish)} 소요
+										{item.timestamp} 소요
 									</p>
 									<p className="main-slider-date-update">{moment(item.createdAt).fromNow()}</p>
 								</div>
 							</div>
 						</Card>
+						</Link>
 					))
 				) : (
 					<p className="main-slider-placeholder">등록된 질문이 없습니다</p>
