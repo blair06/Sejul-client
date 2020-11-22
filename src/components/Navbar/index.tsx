@@ -57,7 +57,12 @@ const Navbar = () => {
                                 <></>
                         }
                     </ul>
-                    <Link to="/user" className="__navbar-user-info">
+                    <Link to={
+                        user === null || user === undefined ?
+                            '/signin' :
+                            `/user/${user.username}`
+                    }
+                        className="__navbar-user-info">
                         {
                             user !== null ?
                                 <p>{user.username}</p> : <></>

@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useLocationSearch } from '../../lib/hooks';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { CustomButton } from '../../components';
 import SummaryContent from './components/SummaryContent';
 import ArticleCard from './components/ArticleCard';
 import TimerCard from './components/TimerCard';
 import HashtagCard from './components/HashtagCard';
 
+
+
 import * as API from '../../api';
 
 import './scss/summary.scss';
 
 const SummaryView = () => {
+    const history = useHistory();
     // 브라우저 주소 정보 가져오기 
     const location = useLocation();
     // 주서 정보에서 쿼리스트링 뽑아내기
@@ -76,6 +79,8 @@ const SummaryView = () => {
                     hashtags: hashtags.join(",")
                 });
                 alert("저장되었습니다");
+
+                history.push(`/summary/${result.summary._id}`);
             }
             catch (e) {
                 alert("저장 중 오류가 발생했습니다");
