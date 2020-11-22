@@ -66,6 +66,7 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
           <Route path="/search" >
+            
             <div className="__container__" >
               <SubNavbar className="__search-navbar" links={
                 [

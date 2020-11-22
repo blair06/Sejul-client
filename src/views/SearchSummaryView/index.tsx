@@ -77,10 +77,7 @@ const SearchView_2 = (props:inputProps) => {
             }
             </div>
             
-            <Pagination 
-            perpage = {postsPerPage}
-            total = {postsPerPage}
-            />
+
             </div>
         </>
     );

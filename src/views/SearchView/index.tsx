@@ -2,7 +2,8 @@ import React, { useEffect, useState, Component } from 'react'
 import * as API from '../../api'
 import './scss/SearchView.scss'
 import {Card} from '../../components'
-import {StopWatch} from '../../components'
+
+
 const SearchView = () => {
     const [items, setItems] = useState<any[]>([]);
     const [text,setText] = useState("");
@@ -28,8 +29,7 @@ const SearchView = () => {
 
     return (
         <>
- 
-            {/* <SearchHeader onClick={() => console.log('clicked')} /> */}
+        <div className = "__topic__container__">
             <div className="search-bar-wrap">
             <div className="search-bar">
                 <input
@@ -41,7 +41,7 @@ const SearchView = () => {
                 <button className="search-button-img-wrap" ><img className="button-img" src="https://mblogthumb-phinf.pstatic.net/MjAxOTEyMTJfMjYw/MDAxNTc2MTQwMDE0MjIy.F1V39cfeZPhX87yFFlqkZQqfGmycVOxXbO3vg0dFrvEg.12ulcNAMUNyNzlE7rz5Hk2NVlJfkakVTOspDnzyRkUMg.PNG.vet6390/%EA%B8%B8%EA%B3%A0%EC%96%91%EC%9D%B4_%EC%9E%85%EC%96%91.PNG?type=w800" onClick={findSearch} /></button>
             </div>
             </div>
-            <div className="search-container">
+            <div className="topic-search-container">
                 <div className="search-card-wrap">
 
                     {
@@ -60,11 +60,9 @@ const SearchView = () => {
                             )
                         })
                     }
-                </div>
-                <StopWatch/>            
+                </div>          
             </div>
-
-
+            </div>
         </>
     );
 }
