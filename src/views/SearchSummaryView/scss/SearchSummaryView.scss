@@ -5,12 +5,13 @@
     width: 100%;
     margin-top: 60px;
     background-size: cover;
-    .__subnavbar-container{
-        position: fixed;
+    .__search-subnavbar{
+        display: flex;
+        flex-direction: column-reverse;
     }
     .search-bar-wrap{
         height: $navbar-height;
-        margin-top: 30px;
+        margin-top: -120px;
 
     .search-bar{
         background-color: $color-white;
