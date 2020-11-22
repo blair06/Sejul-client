@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import { Card, CustomButton } from '../../../components';
+import { CustomButton } from '../../../components';
 import SummaryCardTitle from './SummaryCardTitle';
+
+import { ITimerItem } from './TimerCard';
 
 enum TIMER_STATE {
     IDLE,
@@ -9,36 +11,69 @@ enum TIMER_STATE {
     PAUSE,
 }
 
-const Timer = () => {
-    const [timerState, setTimerState] = useState(TIMER_STATE.IDLE);
-    const [startDT, setStartDT] = useState(undefined as Date | undefined);
-    const [finishDT, setFinishDT] = useState(undefined as Date | undefined);
-    const [displayTimer, setDisplayTimer] = useState("00:00:00");
+interface ITimerProps {
+    onRecordCreated: (record: ITimerItem) => void;
+}
 
+const Timer = (props: ITimerProps) => {
+    const { onRecordCreated } = props;
+    const [timerState, setTimerState] = useState(TIMER_STATE.IDLE);
+    const [seconds, setSeconds] = useState(0);
+    const [displayTimer, setDisplayTimer] = useState("00:00:00");
 
     const fn = {
         start: () => {
             // 시작 했을 경우 
             setTimerState(TIMER_STATE.STARTED);
-            setStartDT(new Date());
         },
         pause: () => {
             // 중지 했을 경우
-            setDisplayTimer("00:00:00");
             setTimerState(TIMER_STATE.PAUSE);
         },
         finish: () => {
             // 완전히 종료된 경우
+            onRecordCreated({
+                text: displayTimer,
+                createdAt: new Date()
+            });
             setDisplayTimer("00:00:00");
+            setSeconds(0);
             setTimerState(TIMER_STATE.IDLE);
 
         },
         cancel: () => {
             // 취소한 경우 
             setDisplayTimer("00:00:00");
+            setSeconds(0);
             setTimerState(TIMER_STATE.IDLE);
         }
     }
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout | null = null;
+        if (timerState === TIMER_STATE.STARTED) {
+            interval = setInterval(() => {
+                setSeconds(seconds => seconds + 1);
+            }, 1000);
+        }
+        else {
+            if (interval !== null) {
+                clearInterval(interval);
+            }
+        }
+
+        return () => {
+            if (interval !== null) {
+                clearInterval(interval);
+            }
+        };
+    }, [
+        timerState
+    ]);
+
+    useEffect(() => {
+        setDisplayTimer(moment.utc(seconds * 1000).format('HH:mm:ss'));
+    }, [seconds]);
 
     return <div className="__timer-container">
         <SummaryCardTitle text="타이머" />

@@ -21,7 +21,12 @@ const ArticleCard = (props: IArticleCardProps) => {
     const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
     // 링크가 변경되면 url 유효성 체크 
     useEffect(() => {
-        setIsValidURL(urlRegex.test(link));
+        if (link === "") {
+            setIsValidURL(true);
+        }
+        else {
+            setIsValidURL(urlRegex.test(link));
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [link]);
 

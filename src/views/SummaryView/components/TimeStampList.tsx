@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-import { Card, CustomButton } from '../../../components';
 import SummaryCardTitle from './SummaryCardTitle';
 import TimeStampListItem from './TimeStampListItem';
 
-import { ITimestampData } from './TimerCard';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../modules';
+
+import { ITimerItem } from './TimerCard';
 
 interface ITimeStampListProps {
-    selectedTimestamp: ITimestampData;
-    setSelectedTimestamp: (timestamp: ITimestampData) => void;
+    selectedTimestamp: string;
+    setSelectedTimestamp: (timestamp: string) => void;
+    storedTimestamp: ITimerItem[];
+    setStoredTimestamp: (record: ITimerItem) => void;
 }
 
 const TimeStampList = (props: ITimeStampListProps) => {
-    const { summaryTimer } = useSelector((state: RootState) => state);
-
+    const { selectedTimestamp, setSelectedTimestamp, storedTimestamp, setStoredTimestamp } = props;
     return <div className="__timer-timestamp-list-container">
         <SummaryCardTitle text="타이머 기록" />
         <div className="__timer-timestamp-list-wrapper">
-            <TimeStampListItem />
-            <TimeStampListItem />
-            <TimeStampListItem />
-            <TimeStampListItem />
-            <TimeStampListItem />
-            <TimeStampListItem />
+            {
+                storedTimestamp.map((item, idx) => {
+                    return <TimeStampListItem
+                        key={idx}
+                        timestamp={item}
+                        selectedTimestamp={selectedTimestamp}
+                        setSelectedTimestamp={setSelectedTimestamp} />
+                })
+            }
         </div>
     </div>
 }

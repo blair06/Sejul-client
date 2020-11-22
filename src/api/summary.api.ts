@@ -44,19 +44,21 @@ interface ISummaryForm {
 	articleOriginalLink: string;
 	// 내용
 	content: string;
-	// 스탬프 시작 시간
-	timestampStartDt: Date;
-	// 스탬프 종료 시간
-	timestampFinishDt: Date;
+	// 타임스탬프
+	timestamp: string;
 	// 해시태그
-	hashtags: string[];
+	hashtags: string;
+}
+
+interface ICreateSummaryResponse extends IAPIResponse {
+	summary: ISummary;
 }
 
 /**
  * @description 글을 생성합니다
  * @param data 글 생성에 필요한 데이터
  */
-export const create = async (data: ISummaryForm): Promise<IAPIResponse> => {
+export const create = async (data: ISummaryForm): Promise<ICreateSummaryResponse> => {
 	const response = await axios({
 		method: 'post',
 		url: getUrl('api/summary/'),
