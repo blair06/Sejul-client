@@ -50,18 +50,6 @@ const SummaryDetailView = () => {
                 );
             }
         },
-        compute: {
-            timestamp: (startDt: Date | undefined, finishDt: Date | undefined) => {
-                if (startDt !== undefined && finishDt !== undefined) {
-                    const mStart = moment(startDt);
-                    const mFinish = moment(finishDt);
-                    return moment(mFinish.diff(mStart)).format('HH:mm:ss');
-                }
-                else {
-                    return "unvalid";
-                }
-            }
-        }
     }
 
     useEffect(() => {
@@ -96,7 +84,7 @@ const SummaryDetailView = () => {
                             </div>
 
                             <div className="__summary-timestamp-info">
-                                <p>요약 소요 시간 : {fn.compute.timestamp(detail?.timestamp.start, detail?.timestamp.finish)}</p>
+                                <p>요약 소요 시간 : {detail?.timestamp}</p>
 
                             </div>
                             <div className="__summary-hashtags-info">

@@ -97,7 +97,7 @@ ReactDOM.render(
               </Switch>
             </div>
           </Route>
-          <Route path="/summary" component={SummaryView} />
+          <Route exact path="/summary" component={SummaryView} />
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
           <Route path="*" component={NotFoundView} />
         </Switch>

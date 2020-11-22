@@ -7,9 +7,9 @@ import ArticleCard from './components/ArticleCard';
 import TimerCard from './components/TimerCard';
 import HashtagCard from './components/HashtagCard';
 
-import './scss/summary.scss';
+import * as API from '../../api';
 
-import { ITimestampData } from './components/TimerCard';
+import './scss/summary.scss';
 
 const SummaryView = () => {
     // 브라우저 주소 정보 가져오기 
@@ -26,7 +26,7 @@ const SummaryView = () => {
     // 해시태그
     const [hashtags, setHashtags] = useState([] as string[]);
     // 타임스탬프
-    const [timestamp, setTimestamp] = useState({} as ITimestampData);
+    const [timestamp, setTimestamp] = useState("?");
 
     // 페이지 로드시 기사 링크와 타이틀이 있다면 자동으로 세팅
     useEffect(() => {
@@ -39,6 +39,50 @@ const SummaryView = () => {
             }
         });
     }, []);
+
+    const fn = {
+        validate: () => {
+            // 제목 500자 
+            // 링크 1000자 
+            // 내용 3000자
+            if (articleTitle === "") {
+                alert("기사 제목을 입력해주세요");
+                return false;
+            }
+            else if (articleLink === "") {
+                alert("링크를 입력해주세요");
+                return false;
+            }
+            else if (content === "") {
+                alert("내용을 입력해주세요");
+                return false;
+            }
+            else if (timestamp === "") {
+                alert("타이머 기록을 선택해주세요");
+                return false;
+            }
+            else {
+                return true;
+            }
+        },
+        submit: async () => {
+            try {
+                const result = await API.Summary.create({
+                    articleTitle: articleTitle,
+                    articleLink: articleLink,
+                    articleOriginalLink: articleLink,
+                    content: content,
+                    timestamp: timestamp,
+                    hashtags: hashtags.join(",")
+                });
+                alert("저장되었습니다");
+            }
+            catch (e) {
+                alert("저장 중 오류가 발생했습니다");
+                console.log(e.message);
+            }
+        }
+    }
 
     return (
         <div className="__summary-view-container">
@@ -54,7 +98,7 @@ const SummaryView = () => {
                         {/* 해시태그 카드 */}
                         <HashtagCard hashtags={hashtags} setHashtags={setHashtags} />
                         {/* 저장 버튼 */}
-                        <CustomButton className="__article-submit-btn" text="저장" onClick={() => { }} />
+                        <CustomButton className="__article-submit-btn" text="저장" onClick={fn.submit} />
                     </div>
                 </div>
             </div>

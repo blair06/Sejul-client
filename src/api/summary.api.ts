@@ -44,12 +44,10 @@ interface ISummaryForm {
 	articleOriginalLink: string;
 	// 내용
 	content: string;
-	// 스탬프 시작 시간
-	timestampStartDt: Date;
-	// 스탬프 종료 시간
-	timestampFinishDt: Date;
+	// 타임스탬프
+	timestamp: string;
 	// 해시태그
-	hashtags: string[];
+	hashtags: string;
 }
 
 /**
