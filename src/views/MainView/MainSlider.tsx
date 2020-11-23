@@ -87,7 +87,7 @@ const MainSlider = (props: MainSliderProps) => {
 				{data.length >= 0 ? (
 					data.map((item: ISummary) => (
 						<Link className ="__user-link" to={`/summary/${item._id}`}>
-						<Card>
+						<Card className="main-slider-card">
 							<div className="main-slider-group">
 								{item.user === undefined || item.user === null ? (
 									<div className="main-slider-author">

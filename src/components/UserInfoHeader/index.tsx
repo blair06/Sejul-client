@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as API from '../../api';
 import { useHistory, useParams } from 'react-router-dom';
-import { IUser } from '../../api/interfaces';
+import { ISummary, IUser } from '../../api/interfaces';
 import { CircularImage, SubNavbar } from '../../components';
 import './UserInfoHeader.scss';
 import {IUserFetchResponse} from '../../api/user.api'
@@ -13,14 +13,16 @@ interface IUserInfoHeaderParams {
 const UserInfoHeader = () => {
 	const params = useParams();
 	const history = useHistory();
-	const [user, setUser] = useState<IUser | undefined>(undefined);
-
+	const [user, setUser] = useState<IUser>();
+	const [summaries, setSummaries] = useState<ISummary[]>();
 	const fetch = async () => {
 		// 404
 		try {
 			const currentParams = params as IUserInfoHeaderParams;
 			const result = await API.User.fetch(currentParams.username);
 			setUser(result.user);
+			setSummaries(result.summaries);
+			console.log(result);
 		} catch (e) {
 			if (e.response !== undefined && e.response.status === 404) {
 				// 404 (NOT FOUND)면 뭐해라
@@ -46,13 +48,13 @@ const UserInfoHeader = () => {
 					<div className="info-header-text">
 						<div className="info-header-name">{user?.username}</div>
 						<div className="info-header-small">
-							{user?.articles !== undefined && user.following !== undefined ? (
+							{summaries !== undefined && user?.following !== undefined ? (
 								<>
 									<p>팔로우 {user?.following.length} </p>
-									<p>작성글 {user?.articles.length} </p>
+									<p>작성글 {summaries.length} </p>
 								</>
 							) : (
-								<></>
+								<><p>조회할 수 없습니다</p></>
 							)}
 						</div>
 					</div>
@@ -61,10 +63,10 @@ const UserInfoHeader = () => {
 			<SubNavbar
 				className="__user-navbar"
 				links={[
-					{ to: `/user/${user?.username}/summary`, text: '작성한 글' },
+					{ to: `/user/${user?.username}/summaries`, text: '작성한 글' },
 					{ to: `/user/${user?.username}/following`, text: '팔로잉' },
 					{ to: `/user/${user?.username}/hashtag`, text: '해시태그' },
-					{ to: `/user/${user?.username}/like`, text: '좋아요한 글' },
+					{ to: `/user/${user?.username}/likes`, text: '좋아요한 글' },
 					{ to: `/user/${user?.username}/scrap`, text: '담은 기사' },
 				]}
 			/>

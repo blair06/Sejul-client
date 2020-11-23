@@ -4,6 +4,7 @@ import { HashTag } from '../../../components';
 import { ISummary, IUser,IHashtag } from '../../../api/interfaces';
 import * as API from '../../../api';
 import './UserHashTag.scss';
+import UserFollowingPosts from '../UserFollowing/UserFollowingPosts';
 
 interface IUserInfoHeaderParams {
 	username: string;
@@ -16,6 +17,7 @@ const UserHashTag = () => {
 	const history = useHistory();
 	const matches = useRouteMatch();
 	const [hashTags, setHashTags] = useState<IHashtag[]>([]);
+	const [summaries, setSummaries] = useState<ISummary[]>([]);
 	
 	const fetch = {
 		hashTags: async (username: string | undefined) => {
@@ -27,7 +29,20 @@ const UserHashTag = () => {
 				try {
 					const result = await API.User.fetchFollowingHashtag(username);
 					setHashTags(result.hashtags);
-					console.log(result);
+				} catch (e) {
+					console.log(e);
+				}
+			}
+		},
+		summaries: async (username: string | undefined) => {
+			if (username === undefined) {
+				// 404
+				alert('유저 정보가 올바르지 않습니다');
+				history.push('/');
+			} else {
+				try {
+					const result = await API.User.fetchFollowingHashtag(username);
+					setSummaries(result.summaries);
 				} catch (e) {
 					console.log(e);
 				}
@@ -50,8 +65,8 @@ const UserHashTag = () => {
 			</div>
 			<div className="userInfo-user-following-posts">
 				<p className="userInfo-user-following header">팔로우 중인 해시태그에 올라온 글</p>
-				<div className="user-following-posts-container">
-					
+				<div className="user-following-hashtag-posts-container">
+					<UserFollowingPosts posts={summaries}setPosts={fetch.summaries}/>
 				</div>
 			</div>
 		</div>

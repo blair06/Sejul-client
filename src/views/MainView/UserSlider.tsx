@@ -13,24 +13,7 @@ interface UserSliderProps {
 }
 const UserSlider = (props: UserSliderProps) => {
 	const { data, className, onClick } = props;
-	const responsive = {
-		desktop: {
-			breakpoint: { max: 3000, min: 1024 },
-			items: 3,
-			slidesToSlide: 1, // optional, default to 1.
-		},
-		tablet: {
-			breakpoint: { max: 1024, min: 464 },
-			items: 2,
-			slidesToSlide: 2, // optional, default to 1.
-		},
-		mobile: {
-			breakpoint: { max: 464, min: 0 },
-			items: 1,
-			slidesToSlide: 1, // optional, default to 1.
-		},
-	};
-
+	
 	return (
 		<>
 			<Carousel
@@ -82,7 +65,7 @@ const UserSlider = (props: UserSliderProps) => {
 			>
 				{data.length > 0 ? (
 					data.map((item: IUser,index:number) => (
-						<Link className="__user-link" key={index} to={`/user/${item.username}/following`}>
+						<Link className="__user-link" key={index} to={`/user/${item.username}/summaries`}>
 						<Card key={index}>
 							<div className="user-slider-profile">
 								<CircularImage className="user-slider-profile-img" url={item.profile} />

@@ -1,5 +1,16 @@
 @import '../../scss/mixins';
 @import '../../scss/variables';
+.__user-info-container{
+
+    margin-top : $navbar-height;
+    margin-left : 20vw;
+    margin-right : 20vw;
+    
+}
+.__user-link{
+    text-decoration: none;
+    color: $color-black;
+}
 .info-header-container{
     width: 100%;
     padding: 1.5vw 1.5vw 0 1.5vw;
