@@ -1,0 +1,20 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.__pagination{
+    width: 100%;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+
+    .__page-items{
+        width: 100%;
+        height: 100%;
+
+     .__page-link{ 
+        text-decoration: none;
+        font-size: 50px;
+     }
+    }
+
+}
