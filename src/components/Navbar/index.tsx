@@ -21,7 +21,7 @@ const Navbar = () => {
     }
 
     useEffect(() => {
-        API.Auth.signin('dev.yoogomja@gmail.com', '@rhawk1202');
+        // API.Auth.signin('dev.yoogomja@gmail.com', '@rhawk1202');
     }, []);
 
     return (
