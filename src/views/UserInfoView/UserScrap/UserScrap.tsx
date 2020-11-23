@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch, useHistory, Link, useLocation } from 'react-router-dom';
 import { CircularImage, Card, Pagination } from '../../../components';
-import { ISummary, IUser } from '../../../api/interfaces';
+import { IArticle, ISummary, IUser } from '../../../api/interfaces';
 import * as API from '../../../api';
-import '../UserFollowing/UserFollowing.scss';
-
+import './UserScrap.scss';
 import UserFollowingPosts from '../UserFollowing/UserFollowingPosts';
 
 interface IUserInfoHeaderParams {
@@ -14,7 +13,7 @@ interface IUserInfoHeaderParams {
 const UserScrap = () => {
 	const history = useHistory();
 	const matches = useRouteMatch();
-	const [news, setNews] = useState<ISummary[]|undefined>();
+	const [news, setNews] = useState<IArticle[] | undefined>();
 
 	const fetch = {
 		news: async (username: string | undefined) => {
@@ -25,8 +24,7 @@ const UserScrap = () => {
 			} else {
 				try {
 					const result = await API.User.fetchScrap(username);
-                    setNews(result);
-                    console.log(result);
+					setNews(result);
 				} catch (e) {
 					console.log(e);
 				}
@@ -43,8 +41,16 @@ const UserScrap = () => {
 			<div className="userInfo-contents-container">
 				<div className="userInfo-user-following">
 					<p className="userInfo-user-following header">스크랩한 기사</p>
-					<div className="user-following-container">
-						{/* <UserFollowingPosts posts={news} setPosts={fetch.news} /> */}
+					<div className="user-scrap-container">
+						{news?.map((news: IArticle, index: number) => (
+							<Link key={index} className="__user-link" to={`/summary?title=${news.title}&link=${news.originalLink}`}>
+							<Card key={index} className="Scrap-news-card">
+								<div className="Scrap-news-card-title">
+									<p>{news.title}</p>
+								</div>
+							</Card>
+							</Link>
+						))}
 					</div>
 				</div>
 			</div>

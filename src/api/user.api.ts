@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IAPIResponse, IHashtag, ISummary, IUser } from './interfaces';
+import { IAPIResponse, IHashtag, ISummary, IUser,IArticle } from './interfaces';
 import { getUrl } from './tools/host';
 
 export interface IUserFetchResponse {
@@ -80,7 +80,7 @@ export const fetchLikeSummary = async (username: string, cnt: Number = 6): Promi
 	return result.data;
 };
 
-export const fetchScrap = async (username: string, cnt: Number = 5): Promise<ISummary[]> => {
+export const fetchScrap = async (username: string, cnt: Number = 5): Promise<IArticle[]> => {
 	const result = await axios({
 		method: 'GET',
 		url: getUrl(`api/user/${username}/bookmarks`),
