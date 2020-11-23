@@ -5,12 +5,13 @@
     width: 100%;
     margin-top: 60px;
     background-size: cover;
-    .__subnavbar-container{
-        position: fixed;
+    .__search-subnavbar{
+        display: flex;
+        flex-direction: column-reverse;
     }
     .search-bar-wrap{
         height: $navbar-height;
-        margin-top: 30px;
+        margin-top: -120px;
 
     .search-bar{
         background-color: $color-white;
@@ -77,6 +78,7 @@
         .user-name{
             width: 200px;
             margin-left: 10px;
+            color: black;
         }
         
     }
@@ -113,9 +115,15 @@
         margin-left: 30px;
         margin-right: 20px;
         margin-top: 100px;
-        width: 284px;
+        width: 284px; 
         height: 50px;
-        background-color: black;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: stretch;
+        .main-slider-hashtags-text{
+            color: $color-primary-blue;
+        }
     }
 }
 

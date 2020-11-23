@@ -1,15 +1,16 @@
 @import '../../../scss/mixins';
 @import '../../../scss/variables';
 
-.__container__{
+.__topic__container__   {
     width: 100%;
-    margin-top: 60px;
-    .__subnavbar-container{
-        position: fixed;
-    }
-    .search-bar-wrap{
+    justify-content: stretch;
+    align-items: stretch;
+    
+
+    .search-bar-wrap{   
         height: $navbar-height;
-        margin-top: 30px;
+        margin-top: -200px;
+
     .search-bar{
         background-color: $color-white;
         margin: 0 250px;
@@ -39,12 +40,16 @@
     }
 }
 
-.search-container{
+.topic-search-container{
+    overflow: scroll;
     background-color: #FAFAFA;
     width: 100%;
-    margin-top: 5000px;
+    margin-top: 80px;
+    padding-top: 30px;
+    justify-content: stretch;
+    align-items: stretch;
 
-    .search-card{
+    .search-card-wrap{
     width: 1095px;
     overflow: auto;
     margin:0 250px;
@@ -58,7 +63,7 @@
     }
 
 .search-card{
-    width: 70%;
+    width: 100%;
     height: 150px;  
     margin-bottom: 20px;
     background-color: $color-white;
