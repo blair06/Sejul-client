@@ -1,11 +1,9 @@
-import { UserInfo } from 'os';
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch, useHistory, Link } from 'react-router-dom';
-import { HashTag, RoundedCard } from '../../../components';
+import { HashTag } from '../../../components';
 import { ISummary, IUser,IHashtag } from '../../../api/interfaces';
 import * as API from '../../../api';
 import './UserHashTag.scss';
-import {IFetchFollowingHashtagResponse} from '../../../api/user.api'
 
 interface IUserInfoHeaderParams {
 	username: string;
@@ -13,7 +11,7 @@ interface IUserInfoHeaderParams {
 }
 // TODO
 // pagination
-//왜 속성이 없다고 하는지
+
 const UserHashTag = () => {
 	const history = useHistory();
 	const matches = useRouteMatch();
@@ -28,7 +26,7 @@ const UserHashTag = () => {
 			} else {
 				try {
 					const result = await API.User.fetchFollowingHashtag(username);
-					//setHashTags(result.hashtags);
+					setHashTags(result.hashtags);
 					console.log(result);
 				} catch (e) {
 					console.log(e);
@@ -45,7 +43,9 @@ const UserHashTag = () => {
 			<div className="userInfo-user-following">
 				<p className="userInfo-user-following header">내가 팔로우 중인 해시태그</p>
 				<div className="user-following-container">
-					<HashTag hashTags={hashTags}/>
+					<HashTag className="user-following-hashtags"hashTags={hashTags}/>
+					
+					
 				</div>
 			</div>
 			<div className="userInfo-user-following-posts">

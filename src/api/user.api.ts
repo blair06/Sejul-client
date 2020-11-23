@@ -57,7 +57,7 @@ export interface IFetchFollowingHashtagResponse {
  * @description 사용자가 팔로우한 해시태그와 해당 해시태그에 작성된 글 가져오기
  * @param username 사용자 이름
  */
-export const fetchFollowingHashtag = async (username: string): Promise<IFetchFollowingHashtagResponse[]> => {
+export const fetchFollowingHashtag = async (username: string): Promise<IFetchFollowingHashtagResponse> => {
 	const result = await axios({
 		method: 'GET',
 		url: getUrl(`api/user/${username}/hashtags`),

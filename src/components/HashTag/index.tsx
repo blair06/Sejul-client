@@ -12,7 +12,7 @@ const HashTag = (props:HashTagProps) => {
     const {hashTags, className, onClick} = props;
 	return (
 			<div className={`hashtagcard ${className || ''}`}>
-				{hashTags.length > 7 ? (
+				{hashTags.length > 0 ? (
 					hashTags.map((hashTag:IHashtag, index:number) => (
 						<RoundedCard key={index} className="tag" cancelable={false}>
 							#{hashTag.text}
