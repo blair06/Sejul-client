@@ -5,9 +5,8 @@
     width: 100%;
     margin-top: 60px;
     background-size: cover;
-    .__search-subnavbar{
-        display: flex;
-        flex-direction: column-reverse;
+    .__subnavbar-container{
+        margin-left: 35px;
     }
     .search-bar-wrap{
         height: $navbar-height;
@@ -47,9 +46,9 @@
     width: 100%;
     margin-top: 90px;
     padding-top: 30px;
+    overflow: auto;
     .search-card-wrap{
     width: 1095px;
-    overflow: auto;
     margin:0 250px;
     .__Card-main-container{
         width: 334px;
@@ -121,7 +120,7 @@
     }
     .news-create-time{
         color: #9F9F9F;
-        margin-left: 125px;
+        margin-left: 150px;
         margin-top : 18px;
         font-size: $font-smallest;
     }

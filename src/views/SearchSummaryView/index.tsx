@@ -3,10 +3,7 @@ import { ISummary, IHashtag } from '../../api/interfaces';
 import { Card} from '../../components';
 import * as API from '../../api'
 import './scss/SearchSummaryView.scss'
-import { useDispatch } from 'react-redux';
 import moment from 'moment'
-import 'moment/locale/ko';
-import Moment from 'react-moment';
 import { setTextRange } from 'typescript';
 import { useParams } from 'react-router';
 
@@ -20,18 +17,16 @@ const SearchView_2 = (props:UserSearchProps) => {
 
     const [items,setItems] = useState<ISummary[]>([]);
     const [keyword,setKeyword] = useState("");
-    const [keyworditem,setKeyworditem] = useState<any[]>([]);
     const [hashTags, setHashTags] = useState<IHashtag[]>([]);
-    const _dispatch = useDispatch();
-    const time = moment();
+
     const fn = async () => {
-        try{
-        const response = await API.Summary.fetchAll(); //글검색
+        const response = await API.Search.fetchSummaries(keyword);
         setItems(response);
-        } catch(e){
-            console.log(e);
-        }
     };
+    const searchpost = async() => {
+        const response = await API.Search.fetchSummaries('');
+        setItems(response);
+    }
     const getHashTags = async () => {
         try {
             const result = await API.Analytics.fetchHottestHashtag();
@@ -40,17 +35,16 @@ const SearchView_2 = (props:UserSearchProps) => {
             console.log(e);
         }
     };
-    const getPosts = async () => {
-        const responce = await API.Search.fetchSummaries(keyword);
-        setKeyworditem(responce);
-    }
-    const keywordresult = () => { keyworditem.map((inx) => {return({keyworditem.title})}
-    ); }
+
     useEffect(() => {
-        fn();
+        if(keyword===''){
+            searchpost();
+        } else { 
+            fn();
+        }
         getHashTags();
-        getPosts();
-    }, []);
+        
+    }, [keyword]);
 
 
     const Search = {
@@ -59,13 +53,11 @@ const SearchView_2 = (props:UserSearchProps) => {
                 alert("검색어를 입력해주세요");
                 return;
             } 
-            else if(keyword === "2단계" ) {
-                return keywordresult;
-            }
-            
+            else fn();
         }
     }
 
+ 
     return (
         <>
         <div className = "search-bar-wrap">
@@ -110,7 +102,7 @@ const SearchView_2 = (props:UserSearchProps) => {
                             </div> 
                             <div className="new-time-wrap">
                             <p className = "new-write-time">{item.timestamp}소요</p>
-                            <p className="news-create-time"><Moment fromNow>{time}</Moment></p>
+                            <p className="news-create-time">{moment(item.createdAt).fromNow()}</p>
                             </div>
                             </Card> 
                         </div>
