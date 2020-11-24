@@ -18,12 +18,12 @@ const SubNavbar = (props: ISubNavbarProps) => {
             <div className="__subnavbar-wrapper">
                 {
                     links.map((link, idx) => {
-                        return <NavLink to={link.to} className="__subnavbar-link" activeClassName="__subnavbar-link-active">{link.text}</NavLink>
+                        return <NavLink key={idx} to={link.to} className="__subnavbar-link" activeClassName="__subnavbar-link-active">{link.text}</NavLink>
                     })
                 }
             </div>
         </div>
     )
-} 
+}
 
 export default SubNavbar;

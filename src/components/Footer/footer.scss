@@ -1,0 +1,45 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.__footer-container{
+    width: 100%;
+    height: 400px;
+    background-color: $color-primary-blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+
+    margin-top: $spacing-wide;
+    .__footer-left{
+        margin: $spacing-wide;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        p , a{
+            text-decoration: none;
+            font-size: .9rem;
+            font-weight: 100;
+            color : $color-white;
+            &:not(:last-child){
+                margin-bottom: $spacing-narrow/2;
+            }
+        }
+    }
+    .__footer-right{
+        margin: $spacing-wide;        
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        p{
+            font-size: 5rem;
+            margin-top: -1rem;
+            color:$color-white;
+        }
+    }
+}

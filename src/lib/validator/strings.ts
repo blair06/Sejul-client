@@ -12,7 +12,7 @@ export const hasSpecial = (v: string) => {
 };
 
 export const hasEng = (v: string) => {
-	const regex = /([0-9])/g;
+	const regex = /([a-zA-Z])/g;
 	return regex.test(v);
 };
 

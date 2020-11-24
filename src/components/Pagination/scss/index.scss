@@ -2,5 +2,56 @@
 @import '../../../scss/mixins';
 
 .__pagination-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .__pagination-wrapper{
+        display: flex;
+        width: fit-content;
+        margin:$spacing-narrow auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        
+    }
+}
+
+.__pagination-items{
+    display: flex;
+    flex-direction: row;
+
+    .pagination-item{
+        text-decoration: none;
+        font-size: 1.1rem;
+        color : $color-black;
+        margin : 0 5px;
+        
+        &.active{
+            color : $color-primary-blue;
+        }
+        &.disabled{
+            color : lighten($color: $color-black, $amount: 50)
+        }
+    }
+}
+
+.__pagination-btn{
+    border: 0;
+    background-color: $color-white;
+    @include common-box-shadow;
+    border-radius: 50%;
+    color : $color-primary-blue;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline : none;
+    cursor: pointer;
+    margin : 0 5px;
     
 }

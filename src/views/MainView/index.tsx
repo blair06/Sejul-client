@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as API from '../../api';
-import { RoundedCard } from '../../components';
+import { Footer } from '../../components';
 import './scss/MainCommon.scss';
 import { ISummary, IHashtag, IUser } from '../../api/interfaces';
 import mainBanner from '../../assets/img/main-banner.png';
@@ -49,11 +49,11 @@ const MainView = () => {
 			<div className="main-banner">
 				<div className="layer">
 					<p className="title">Sejul</p>
-					<p>
-						시사 상식을 접하는 <span>습관</span>을 길러주는 방법
+					<p style={{ fontSize: "1.5rem", fontWeight: 100 }}>
+						시사 상식을 접하는 <span >습관</span>을 길러주는 방법
 					</p>
 					<p>
-						매일새로운 기사를 <span>요약</span>하고
+						매일 새로운 기사를 <span>요약</span>하고
 					</p>
 					<p>시사 상식을 길러보세요</p>
 				</div>
@@ -73,7 +73,7 @@ const MainView = () => {
 					<UserSlider data={users} />
 				</div>
 			</div>
-			<div className="main-footer">Sejul</div>
+			<Footer />
 		</div>
 	);
 };

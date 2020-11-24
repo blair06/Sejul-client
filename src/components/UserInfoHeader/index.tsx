@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as API from '../../api';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, useLocation } from 'react-router-dom';
 import { ISummary, IUser } from '../../api/interfaces';
 import { CircularImage, SubNavbar } from '../../components';
 import './UserInfoHeader.scss';
-import {IUserFetchResponse} from '../../api/user.api'
+import { IUserFetchResponse } from '../../api/user.api'
 interface IUserInfoHeaderParams {
 	username: string;
 	user?: IUser | undefined | null;
@@ -13,6 +13,8 @@ interface IUserInfoHeaderParams {
 const UserInfoHeader = () => {
 	const params = useParams();
 	const history = useHistory();
+	const loc = useLocation();
+
 	const [user, setUser] = useState<IUser>();
 	const [summaries, setSummaries] = useState<ISummary[]>();
 	const fetch = async () => {
@@ -37,8 +39,20 @@ const UserInfoHeader = () => {
 	};
 
 	useEffect(() => {
-		fetch();
+		if (loc.pathname.split("/").length < 4) {
+			console.log("not had depth");
+			history.push(loc.pathname + "/summaries");
+		}
 	}, []);
+
+	useEffect(() => {
+		fetch();
+	}, [history]);
+
+	useEffect(() => {
+		console.log(user);
+	}, [user]);
+
 	return (
 		<>
 			<div className="info-header-container">
@@ -54,8 +68,8 @@ const UserInfoHeader = () => {
 									<p>작성글 {summaries.length} </p>
 								</>
 							) : (
-								<><p>조회할 수 없습니다</p></>
-							)}
+									<><p>조회할 수 없습니다</p></>
+								)}
 						</div>
 					</div>
 				</div>

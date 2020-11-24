@@ -8,6 +8,8 @@ import UserInfoHeader from './UserInfoHeader';
 import HashTag from './HashTag';
 import SubNavbar from './SubNavbar';
 import Pagination from './Pagination';
+import SignInput from './SignInput';
+import Footer from './Footer';
 
 export {
     Navbar,
@@ -20,4 +22,6 @@ export {
     HashTag,
     SubNavbar,
     Pagination,
+    SignInput,
+    Footer,
 };

@@ -42,7 +42,7 @@ const SearchView_2 = (props: UserSearchProps) => {
     };
     const getPosts = async () => {
         const responce = await API.Search.fetchSummaries(keyword);
-        setKeyworditem(responce);
+        setItems(responce);
     }
     const keywordresult = () => {
         keyworditem.map((inx) => { return (inx.title) }

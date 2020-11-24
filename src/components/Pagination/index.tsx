@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { RiArrowLeftSLine, RiArrowRightSLine, RiSkipForwardLine, RiSkipBackLine } from 'react-icons/ri';
 
 import { useLocation, useHistory } from 'react-router-dom';
 import { useLocationSearch } from '../../lib/hooks';
+import './scss/index.scss';
 interface IPaginationProps {
     page: number;
     total: number;
@@ -12,11 +13,14 @@ interface IPaginationProps {
 const Pagination = (props: IPaginationProps) => {
     const { page, total, itemsPerPage } = props;
     const [pages, setPages] = useState([] as number[]);
+    const [lastPage, setLastPage] = useState(1);
     const location = useLocation();
     const search = useLocationSearch(location.search);
     const history = useHistory();
 
+
     useEffect(() => {
+        setLastPage(Math.ceil(total / itemsPerPage));
         if (page < 3) {
             setPages([1, 2, 3, 4, 5]);
         }
@@ -58,37 +62,63 @@ const Pagination = (props: IPaginationProps) => {
             }
         },
         moveNext: () => {
-            history.push(
-                fn.makeQuery(page + 1)
-            )
+            if (page < lastPage) {
+                history.push(
+                    fn.makeQuery(page + 1)
+                )
+            }
         },
         movePrev: () => {
+            if (page > 1) {
+                history.push(
+                    fn.makeQuery(page - 1)
+                )
+            }
+        },
+        moveFirst: () => {
             history.push(
-                fn.makeQuery(page - 1)
+                fn.makeQuery(1)
             )
+        },
+        moveLast: () => {
+            history.push(fn.makeQuery(lastPage));
         }
     }
     return (
         <div className="__pagination-container">
             <div className="__pagination-wrapper">
-                <button type="button" onClick={fn.movePrev}>
+                <button className="__pagination-btn" type="button" onClick={fn.moveFirst}>
+                    <RiSkipBackLine />
+                </button>
+                <button className="__pagination-btn" type="button" onClick={fn.movePrev}>
                     <RiArrowLeftSLine />
                 </button>
                 <div className="__pagination-items">
                     {
                         pages.map((renderPage, idx) => {
-                            return <a
-                                key={idx}
-                                className={`pagination-item ${page === renderPage ? "active" : ""}`}
-                                href={`${fn.makeQuery(renderPage)}`}
-                            >{
-                                    renderPage
-                                }</a>;
+                            if (renderPage <= lastPage) {
+                                return <a
+                                    key={idx}
+                                    className={`pagination-item ${page === renderPage ? "active" : ""}`}
+                                    href={`${fn.makeQuery(renderPage)}`}
+                                >{
+                                        renderPage
+                                    }</a>;
+                            }
+                            else {
+                                return <p key={idx}
+                                    className={`pagination-item disabled`}>
+                                    {renderPage}
+                                </p>;
+                            }
                         })
                     }
                 </div>
-                <button type="button" onClick={fn.moveNext}>
+                <button className="__pagination-btn" type="button" onClick={fn.moveNext}>
                     <RiArrowRightSLine />
+                </button>
+                <button className="__pagination-btn" type="button" onClick={fn.moveLast}>
+                    <RiSkipForwardLine />
                 </button>
             </div>
         </div >

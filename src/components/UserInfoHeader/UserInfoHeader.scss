@@ -29,9 +29,12 @@
             }
             .info-header-small {
                 display: flex;
-                justify-content: space-evenly;
+                justify-content: flex-start;
                 font-size: 0.8em;
                 color:$color-black-sub;
+                p:not(:last-child){
+                    margin-right: 10px;
+                }
             }
         }
     }

@@ -35,9 +35,7 @@ const Navbar = () => {
                         <li className="__navbar-link-item">
                             <Link to="/search">탐색</Link>
                         </li>
-                        <li className="__navbar-link-item">
-                            <Link to="/summary">요약</Link>
-                        </li>
+
                         {
                             user === null || user === undefined ?
                                 <>
@@ -47,15 +45,16 @@ const Navbar = () => {
                                     <li className="__navbar-link-item">
                                         <Link to="/signup">회원 가입</Link>
                                     </li>
-                                </> : <></>
+                                </> : <>
+                                    <li className="__navbar-link-item">
+                                        <Link to="/summary">요약</Link>
+                                    </li>
+                                    <li className="__navbar-link-item" onClick={ui.signout}>
+                                        <span >로그아웃</span>
+                                    </li>
+                                </>
                         }
-                        {
-                            user !== null ?
-                                <li className="__navbar-link-item" onClick={ui.signout}>
-                                    <span >로그아웃</span>
-                                </li> :
-                                <></>
-                        }
+
                     </ul>
                     <Link to={
                         user === null || user === undefined ?

@@ -1,0 +1,36 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.__not-found-container{
+    width: 100%;
+    height: 100%;
+    background-color: $color-background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .__not-found-wrapper{
+        width: 1000px;
+        margin: auto;
+
+        h1{  
+            color: $color-primary-blue;
+            font-weight: 800;
+            font-size : 10rem;
+        }
+        .__not-found-title{
+            font-weight: 100;
+            font-size: 5rem;
+            color : $color-black;
+            line-height: 8rem;
+        }
+        .__not-found-text{
+            font-weight: 100;
+            font-size: 1.5rem;
+            margin-top: $spacing-wide;
+            b{
+                font-weight: 400;
+                color : $color-primary-blue;
+            }
+        }
+    }
+}

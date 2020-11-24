@@ -9,7 +9,7 @@ import './scss/reset.css';
 import './scss/global.scss';
 
 // COMPONENTS
-import { Navbar, UserInfoHeader, SubNavbar } from './components';
+import { Navbar, UserInfoHeader, SubNavbar, Footer } from './components';
 
 import 'moment/locale/ko';
 
@@ -17,6 +17,8 @@ import 'moment/locale/ko';
 import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
 import SignInView from './views/SignInView';
+import NewSignInView from './views/NewSignInView';
+import NewSignUpView from './views/NewSignUpView';
 import SearchView from './views/SearchView';
 import SearchView_2 from './views/SearchSummaryView';
 import SignUpView from './views/SignUpView';
@@ -77,7 +79,8 @@ ReactDOM.render(
         <Navbar />
         <Switch>
           <Route exact path="/" component={MainView}></Route>
-          <Route path="/signin" component={SignInView} />
+          <Route path="/signin" component={NewSignInView} />
+          <Route path="/signup" component={NewSignUpView} />
           <Route path="/search" >
 
             <div className="__container__" >
@@ -96,7 +99,7 @@ ReactDOM.render(
               </Switch>
             </div>
           </Route>
-          <Route path="/signup" component={SignUpView} />
+
           {/* <Route path="/user/:user_name/summary" component={UserInfoView} /> */}
           <Route path="/user/:username">
             <div className="__user-info-container">
@@ -115,6 +118,7 @@ ReactDOM.render(
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
           <Route path="*" component={NotFoundView} />
         </Switch>
+
       </Router>
     </Provider>
   </React.StrictMode >,
