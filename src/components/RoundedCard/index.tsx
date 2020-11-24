@@ -16,7 +16,7 @@ const RoundedCard = (props: RoundedCardProps) => {
                 onClick();
                 }}
             }>
-                {cancelable?<div className="__Rounded-Card-cancle" >#{children} X</div>:<p>#{children}</p>}
+                {cancelable?<div className="__Rounded-Card-cancle" >{children} X</div>:<p>{children}</p>}
             
         </div>
     )

@@ -23,6 +23,7 @@ export interface IUser extends ICollection {
 	};
 	profile?: string; // 프로필 이미지 주소
 	articles?: [IArticle]; // 담은 기사
+	summaries?: [IArticle];
 	following?: [IUser]; // 내가 팔로우 중인 유저
 	likes?: [ISummary]; // 내가 좋아요 한 글
 	hashtags?: [IHashtag]; // 내가 관심 가진 분야

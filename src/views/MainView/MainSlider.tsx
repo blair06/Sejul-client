@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Logo, Card, CircularImage } from '../../components';
+import {Link} from 'react-router-dom';
+import { Card, CircularImage } from '../../components';
 import './scss/MainCommon.scss';
 import { ISummary } from '../../api/interfaces/ISummary';
-// TODO
-// 소요시간
+import moment from 'moment';
+
 interface MainSliderProps {
 	children?: ReactNode;
 	className?: string;
@@ -85,29 +86,40 @@ const MainSlider = (props: MainSliderProps) => {
 			>
 				{data.length >= 0 ? (
 					data.map((item: ISummary) => (
-						<Card onClick={() => {}}>
-							{item.user === undefined || item.user === null ? (
-								<div className="main-slider-author">
-									<CircularImage className="main-slider-author-profile" />
-									아무개
-								</div>
-							) : (
-								<div className="main-slider-author">
-									<CircularImage className="main-slider-author-profile" url={item.user.profile} />
-									{item.user.username}
-								</div>
-							)}
-							<div className="main-slider-article-title">{item.article.title}</div>
-							{/* 해시태그 */}
-							<div className="main-slider-hashtags">
-								{item.hashtags.map((hashtag) => (
-									<p className="main-slider-hashtags-text">#{hashtag.text}</p>
-								))}
+						<Link className ="__user-link" to={`/summary/${item._id}`}>
+						<Card className="main-slider-card">
+							<div className="main-slider-group">
+								{item.user === undefined || item.user === null ? (
+									<div className="main-slider-author">
+										<CircularImage className="main-slider-author-profile" />
+										아무개
+									</div>
+								) : (
+									<div className="main-slider-author">
+										<CircularImage className="main-slider-author-profile" url={item.user.profile} />
+										{item.user.username}
+									</div>
+								)}
+								<div className="main-slider-article-title">{item.article.title}</div>
 							</div>
-							{/* 소요시간 */}
 
-							{/* 작성시간 */}
+							{/* 해시태그 */}
+							<div className="main-slider-group">
+								<div className="main-slider-hashtags">
+									{item.hashtags.map((hashtag) => (
+										<p className="main-slider-hashtags-text">#{hashtag.text} </p>
+									))}
+								</div>
+
+								<div className="main-slider-date">
+									<p className="main-slider-date-required">
+										{item.timestamp} 소요
+									</p>
+									<p className="main-slider-date-update">{moment(item.createdAt).fromNow()}</p>
+								</div>
+							</div>
 						</Card>
+						</Link>
 					))
 				) : (
 					<p className="main-slider-placeholder">등록된 질문이 없습니다</p>
