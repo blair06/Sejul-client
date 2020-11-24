@@ -1,0 +1,50 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+::-webkit-scrollbar {
+    width: 0px;
+}
+.user-following-posts-container{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5vh;
+    height: 100vh;
+    overflow: hidden;
+    .user-following-post-card{
+        box-sizing: border-box;
+        margin: 0  20px 20px 10px;
+        padding: 15px;
+        width: 18vw;
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        .user-following-post-author{
+            display: flex;
+            align-items: center;
+            .user-following-post-author-profile{
+                margin-right: 10px;
+                width:2vw;
+                height:2vw;
+            }
+        }
+        .user-following-post-article-title{
+            margin-top: 3vh ;
+        }
+        .user-following-post-hashtags{
+            display:flex;
+            .user-following-post-hashtags-text{
+                padding-right: 5px;
+                color:$color-primary-blue;
+            }
+        }
+        .user-following-post-date{
+            width:100%;
+            display:flex;
+            justify-content: space-between!important;
+            color:$color-black-sub;
+            margin-top: 7px ;
+        }
+    }
+}

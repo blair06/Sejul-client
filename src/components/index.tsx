@@ -5,6 +5,7 @@ import Card from './Card';
 import CustomButton from './CustomButton';
 import RoundedCard from './RoundedCard';
 import UserInfoHeader from './UserInfoHeader';
+import HashTag from './HashTag';
 import SubNavbar from './SubNavbar';
 import Pagination from './Pagination';
 
@@ -16,6 +17,7 @@ export {
     CustomButton,
     RoundedCard,
     UserInfoHeader,
+    HashTag,
     SubNavbar,
     Pagination,
 };
