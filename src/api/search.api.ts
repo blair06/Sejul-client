@@ -31,7 +31,7 @@ export const exec = async (search: string, page: Number = 1, cnt: Number = 10): 
 export const fetchArticles = async (search: string, page: Number = 1, cnt: Number = 10) => {
 	const response = await axios({
 		method: 'get',
-		url: getUrl('api/article'),
+		url: getUrl('api/search/article'),
 		params: {
 			search: search,
 			page: page,
@@ -50,7 +50,7 @@ export const fetchArticles = async (search: string, page: Number = 1, cnt: Numbe
 export const fetchSummaries = async (search: string, page: Number = 1, cnt: Number = 10): Promise<ISummary[]> => {
 	const response = await axios({
 		method: 'get',
-		url: getUrl('api/summary'),
+		url: getUrl('api/search/summary'),
 		params: {
 			search: search,
 			page: page,
