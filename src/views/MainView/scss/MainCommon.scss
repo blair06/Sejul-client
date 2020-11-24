@@ -1,5 +1,6 @@
 @import '../../../scss/mixins';
 @import '../../../scss/variables';
+// @import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
 
 .main-view-container{
     // margin-top: $navbar-height;
@@ -37,7 +38,11 @@
             span{
                 color:#50FEDA;
             }
-
+            &.title {
+                font-family: 'Leckerli One', cursive;
+                font-size: 7em;
+                font-weight: 400;
+            }
         }
     }
 }
@@ -47,6 +52,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 250px;
+
     .bar{
         background-color: #80808063;
         width: 2.6vw;

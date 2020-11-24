@@ -48,7 +48,7 @@ const MainView = () => {
 		<div className="main-view-container">
 			<div className="main-banner">
 				<div className="layer">
-					<p>Sejul</p>
+					<p className="title">Sejul</p>
 					<p>
 						시사 상식을 접하는 <span>습관</span>을 길러주는 방법
 					</p>
@@ -66,7 +66,7 @@ const MainView = () => {
 				</div>
 				<p className="main-contents-header">해시 태그</p>
 				<div className="bar"></div>
-				<HashTag className="main-hashtag"hashTags = {hashTags}/>
+				<HashTag className="main-hashtag" hashTags={hashTags} />
 				<p className="main-contents-header">활동이 많은 사용자들</p>
 				<div className="bar"></div>
 				<div className="main-slider-user">
