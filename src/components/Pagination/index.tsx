@@ -1,68 +1,98 @@
-import React,{useState, useEffect} from 'react';
+import React, { useEffect, useState } from 'react'
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 
-interface PaginationProps  {
-    total: number,
-    perpage: number, 
-
+import { useLocation, useHistory } from 'react-router-dom';
+import { useLocationSearch } from '../../lib/hooks';
+interface IPaginationProps {
+    page: number;
+    total: number;
+    itemsPerPage: number;
 }
 
-const Pagination = (props: PaginationProps) => {
-    const { total, perpage } = props;
-    const pageNumbers= [];
-    const [currentPage,setCurrentPage] = useState(1);
+const Pagination = (props: IPaginationProps) => {
+    const { page, total, itemsPerPage } = props;
+    const [pages, setPages] = useState([] as number[]);
+    const location = useLocation();
+    const search = useLocationSearch(location.search);
+    const history = useHistory();
 
-    
+    useEffect(() => {
+        if (page < 3) {
+            setPages([1, 2, 3, 4, 5]);
+        }
+        else {
+            setPages([
+                (page - 2),
+                (page - 1),
+                page,
+                (page + 1),
+                (page + 2),
+            ]);
+        }
+    }, [page]);
 
-    for ( let i =1; i<=Math.ceil(total/perpage); i++) {
-        pageNumbers.push(i);
+    const fn = {
+        makeQuery: (_page: number) => {
+            if (location.search === "") {
+                return `?page=${_page}`;
+            }
+            else {
+                let clonedSearch = [...search];
+                clonedSearch.forEach((item, idx) => {
+                    if (item.key === "page") {
+                        clonedSearch.splice(idx, 1);
+                    }
+                });
+
+                clonedSearch.push({
+                    key: "page",
+                    value: _page + ""
+                });
+
+                let result = [] as string[];
+                clonedSearch.forEach((item) => {
+                    result.push(`${item['key']}=${item['value']}`);
+                });
+
+                return `?${result.join("&")}`;
+            }
+        },
+        moveNext: () => {
+            history.push(
+                fn.makeQuery(page + 1)
+            )
+        },
+        movePrev: () => {
+            history.push(
+                fn.makeQuery(page - 1)
+            )
+        }
     }
-
-    const totalNumOfPages = pageNumbers.length;
-
-    useEffect(()=> {
-        console.log("Cureent Page:")
-        console.log(currentPage);
-    }, [currentPage]);
-
-
-    return(
-
-         <ul className="__pagination">
-             <button className="page-link" aria-label="Previous"
-         onClick={() =>{ 
-          if (currentPage > 1){
-         
-          setCurrentPage(currentPage-1);
-          }
-          }
-        } 
-      />
-       <span className="sr-only">Previous</span>
-             {pageNumbers.map(number => (
-                 <li key={number} className='__page-items '>
-                     <a className='__page-link' >
-                         {number}
-                     </a>
-                 </li>
-
-             ))}
-             <li className="page-item" style={{marginRight:'auto'}}>
-          <button className="page-link"  value="Next" 
-                onClick={() =>{ 
-                  
-
-                    setCurrentPage(currentPage+1);
-                  
-                  }
-                } 
-          />
-
-            <span className="sr-only">Next</span>
-          
-     </li>
-         </ul>
-    );
-} 
-
+    return (
+        <div className="__pagination-container">
+            <div className="__pagination-wrapper">
+                <button type="button" onClick={fn.movePrev}>
+                    <RiArrowLeftSLine />
+                </button>
+                <div className="__pagination-items">
+                    {
+                        pages.map((renderPage, idx) => {
+                            return <a
+                                key={idx}
+                                className={`pagination-item ${page === renderPage ? "active" : ""}`}
+                                href={`${fn.makeQuery(renderPage)}`}
+                            >{
+                                    renderPage
+                                }</a>;
+                        })
+                    }
+                </div>
+                <button type="button" onClick={fn.moveNext}>
+                    <RiArrowRightSLine />
+                </button>
+            </div>
+        </div >
+    )
+}
 
 export default Pagination;

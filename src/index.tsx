@@ -22,7 +22,7 @@ import SummaryDetailView from './views/SummaryDetailView';
 import SummaryView from './views/SummaryView';
 
 // ROUTER
-import { Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
 // REDUX
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -60,7 +60,7 @@ const store = createStore(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router history={history}>
+      <Router >
         <Navbar />
         <Switch>
           <Route exact path="/" component={MainView}></Route>
@@ -75,6 +75,9 @@ ReactDOM.render(
                 ]
               } />
               <Switch>
+                <Route exact path="/search">
+                  <Redirect to="/search/topic" />
+                </Route>
                 <Route path="/search/topic" component={SearchView} />
                 <Route path="/search/summary" component={SearchView_2} />
               </Switch>
@@ -95,9 +98,9 @@ ReactDOM.render(
               </Switch>
             </div>
           </Route>
-          <Route path="/summary" component={SummaryView} />
+          <Route exact path="/summary" component={SummaryView} />
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
-          {/* <Route component={NotFoundView} /> */}
+          <Route path="*" component={NotFoundView} />
         </Switch>
       </Router>
     </Provider>

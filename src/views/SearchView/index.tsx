@@ -21,7 +21,7 @@ const SearchView = () => {
     };
 
 
-    const findSearch = async() => {
+    const findSearch = async () => {
         setText("");
 
         fetch(

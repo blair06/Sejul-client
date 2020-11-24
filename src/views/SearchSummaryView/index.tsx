@@ -1,13 +1,14 @@
-import React,{ useEffect, useState } from 'react'
-import { useParams } from 'react-router';
-import { isConstructorDeclaration } from 'typescript';
+import React, { useEffect, useState } from 'react'
 import { ISummary, IHashtag } from '../../api/interfaces';
 import { Card} from '../../components';
-import { RoundedCard} from '../../components';
 import * as API from '../../api'
 import './scss/SearchSummaryView.scss'
-import {Pagination} from '../../components'
 import { useDispatch } from 'react-redux';
+import moment from 'moment'
+import 'moment/locale/ko';
+import Moment from 'react-moment';
+import { setTextRange } from 'typescript';
+import { useParams } from 'react-router';
 
     interface UserSearchProps{
         isSearched: boolean,
@@ -19,8 +20,10 @@ const SearchView_2 = (props:UserSearchProps) => {
 
     const [items,setItems] = useState<ISummary[]>([]);
     const [keyword,setKeyword] = useState("");
+    const [keyworditem,setKeyworditem] = useState<any[]>([]);
     const [hashTags, setHashTags] = useState<IHashtag[]>([]);
     const _dispatch = useDispatch();
+    const time = moment();
     const fn = async () => {
         try{
         const response = await API.Summary.fetchAll(); //글검색
@@ -29,18 +32,24 @@ const SearchView_2 = (props:UserSearchProps) => {
             console.log(e);
         }
     };
-	const getHashTags = async () => {
-		try {
-			const result = await API.Analytics.fetchHottestHashtag();
-			setHashTags(result);
-		} catch (e) {
-			console.log(e);
-		}
+    const getHashTags = async () => {
+        try {
+            const result = await API.Analytics.fetchHottestHashtag();
+            setHashTags(result);
+        } catch (e) {
+            console.log(e);
+        }
     };
-
-    useEffect(()=> {
+    const getPosts = async () => {
+        const responce = await API.Search.fetchSummaries(keyword);
+        setKeyworditem(responce);
+    }
+    const keywordresult = () => { keyworditem.map((inx) => {return({keyworditem.title})}
+    ); }
+    useEffect(() => {
         fn();
         getHashTags();
+        getPosts();
     }, []);
 
 
@@ -49,8 +58,11 @@ const SearchView_2 = (props:UserSearchProps) => {
             if(keyword===""){
                 alert("검색어를 입력해주세요");
                 return;
+            } 
+            else if(keyword === "2단계" ) {
+                return keywordresult;
             }
-            console.log(setKeyword);
+            
         }
     }
 
@@ -97,10 +109,10 @@ const SearchView_2 = (props:UserSearchProps) => {
 
                             </div> 
                             <div className="new-time-wrap">
-                            <p className = "new-write-time">{item.timestamp.finish}</p>
-                            <p className="news-create-time">{item.createdAt}</p>
+                            <p className = "new-write-time">{item.timestamp}소요</p>
+                            <p className="news-create-time"><Moment fromNow>{time}</Moment></p>
                             </div>
-                            </Card>
+                            </Card> 
                         </div>
                         
                     
@@ -109,15 +121,14 @@ const SearchView_2 = (props:UserSearchProps) => {
                 }) 
             }
 
-            </div>
-            
 
             </div>
+        </div>
             <div className="main-footer">Sejul</div>
             
         </>
     );
-}
+    }
 
 //onclick={()=>{history.push{`${item.search}`}}} 이전 검색키워드 표시
 export default SearchView_2
