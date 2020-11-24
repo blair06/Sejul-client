@@ -110,7 +110,7 @@ const SearchView_2 = (props: UserSearchProps) => {
                                     </div>
                                     <div className="new-time-wrap">
                                         <p className="new-write-time">{item.timestamp}소요</p>
-                                        <p className="news-create-time"><Moment fromNow>{time}</Moment></p>
+                                        {/* <p className="news-create-time"><Moment fromNow>{time}</Moment></p> */}
                                     </div>
                                 </Card>
                             </div>

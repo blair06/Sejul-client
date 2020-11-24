@@ -11,6 +11,8 @@ import './scss/global.scss';
 // COMPONENTS
 import { Navbar, UserInfoHeader, SubNavbar } from './components';
 
+import 'moment/locale/ko';
+
 // VIEWS
 import MainView from './views/MainView';
 import NotFoundView from './views/NotFoundView';
@@ -77,7 +79,7 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={SignInView} />
           <Route path="/search" >
-            
+
             <div className="__container__" >
               <SubNavbar className="__search-navbar" links={
                 [
@@ -98,7 +100,7 @@ ReactDOM.render(
           {/* <Route path="/user/:user_name/summary" component={UserInfoView} /> */}
           <Route path="/user/:username">
             <div className="__user-info-container">
-            <UserInfoHeader />
+              <UserInfoHeader />
               <Switch>
                 {/* <Route exact path="/user/:username" component={UserFollowing} /> */}
                 <Route path="/user/:username/summaries" component={UserSummaryList} />
