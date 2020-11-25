@@ -46,7 +46,8 @@ const NewSignInView = () => {
         },
         kakao: {
             signin: async () => {
-                await API.Auth.kakaoSignin();
+                // await API.Auth.kakaoSignin();
+                window.location.href = "/api/auth/kakao/signin";
             }
         }
     }
