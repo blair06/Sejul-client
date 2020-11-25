@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { IAPIResponse, ISummary } from './interfaces';
 import { getUrl } from './tools/host';
+import * as LIB from '../lib';
 
 /**
  * @description 모든 요약 글을 가져옵니다
@@ -59,10 +60,15 @@ interface ICreateSummaryResponse extends IAPIResponse {
  * @param data 글 생성에 필요한 데이터
  */
 export const create = async (data: ISummaryForm): Promise<ICreateSummaryResponse> => {
+	const token = LIB.Token.get();
+
 	const response = await axios({
 		method: 'post',
 		url: getUrl('api/summary/'),
 		data: data,
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
 	});
 
 	return response.data;
