@@ -53,3 +53,14 @@ export const fetch = async (token: string): Promise<IUser> => {
 	});
 	return response.data;
 };
+
+export const kakaoSignin = async () => {
+	const response = await axios({
+		method: 'GET',
+		url: getUrl('api/auth/kakao/signin'),
+		// headers: {
+		// 	Authorization: `Bearer ${token}`,
+		// },
+	});
+	return response.data;
+};

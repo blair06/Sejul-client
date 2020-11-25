@@ -30,6 +30,7 @@ import UserHashTag from './views/UserInfoView/UserHashTag/UserHashTag';
 import UserLike from './views/UserInfoView/UserLike/UserLike';
 import UserSummaryList from './views/UserInfoView/UserSummaryList/UserSummaryList';
 import UserScrap from './views/UserInfoView/UserScrap/UserScrap';
+import AuthCallbackView from './views/AuthCallBackView';
 
 import SummaryView from './views/SummaryView';
 
@@ -116,6 +117,7 @@ ReactDOM.render(
           </Route>
           <Route exact path="/summary" component={SummaryView} />
           <Route path="/summary/:summaryId" component={SummaryDetailView} />
+          <Route path="/auth/callback" component={AuthCallbackView} />
           <Route path="*" component={NotFoundView} />
         </Switch>
 

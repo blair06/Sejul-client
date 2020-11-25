@@ -43,6 +43,11 @@ const NewSignInView = () => {
                     }
                 }
             }
+        },
+        kakao: {
+            signin: async () => {
+                await API.Auth.kakaoSignin();
+            }
         }
     }
 
@@ -62,9 +67,7 @@ const NewSignInView = () => {
                     </div>
                     <div className="signin-card-btns">
                         <CustomButton className="signin-card-btn " text="로그인" onClick={fn.signin} />
-                        <CustomButton className="signin-card-btn kakao" text="카카오 로그인" onClick={() => {
-                            // window.open("http://34.64.70.82/api/auth/kakao/signin");
-                        }} />
+                        <CustomButton className="signin-card-btn kakao" text="카카오 로그인" onClick={fn.kakao.signin} />
                         <CustomButton className="signin-card-btn signup" text="회원가입" onClick={() => {
                             history.push("/signup");
                         }} />
