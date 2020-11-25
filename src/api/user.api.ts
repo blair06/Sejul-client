@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { IAPIResponse, IHashtag, ISummary, IUser, IArticle } from './interfaces';
 import { getUrl } from './tools/host';
+import * as LIB from '../lib';
 
 export interface IUserFetchResponse {
 	user: IUser;
@@ -89,18 +90,88 @@ export const fetchFollowingHashtag = async (
  * @description 사용자가 좋아요한 글 가져오기
  * @param username 사용자 이름
  */
-export const fetchLikeSummary = async (username: string, cnt: Number = 6): Promise<ISummary[]> => {
+
+interface IfetchLikeSummaryResponse {
+	page: number;
+	data: ISummary[];
+	count: number;
+}
+
+export const fetchLikeSummary = async (
+	username: string,
+	page: Number = 1,
+	cnt: Number = 6
+): Promise<IfetchLikeSummaryResponse> => {
 	const result = await axios({
 		method: 'GET',
 		url: getUrl(`api/user/${username}/likes`),
+		params: {
+			page: page,
+			cnt: cnt,
+		},
 	});
 	return result.data;
 };
 
-export const fetchScrap = async (username: string, cnt: Number = 5): Promise<IArticle[]> => {
+export const fetchScrap = async (username: string, page: Number = 1, cnt: Number = 5): Promise<IArticle[]> => {
 	const result = await axios({
 		method: 'GET',
 		url: getUrl(`api/user/${username}/bookmarks`),
+		params: {
+			page: page,
+			cnt: cnt,
+		},
+	});
+	return result.data;
+};
+
+export const followUser = async (username: string) => {
+	const token = LIB.Token.get();
+
+	const result = await axios({
+		method: 'POST',
+		url: getUrl(`api/user/following/${username}`),
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+	return result.data;
+};
+
+export const unfollowUser = async (username: string) => {
+	const token = LIB.Token.get();
+	const result = await axios({
+		method: 'DELETE',
+		url: getUrl(`api/user/following/${username}`),
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+	return result.data;
+};
+
+export const likeSummary = async (summary_id: string) => {
+	const token = LIB.Token.get();
+
+	const result = await axios({
+		method: 'POST',
+		url: getUrl(`api/user/summary/${summary_id}/like`),
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+	return result.data;
+};
+
+export const unlikeSummary = async (summary_id: string) => {
+	const token = LIB.Token.get();
+
+	const result = await axios({
+		method: 'DELETE',
+		url: getUrl(`api/user/summary/${summary_id}/like`),
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
 	});
 	return result.data;
 };

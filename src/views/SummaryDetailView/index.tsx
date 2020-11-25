@@ -2,10 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { useRouteMatch, useHistory, Link } from 'react-router-dom';
 import * as API from '../../api';
 import { ISummary, IUser, IHashtag } from '../../api/interfaces';
-import { Card, CircularImage } from '../../components';
+import { Card, CircularImage, CustomButton } from '../../components';
 
 import moment from 'moment';
 import './scss/index.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../modules';
+import { getUserInfoThunk } from '../../modules/Auth';
+import { fetch } from '../../api/summary.api';
+
+
+enum LIKE_STATE {
+    LIKE,
+    NOT_LIKE
+}
 
 interface ISummaryDetailViewParams {
     summaryId: string | undefined;
@@ -15,6 +25,10 @@ const SummaryDetailView = () => {
     const history = useHistory();
     const matches = useRouteMatch();
     const [detail, setDetail] = useState<ISummary | undefined>(undefined);
+    const [likeState, setLikeState] = useState(LIKE_STATE.NOT_LIKE);
+
+    const dispatch = useDispatch();
+    const { user } = useSelector((state: RootState) => state.auth);
 
     const fn = {
         fetch: async (summaryId: string | undefined) => {
@@ -27,6 +41,7 @@ const SummaryDetailView = () => {
                 try {
                     const result = await API.Summary.fetch(summaryId);
                     setDetail(result);
+                    fn.computeLike();
                 }
                 catch (e) {
 
@@ -50,12 +65,54 @@ const SummaryDetailView = () => {
                 );
             }
         },
+        computeLike: () => {
+            const params = matches.params as ISummaryDetailViewParams;
+            console.log(user.data, params.summaryId);
+            if (user !== undefined && user !== null && user.data !== undefined && user.data !== null) {
+                if (user.data.likes !== undefined && user.data.likes !== null) {
+                    const found = user.data.likes.find(like => {
+                        return like.toString() === params.summaryId
+                    });
+
+                    if (found) {
+                        setLikeState(LIKE_STATE.LIKE);
+                        console.log("FOUND");
+                    }
+                    else {
+                        setLikeState(LIKE_STATE.NOT_LIKE);
+                        console.log("NOTFOUND");
+                    }
+
+
+                }
+            }
+        },
+        like: async () => {
+            const params = matches.params as ISummaryDetailViewParams;
+            if (params.summaryId !== undefined) {
+                await API.User.likeSummary(params.summaryId);
+                await fn.fetch(params.summaryId);
+                dispatch(getUserInfoThunk());
+            }
+        },
+        unlike: async () => {
+            const params = matches.params as ISummaryDetailViewParams;
+            if (params.summaryId !== undefined) {
+                await API.User.unlikeSummary(params.summaryId);
+                await fn.fetch(params.summaryId);
+                dispatch(getUserInfoThunk());
+            }
+        }
     }
 
     useEffect(() => {
         const params = matches.params as ISummaryDetailViewParams;
         fn.fetch(params.summaryId);
     }, []);
+
+    useEffect(() => {
+        fn.computeLike();
+    }, [user, detail])
 
     return (
         <div className="__summary-detail-view-container">
@@ -85,8 +142,12 @@ const SummaryDetailView = () => {
 
                             <div className="__summary-timestamp-info">
                                 <p>요약 소요 시간 : {detail?.timestamp}</p>
-
                             </div>
+                            {
+                                likeState === LIKE_STATE.LIKE ?
+                                    <CustomButton className="__summary-like-btn unlike" text="좋아요 취소" onClick={fn.unlike} /> :
+                                    <CustomButton className="__summary-like-btn like" text="좋아요" onClick={fn.like} />
+                            }
                             <div className="__summary-hashtags-info">
                                 {
                                     detail?.hashtags.map((hashtag, idx) => {
@@ -96,6 +157,7 @@ const SummaryDetailView = () => {
                                     })
                                 }
                             </div>
+
                         </div>
                     </div>
                 </Card>

@@ -1,3 +1,5 @@
+@import '../../../scss/variables';
+
 .user-scrap-container{
     display: flex;
     flex-direction: column;
@@ -5,8 +7,13 @@
 }
 .Scrap-news-card{
 
-    height: 4vh;
+    // height: 4vh;
     display: flex;
     justify-content: flex-start;
     margin-bottom: 10px;
+
+    .Scrap-news-card-title{
+        margin : $spacing-narrow;
+        font-size: 1.1rem;
+    }
 }

@@ -36,6 +36,27 @@
                     margin-right: 10px;
                 }
             }
+
+            .info-header-btn{
+                font-size: .7rem;
+                background-color: $color-primary-blue;
+                color: $color-white;
+                border: 0;
+                border-radius: 5px;
+                width: 90px;
+                height: 25px;
+                margin-top: 5px;
+                @include common-box-shadow;
+                outline: none;
+                &.follow{
+                    background-color: $color-primary-blue;
+                    color: $color-white;
+                }
+                &.unfollow{
+                    background-color: $color-warning;
+                    color : $color-black;
+                }
+            }
         }
     }
 }

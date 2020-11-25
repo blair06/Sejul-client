@@ -90,6 +90,27 @@
                             font-size : .8rem;
                         }
                     }
+
+                    // 좋아요
+                    .__summary-like-btn{
+                        border: 0;
+                        outline:none;
+                        height: 25px;
+                        font-size: .6rem;
+                        border-radius: 5px;
+                        margin: 0 $spacing-narrow;
+                        &.like{
+                            width : 50px;
+                            background-color: $color-primary-blue;
+                            color : $color-white;
+                        }
+                        &.unlike{
+                            width: 70px;
+                            background-color: $color-danger;
+                            color : $color-white;
+                        }
+                    }
+
                     .__summary-hashtags-info{
                         display: flex;
                         flex-direction: row;

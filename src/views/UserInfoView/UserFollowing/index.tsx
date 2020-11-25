@@ -25,36 +25,6 @@ const UserFollowing = () => {
 	const [page, setPage] = useState(1);
 	const [total, setTotal] = useState(1);
 
-	const fetch = {
-		user: async (username: string | undefined) => {
-			if (username === undefined) {
-				// 404
-				alert('유저 정보가 올바르지 않습니다');
-				history.push('/');
-			} else {
-				try {
-					const result = await API.User.fetchFollowingUser(username);
-					setUsers(result.users);
-				} catch (e) {
-					console.log(e);
-				}
-			}
-		},
-		posts: async (username: string | undefined) => {
-			if (username === undefined) {
-				// 404
-				alert('유저 정보가 올바르지 않습니다');
-				history.push('/');
-			} else {
-				try {
-					const result = await API.User.fetchFollowingUser(username);
-					setPosts(result.summary.data);
-				} catch (e) {
-					console.log(e);
-				}
-			}
-		},
-	};
 
 	const fn = {
 		fetch: async () => {

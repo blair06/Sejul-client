@@ -2,21 +2,33 @@ import React, { useEffect, useState } from 'react';
 import * as API from '../../api';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import { ISummary, IUser } from '../../api/interfaces';
-import { CircularImage, SubNavbar } from '../../components';
+import { CircularImage, SubNavbar, CustomButton } from '../../components';
 import './UserInfoHeader.scss';
 import { IUserFetchResponse } from '../../api/user.api'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../modules';
+import { getUserInfoThunk } from '../../modules/Auth';
 interface IUserInfoHeaderParams {
 	username: string;
 	user?: IUser | undefined | null;
+}
+
+enum FOLLOW_STATE {
+	ITSELF,
+	NOT_FOLLOW,
+	FOLLOW
 }
 
 const UserInfoHeader = () => {
 	const params = useParams();
 	const history = useHistory();
 	const loc = useLocation();
+	const dispatch = useDispatch();
+	const { auth } = useSelector((state: RootState) => state);
 
 	const [user, setUser] = useState<IUser>();
 	const [summaries, setSummaries] = useState<ISummary[]>();
+	const [followState, setFollowState] = useState(FOLLOW_STATE.NOT_FOLLOW);
 	const fetch = async () => {
 		// 404
 		try {
@@ -38,6 +50,44 @@ const UserInfoHeader = () => {
 		}
 	};
 
+	const fn = {
+		follow: async () => {
+			if (user !== undefined && user !== null) {
+				await API.User.followUser(user.username);
+				await fetch();
+				dispatch(getUserInfoThunk());
+			}
+		},
+		unfollow: async () => {
+			if (user !== undefined && user !== null) {
+				await API.User.unfollowUser(user.username);
+				await fetch();
+				dispatch(getUserInfoThunk());
+			}
+		},
+		computeFollowState: () => {
+			if (auth.user.data !== null && auth.user.data !== undefined && user !== undefined) {
+				if (auth.user.data._id === user._id) {
+					setFollowState(FOLLOW_STATE.ITSELF);
+					return;
+				}
+
+				if (auth.user.data.following !== undefined && user !== undefined) {
+					const exists = auth.user.data.following.find((followingUser) => followingUser._id === user._id);
+					if (exists) {
+						console.log("?");
+						setFollowState(FOLLOW_STATE.FOLLOW);
+					}
+					else {
+						console.log("!");
+						console.log(auth.user.data.following, user);
+						setFollowState(FOLLOW_STATE.NOT_FOLLOW);
+					}
+				}
+			}
+		}
+	}
+
 	useEffect(() => {
 		if (loc.pathname.split("/").length < 4) {
 			console.log("not had depth");
@@ -47,11 +97,13 @@ const UserInfoHeader = () => {
 
 	useEffect(() => {
 		fetch();
-	}, [history]);
+	}, [history, loc]);
+
 
 	useEffect(() => {
-		console.log(user);
-	}, [user]);
+		console.log('updated');
+		fn.computeFollowState();
+	}, [user, auth.user]);
 
 	return (
 		<>
@@ -66,11 +118,18 @@ const UserInfoHeader = () => {
 								<>
 									<p>팔로우 {user?.following.length} </p>
 									<p>작성글 {summaries.length} </p>
+
 								</>
 							) : (
 									<><p>조회할 수 없습니다</p></>
 								)}
 						</div>
+						{
+							followState === FOLLOW_STATE.NOT_FOLLOW ?
+								<CustomButton className="info-header-btn follow" text="팔로우 하기" onClick={fn.follow} />
+								: followState === FOLLOW_STATE.FOLLOW ?
+									<CustomButton className="info-header-btn unfollow" text="언팔로우 하기" onClick={fn.unfollow} /> : <></>
+						}
 					</div>
 				</div>
 			</div>

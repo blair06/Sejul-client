@@ -44,11 +44,11 @@ const UserScrap = () => {
 					<div className="user-scrap-container">
 						{news?.map((news: IArticle, index: number) => (
 							<Link key={index} className="__user-link" to={`/summary?title=${news.title}&link=${news.originalLink}`}>
-							<Card key={index} className="Scrap-news-card">
-								<div className="Scrap-news-card-title">
-									<p>{news.title}</p>
-								</div>
-							</Card>
+								<Card key={index} className="Scrap-news-card">
+									<div className="Scrap-news-card-title">
+										<p>{news.title}</p>
+									</div>
+								</Card>
 							</Link>
 						))}
 					</div>
