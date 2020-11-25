@@ -47,7 +47,17 @@ export const fetchArticles = async (search: string, page: Number = 1, cnt: Numbe
  * @param page 현재 페이지입니다. 1을 기본값으로 갖습니다
  * @param cnt 한번에 보여줄 갯수입니다 10을 기본값으로 갖습니다
  */
-export const fetchSummaries = async (search: string, page: Number = 1, cnt: Number = 10): Promise<ISummary[]> => {
+interface IfetchSummariesResponse {
+	page: number;
+	data: ISummary[];
+	count: number;
+}
+
+export const fetchSummaries = async (
+	search: string,
+	page: Number = 1,
+	cnt: Number = 10
+): Promise<IfetchSummariesResponse> => {
 	const response = await axios({
 		method: 'get',
 		url: getUrl('api/search/summary'),

@@ -32,6 +32,8 @@ import UserSummaryList from './views/UserInfoView/UserSummaryList/UserSummaryLis
 import UserScrap from './views/UserInfoView/UserScrap/UserScrap';
 import AuthCallbackView from './views/AuthCallBackView';
 
+import NewSearchView from './views/NewSearchView';
+
 import SummaryView from './views/SummaryView';
 
 // ROUTER
@@ -82,24 +84,34 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={NewSignInView} />
           <Route path="/signup" component={NewSignUpView} />
-          <Route path="/search" >
+          <Route exact path="/search">
+            <Redirect to="/search/topic" />
+          </Route>
+          <Route path="/search/topic" >
+            <NewSearchView mode="topic" />
+          </Route>
+          <Route path="/search/summary" >
+            <NewSearchView mode="summary" />
+          </Route>
+          {/* <Route path="/search" > */}
 
-            <div className="__container__" >
-              <SubNavbar className="__search-navbar" links={
+          {/* <div className="__container__" > */}
+          {/* <SubNavbar className="__search-navbar" links={
                 [
                   { to: '/search/topic/', text: '기사 검색' },
                   { to: '/search/summary/', text: '글 검색' }
                 ]
-              } />
-              <Switch>
-                <Route exact path="/search">
+              } /> */}
+          {/* <Switch> */}
+
+          {/* <Route exact path="/search">
                   <Redirect to="/search/topic" />
                 </Route>
                 <Route path="/search/topic" component={SearchView} />
-                <Route path="/search/summary" component={SearchView_2} />
-              </Switch>
-            </div>
-          </Route>
+                <Route path="/search/summary" component={SearchView_2} /> */}
+          {/* </Switch> */}
+          {/* </div> */}
+          {/* </Route> */}
 
           {/* <Route path="/user/:user_name/summary" component={UserInfoView} /> */}
           <Route path="/user/:username">

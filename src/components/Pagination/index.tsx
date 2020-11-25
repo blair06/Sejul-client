@@ -33,7 +33,7 @@ const Pagination = (props: IPaginationProps) => {
                 (page + 2),
             ]);
         }
-    }, [page]);
+    }, [page, total]);
 
     const fn = {
         makeQuery: (_page: number) => {
@@ -58,30 +58,25 @@ const Pagination = (props: IPaginationProps) => {
                     result.push(`${item['key']}=${item['value']}`);
                 });
 
-                return `?${result.join("&")}`;
+                return `./?${result.join("&")}`;
             }
         },
         moveNext: () => {
             if (page < lastPage) {
-                history.push(
-                    fn.makeQuery(page + 1)
-                )
+                window.location.href = fn.makeQuery(page + 1);
             }
         },
         movePrev: () => {
             if (page > 1) {
-                history.push(
-                    fn.makeQuery(page - 1)
-                )
+                window.location.href = fn.makeQuery(page - 1);
+
             }
         },
         moveFirst: () => {
-            history.push(
-                fn.makeQuery(1)
-            )
+            window.location.href = fn.makeQuery(1)
         },
         moveLast: () => {
-            history.push(fn.makeQuery(lastPage));
+            window.location.href = fn.makeQuery(lastPage);
         }
     }
     return (

@@ -22,7 +22,7 @@ const SearchView_2 = (props: UserSearchProps) => {
 
     const fn = async () => {
         const response = await API.Search.fetchSummaries(keyword);
-        setItems(response);
+        // setItems(response);
     };
     // const searchpost = async () => {
     //     const response = await API.Search.fetchSummaries('');
