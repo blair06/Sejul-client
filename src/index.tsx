@@ -84,7 +84,7 @@ ReactDOM.render(
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={NewSignInView} />
           <Route path="/signup" component={NewSignUpView} />
-          <Route exact path="/search">
+          {/* <Route exact path="/search">
             <Redirect to="/search/topic" />
           </Route>
           <Route path="/search/topic" >
@@ -92,32 +92,35 @@ ReactDOM.render(
           </Route>
           <Route path="/search/summary" >
             <NewSearchView mode="summary" />
-          </Route>
-          {/* <Route path="/search" > */}
+          </Route> */}
+          <Route path="/search" >
 
-          {/* <div className="__container__" > */}
-          {/* <SubNavbar className="__search-navbar" links={
+            <div className="__container__" >
+              <SubNavbar className="__search-navbar" links={
                 [
                   { to: '/search/topic/', text: '기사 검색' },
                   { to: '/search/summary/', text: '글 검색' }
                 ]
-              } /> */}
-          {/* <Switch> */}
+              } />
+              <Switch>
 
-          {/* <Route exact path="/search">
+                <Route exact path="/search">
                   <Redirect to="/search/topic" />
                 </Route>
                 <Route path="/search/topic" component={SearchView} />
-                <Route path="/search/summary" component={SearchView_2} /> */}
-          {/* </Switch> */}
-          {/* </div> */}
-          {/* </Route> */}
+                <Route path="/search/summary" component={SearchView_2} />
+              </Switch>
+            </div>
+          </Route>
 
           {/* <Route path="/user/:user_name/summary" component={UserInfoView} /> */}
           <Route path="/user/:username">
             <div className="__user-info-container">
               <UserInfoHeader />
               <Switch>
+                <Route exact path="/user/username/">
+                  <Redirect to="/user/:username/summaries" />
+                </Route>
                 {/* <Route exact path="/user/:username" component={UserFollowing} /> */}
                 <Route path="/user/:username/summaries" component={UserSummaryList} />
                 <Route path="/user/:username/following" component={UserFollowing} />
