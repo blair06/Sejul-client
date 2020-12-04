@@ -83,6 +83,8 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={MainView}></Route>
           <Route path="/signin" component={NewSignInView} />
+          <Route path="/signin_2" component={SignInView} />
+
           <Route path="/signup" component={NewSignUpView} />
           {/* <Route exact path="/search">
             <Redirect to="/search/topic" />

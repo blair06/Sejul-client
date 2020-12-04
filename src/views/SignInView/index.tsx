@@ -3,6 +3,18 @@ import './scss/SignIn.v2.scss';
 import * as API from '../../api';
 import { CustomButton } from '../../components';
 
+interface ILoginFieldInputProps {
+    id: string,
+    labelText: string,
+}
+
+const LoginFieldInput = (props: ILoginFieldInputProps) => {
+    return <div id={props.id}>
+        <label>{props.labelText}</label>
+        <input type="text" />
+    </div>;
+}
+
 const SignInView = () => {
     useEffect(() => {
         // fn();
@@ -16,14 +28,8 @@ const SignInView = () => {
                 </h1>
                 <form id="login_form">
                     <fieldset className="login_field">
-                        <div id="login_ID">
-                            <label>아이디를 입력하세요</label>
-                            <input type="text" />
-                        </div>
-                        <div id="login_pw">
-                            <label>비밀번호를 입력하세요</label>
-                            <input type="password" />
-                        </div>
+                        <LoginFieldInput id="login_ID" labelText="아이디를 입력해주세요" />
+                        <LoginFieldInput id="login_pw" labelText="비밀번호를 입력하세요" />
 
                         <div className="wrap_btn">
 
