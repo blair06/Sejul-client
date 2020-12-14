@@ -86,7 +86,7 @@ ReactDOM.render(
           <Route path="/signin_2" component={SignInView} />
 
           <Route path="/signup" component={NewSignUpView} />
-          {/* <Route exact path="/search">
+          <Route exact path="/search">
             <Redirect to="/search/topic" />
           </Route>
           <Route path="/search/topic" >
@@ -94,9 +94,11 @@ ReactDOM.render(
           </Route>
           <Route path="/search/summary" >
             <NewSearchView mode="summary" />
-          </Route> */}
-          <Route path="/search" >
-
+          </Route>
+          <Route path="/search/hashtag" >
+            <NewSearchView mode="hashtag" />
+          </Route>
+          {/* <Route path="/search" > 
             <div className="__container__" >
               <SubNavbar className="__search-navbar" links={
                 [
