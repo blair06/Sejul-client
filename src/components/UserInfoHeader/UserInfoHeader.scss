@@ -2,9 +2,9 @@
 @import '../../scss/variables';
 .__user-info-container{
 
+    width: 1280px;
+    margin: 0 auto;
     margin-top : $navbar-height;
-    margin-left : 20vw;
-    margin-right : 20vw;
     
 }
 .__user-link{
@@ -13,19 +13,19 @@
 }
 .info-header-container{
     width: 100%;
-    padding: 1.5vw 1.5vw 0 1.5vw;
+    padding: 23px 23px 0 23px;
     .info-header-content{
         display: flex;
         align-items: center;
         .info-header-profile{
-            width: 6vw;
-            height: 6vw;
+            width: 90px;
+            height: 90px;
         }
         .info-header-text{
             padding: $spacing-narrow;
             .info-header-name {
                 font-size: 1.7em;
-                margin-bottom: 3vh;
+                margin-bottom: 15px;
             }
             .info-header-small {
                 display: flex;
@@ -61,6 +61,6 @@
     }
 }
 .__user-navbar{
-    margin-bottom: 4vh;
+    margin-bottom: 29px;
     margin-top: 0!important;
 }
