@@ -175,3 +175,17 @@ export const unlikeSummary = async (summary_id: string) => {
 	});
 	return result.data;
 };
+//프로필 변경
+export const fetchProfile = async (data:any)=> {
+	const token = LIB.Token.get();
+	const response = await axios({
+		method: 'POST',
+		url: getUrl('api/user/profile'),
+		data: data,
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+
+	return response.data;
+};

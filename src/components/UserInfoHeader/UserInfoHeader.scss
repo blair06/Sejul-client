@@ -60,6 +60,26 @@
         }
     }
 }
+.profile-container{
+      position: relative;
+      border-radius: 50%;  
+      overflow: hidden; 
+      width: 90px;
+      height: 90px;   
+      &:hover .profile-layer{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        top: 55px;
+        width: 100%;
+        height: 100%;
+        font-size: 0.9em;
+        background-color: #494848cf;
+        color: white;
+        transition: 0.4s;
+    
+      }
+}
 .__user-navbar{
     margin-bottom: 29px;
     margin-top: 0!important;

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef} from 'react';
 import * as API from '../../api';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import { ISummary, IUser } from '../../api/interfaces';
 import { CircularImage, SubNavbar, CustomButton } from '../../components';
 import './UserInfoHeader.scss';
-import { IUserFetchResponse } from '../../api/user.api'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 import { getUserInfoThunk } from '../../modules/Auth';
@@ -16,10 +15,11 @@ interface IUserInfoHeaderParams {
 enum FOLLOW_STATE {
 	ITSELF,
 	NOT_FOLLOW,
-	FOLLOW
+	FOLLOW,
 }
 
 const UserInfoHeader = () => {
+	
 	const params = useParams();
 	const history = useHistory();
 	const loc = useLocation();
@@ -29,6 +29,8 @@ const UserInfoHeader = () => {
 	const [user, setUser] = useState<IUser>();
 	const [summaries, setSummaries] = useState<ISummary[]>();
 	const [followState, setFollowState] = useState(FOLLOW_STATE.NOT_FOLLOW);
+	const [mySelf, setMySelf] = useState(false);
+	const photoInput = useRef<HTMLInputElement>(null);
 	const fetch = async () => {
 		// 404
 		try {
@@ -69,36 +71,51 @@ const UserInfoHeader = () => {
 			if (auth.user.data !== null && auth.user.data !== undefined && user !== undefined) {
 				if (auth.user.data._id === user._id) {
 					setFollowState(FOLLOW_STATE.ITSELF);
+					//프로필변경을 위한 본인 확인
+					setMySelf(true);
 					return;
 				}
 
 				if (auth.user.data.following !== undefined && user !== undefined) {
 					const exists = auth.user.data.following.find((followingUser) => followingUser._id === user._id);
 					if (exists) {
-						console.log("?");
+						console.log('?');
 						setFollowState(FOLLOW_STATE.FOLLOW);
-					}
-					else {
-						console.log("!");
+					} else {
+						console.log('!');
 						console.log(auth.user.data.following, user);
 						setFollowState(FOLLOW_STATE.NOT_FOLLOW);
 					}
 				}
 			}
+		},
+		changeProfile: async(e:any) => {
+			const formData = new FormData();
+			  formData.append('profileImage', e.target.files[0]);
+			// 서버의 upload API 호출
+			const res = await API.User.fetchProfile(formData);
+			console.log(res);
+			window.location.reload();
+		},
+	};
+	//div클릭시 input의 버튼 클릭효과
+	const onClick = useCallback(() => { 
+		const { current } = photoInput;
+		if(current !== null && current !== undefined){
+			current.click();
 		}
-	}
-
+        
+    }, []);
 	useEffect(() => {
-		if (loc.pathname.split("/").length < 4) {
-			console.log("not had depth");
-			history.push(loc.pathname + "/summaries");
+		if (loc.pathname.split('/').length < 4) {
+			console.log('not had depth');
+			history.push(loc.pathname + '/summaries');
 		}
 	}, []);
 
 	useEffect(() => {
 		fetch();
 	}, [history, loc]);
-
 
 	useEffect(() => {
 		console.log('updated');
@@ -109,7 +126,18 @@ const UserInfoHeader = () => {
 		<>
 			<div className="info-header-container">
 				<div className="info-header-content">
-					<CircularImage className="info-header-profile" url={user?.profile} />
+					{mySelf === true ? (
+						<div className="profile-container" >
+							<CircularImage className="info-header-profile" url={user?.profile} />
+							<div className="profile-layer" onClick={onClick}>
+								프로필<br></br> 변경
+							</div>
+							<input type="file" id="photoInput" accept="image/*" ref = { photoInput }
+                        onChange = { fn.changeProfile } />
+						</div>
+					) : (
+						<CircularImage className="info-header-profile" url={user?.profile} />
+					)}
 
 					<div className="info-header-text">
 						<div className="info-header-name">{user?.username}</div>
@@ -118,18 +146,20 @@ const UserInfoHeader = () => {
 								<>
 									<p>팔로우 {user?.following.length} </p>
 									<p>작성글 {summaries.length} </p>
-
 								</>
 							) : (
-									<><p>조회할 수 없습니다</p></>
-								)}
+								<>
+									<p>조회할 수 없습니다</p>
+								</>
+							)}
 						</div>
-						{
-							followState === FOLLOW_STATE.NOT_FOLLOW ?
-								<CustomButton className="info-header-btn follow" text="팔로우 하기" onClick={fn.follow} />
-								: followState === FOLLOW_STATE.FOLLOW ?
-									<CustomButton className="info-header-btn unfollow" text="언팔로우 하기" onClick={fn.unfollow} /> : <></>
-						}
+						{followState === FOLLOW_STATE.NOT_FOLLOW ? (
+							<CustomButton className="info-header-btn follow" text="팔로우 하기" onClick={fn.follow} />
+						) : followState === FOLLOW_STATE.FOLLOW ? (
+							<CustomButton className="info-header-btn unfollow" text="언팔로우 하기" onClick={fn.unfollow} />
+						) : (
+							<></>
+						)}
 					</div>
 				</div>
 			</div>
